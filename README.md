@@ -31,6 +31,6 @@ New includes:
   
  ## Licensing
  [MIT](https://choosealicense.com/licenses/mit/) 
- ![alt](https://www.nicepng.com/maxp/u2t4t4e6w7w7a9a9/)
+
  
 
