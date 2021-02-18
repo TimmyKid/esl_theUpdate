@@ -1,7 +1,7 @@
 # esl_theUpdate
 
 __theUpdate__ is a 2021 UX based minimal web design.
-> It is Written as an update for [ESL's current website](https://elevetesolutions.com/#)
+> It is Written as a revamp for [ESL's current website](https://elevetesolutions.com/#)
 
 
 
