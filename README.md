@@ -4,9 +4,7 @@ __theUpdate__ is a 2021 UX based minimal web design.
 > It is Written as a revamp for ESL's [current website](https://elevetesolutions.com/#)
 
 
-
 ## Installation
-
 Using git bash:
 
 ```bash
@@ -15,13 +13,17 @@ Using git bash:
 Then simply load the **.html** cloned to your local dir.
 
 
-
 ## Includes
 Minimal UI design interface.
+
 New includes:
-+ sass
-+ gsap
-+ html5
-+ nodeJs
+   + sass
+   + gsap
+   + html5
+   + nodeJs
+ 
+ 
+ ### Contributing
+ Pull requests are accepted. For major changes, please open an issue first to discuss what you would like to change.
  
  _Experience this i ]_
