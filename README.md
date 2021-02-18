@@ -17,7 +17,7 @@ Then simply load the **.html** cloned to your local dir.
 
 
 ## Includes
-Minimal UI design interface.\
+Minimal UI design interface.
 New includes:
 + sass
 + gsap
