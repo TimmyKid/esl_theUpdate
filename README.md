@@ -25,11 +25,12 @@ New includes:
  
  ## Contributing
  Pull requests are accepted. For major changes, please open an issue first to discuss what you would like to change.
+ 
   **Experience this !]**
   
   
- ### Licensing
- [MIT](https://choosealicense.com/licenses/mit/)
- 
+ ## Licensing
+ [MIT](https://choosealicense.com/licenses/mit/) 
+ ![alt](https://www.nicepng.com/maxp/u2t4t4e6w7w7a9a9/)
  
 
