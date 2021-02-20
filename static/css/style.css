@@ -1,6 +1,36 @@
-p {
-  font-style: "PMingLiU-ExtB";
-  font-color: #1d1d1d;
+body {
+  font-family: PMingLiU-ExtB, MingLiU_HKSCS-ExtB, Garamond;
+  overflow-x: auto;
+  background-color: #dedede;
+  font-size: 18px;
+  color: #1d1d1d;
+}
+
+h1 {
+  font-family: Segoe UI Light, system-ui, Tahoma, sans-serif;
+  font-size: 100;
+}
+
+h2 {
+  font-size: 55;
+}
+
+a, a:hover, a:visited {
+  text-decoration: none;
+}
+
+footer {
+  justify-content: center;
+  text-align: center;
+  background-color: #1c2331;
+  color: #dedede;
+  height: 100%;
+}
+footer h1 {
+  padding-top: 0.5em;
+}
+footer ins {
+  text-decoration: none;
 }
 
 /*# sourceMappingURL=style.css.map */
