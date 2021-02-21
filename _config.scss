@@ -1,0 +1,28 @@
+//Set text color based on bgcolor
+@function setItemColor ($color){
+  @if(lightness($color) > 70) {
+    @return $dark;
+  } @else {
+    @return darken(#fff,12%);
+  }
+}
+
+//set bg and text color (like function, but doesn't return anything)
+@mixin setBackgroundColor($color) {
+  background-color: $color;
+  color: setItemColor($color);
+}
+//No-scrollBar--
+@mixin noScrollBar($height,$width) {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  &::-webkit-scrollbar-thumb {
+    height: $height;
+    width: $width;
+  }
+  &::-webkit-scrollbar-track {
+    height: $height;
+    width: $width;
+  }
+}
