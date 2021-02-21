@@ -4,13 +4,13 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
-    <link rel="shortuct icon" type="image/x-icon" href="img/Elevete-logo.png">
+    <link rel="shortuct icon" type="image/x-icon" href="./static/img/Elevete-logo.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="./static/css/style.css">
     <title>Elevete Solutions</title>
   </head>
   <body>
-    
+    <div class="cursor"></div>
     <nav>
       <div class="preFace text-center">
         <h1 class="">Welcome<br>
@@ -77,12 +77,21 @@
         +254 726 448 025
       </address>
       <ins>
-        &copy;
+        &copy;2021
         <script>
-          document.write(new Date().getFullYear())
+          // document.write(new Date().getFullYear())
         </script>
         Copyright : <a href="https://Elevetesolutions.com/"><b>Elevetesolutions.com</b></a>
       </ins>
+
+    <script type="text/javascript">
+      const cursor = document.querySelector(".cursor");
+
+      document.addEventListener("mousemove", e => {
+        cursor.setAttribute( "style", "left: "+(e.pageX - 3)+"px; top:"+(e.pageY - 3)+"px;");
+      });
+
+    </script>
     </footer>
 
   </body>

@@ -15,7 +15,8 @@
 //No-scrollBar--
 @mixin noScrollBar($height,$width) {
   &::-webkit-scrollbar {
-    display: none;
+    height: $height;
+    width: $width;
   }
   &::-webkit-scrollbar-thumb {
     height: $height;
@@ -25,4 +26,13 @@
     height: $height;
     width: $width;
   }
+}
+//cursor properties(circle properties with fill color)
+@mixin cursorProps ($size,$color) {
+  height: $size;
+  width: $size;
+  border: solid $color;
+  background-color: $color;
+  border-radius: 50%;
+  position: absolute;
 }

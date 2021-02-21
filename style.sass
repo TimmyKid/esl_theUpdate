@@ -9,13 +9,16 @@ $secFontStack: PMingLiU-ExtB, MingLiU_HKSCS-ExtB, Garamond
 
 @import "config"
 
+.cursor
+  @include cursorProps(4px,$red)
+
 body
   @include noScrollBar(0,0)
   font: 100% $secFontStack
   overflow-x: hidden
   background-color: $grey
   font-size: 16px
-  cursor: crosshair
+  // cursor: none
   margin: 0
   padding: 0
 
