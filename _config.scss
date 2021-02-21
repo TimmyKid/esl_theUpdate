@@ -1,7 +1,16 @@
+//Go select your laundry not my content
+body {
+  user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
 //Set text color based on bgcolor
 @function setItemColor ($color){
-  @if(lightness($color) > 70) {
-    @return $dark;
+  @if(lightness($color) > 50) {
+    @return $black;
   } @else {
     @return darken(#fff,12%);
   }
@@ -31,8 +40,9 @@
 @mixin cursorProps ($size,$color) {
   height: $size;
   width: $size;
-  border: solid $color;
-  background-color: $color;
+  // border: solid $color;
+  @include setBackgroundColor($color);
   border-radius: 50%;
   position: absolute;
+  pointer-events: none;
 }
