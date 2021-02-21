@@ -10,7 +10,7 @@ Using git bash:
 ```bash
  git pull https://github.com/TimmyKid/esl_theUpdate.git
 ```
-Then simply load the **.html** cloned to your local dir.
+Then simply load the **.html** cloned to your local dir on a browser or via a local host.
 
 
 ## Includes
