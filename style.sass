@@ -10,7 +10,17 @@ $secFontStack: PMingLiU-ExtB, MingLiU_HKSCS-ExtB, Garamond
 @import "config"
 
 .cursor
-  @include cursorProps(6px,$red)
+  @include cursorProps(5px,$red)
+  transition-duration: 200ms
+  transition-timing-function: ease-out
+
+.cursor2
+  @include cursorProps(30px,transparent)
+  border: 1.5px solid
+  color: white
+  transition-duration: 500ms
+  transition-timing-function: ease-out
+
 
 body
   @include noScrollBar(0,0)
@@ -18,7 +28,7 @@ body
   overflow-x: hidden
   background-color: $grey
   font-size: 16px
-  // cursor: none
+  cursor: none
   margin: 0
   padding: 0
 

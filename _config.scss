@@ -8,7 +8,7 @@ body {
   -ms-user-select: none;
 }
 //Set text color based on bgcolor
-@function setItemColor ($color){
+@function setItemColor($color){
   @if(lightness($color) > 50) {
     @return $black;
   } @else {
@@ -44,5 +44,5 @@ body {
   border-radius: 50%;
   @include setBackgroundColor($color);
   pointer-events: none;
-  z-index: 9999
+  z-index: 99
 }
