@@ -38,11 +38,11 @@ body {
 }
 //cursor properties(circle properties with fill color)
 @mixin cursorProps ($size,$color) {
+  position: fixed;
   height: $size;
   width: $size;
-  // border: solid $color;
-  @include setBackgroundColor($color);
   border-radius: 50%;
-  position: absolute;
+  @include setBackgroundColor($color);
   pointer-events: none;
+  z-index: 9999
 }
