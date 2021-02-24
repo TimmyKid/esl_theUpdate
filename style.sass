@@ -7,14 +7,30 @@ $red: #dc3545
 $primFontStack: Segoe UI Light, system-ui, Tahoma, sans-serif
 $secFontStack: PMingLiU-ExtB, MingLiU_HKSCS-ExtB, Garamond
 
+// fFONT-SIZES,DISTANCE,OFFSETS
+$title : 80px
+$subtitle: 50px
+$simpleText: 18px
+//offsetsFrom ==>
+$offsetFromBottom: 3em
+$offsetFromTop: 2em
+
 @import "config"
+
+h1
+  font: 100% $primFontStack
+  font-size: $title
+h2
+  font-size: $subtitle
+a, a:hover, a:visited
+  text-decoration: none
 
 body
   @include noScrollBar(0,0)
   font: 100% $secFontStack
   overflow-x: hidden
   background-color: $grey
-  font-size: 16px
+  font-size: $simpleText
   cursor: none
   margin: 0
   padding: 0
@@ -28,23 +44,8 @@ body
   @include cursorProps(30px,transparent)
   border: 1.5px solid
   color: white
-  top: 90vh
-  right: 7vh
   transition-duration: 500ms
   transition-timing-function: ease-out
-
-
-
-
-h1
-  font: 100% $primFontStack
-  font-size: 80
-
-h2
-  font-size: 50
-
-a, a:hover, a:visited
-  text-decoration: none
 
 .logo img
   height: 30px
@@ -52,9 +53,9 @@ a, a:hover, a:visited
 .logo span
   color: white
   font-family: Segoe UI
-  font-size: 18px
+  font-size: $simpleText
   margin-left: 3px
-  line-height: 5vh
+  line-height: $offsetFromTop
 
 main
   height: 100vh
@@ -62,17 +63,38 @@ main
   background-size: cover
   box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.40)
 
-.preface
-  color: white
-  line-height: 0
-  margin-top: 15vh
-  & #Willkommen
-    margin-left: 50vh
-    line-height: 10vh
-  h3
-    font-size: 80px
-    margin-top: 2vh
+// #soundCheck
+//   @include circle(30px,transparent,absolute)
+//     bottom: $offsetFromBottom
 
+
+
+.preface
+  display: grid
+  justify-content: center
+  color: white
+  margin-top: 5em
+  #text1
+    margin-left: -.5em
+  & div
+    margin-top: -1em
+  h3
+    font: 100% $secFontStack
+    font-size: $title
+    line-height: 1.5em
+
+.vl-1
+  @include vl(20%,fixed)
+.vl-md
+  @include vl(50%,absolute)
+.vl-3
+  @include vl(80%,fixed)
+
+.scrollDownIcon
+  @include vl(5%,absolute)
+  height: 10em
+  opacity: 80%
+  bottom: $offsetFromBottom+3
 
 
 #excerpt

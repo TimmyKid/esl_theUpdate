@@ -44,5 +44,13 @@ body {
   border-radius: 50%;
   @include setBackgroundColor($color);
   pointer-events: none;
-  z-index: 99
+  z-index: 99;
+}
+
+@mixin vl ($distance,$position) {
+  border-left: 1px solid $grey;
+  position: $position;
+  height: 100%;
+  left: $distance;
+  opacity: 20%
 }
