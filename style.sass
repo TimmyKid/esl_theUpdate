@@ -9,19 +9,6 @@ $secFontStack: PMingLiU-ExtB, MingLiU_HKSCS-ExtB, Garamond
 
 @import "config"
 
-.cursor
-  @include cursorProps(5px,$red)
-  transition-duration: 200ms
-  transition-timing-function: ease-out
-
-.cursor2
-  @include cursorProps(30px,transparent)
-  border: 1.5px solid
-  color: white
-  transition-duration: 500ms
-  transition-timing-function: ease-out
-
-
 body
   @include noScrollBar(0,0)
   font: 100% $secFontStack
@@ -31,6 +18,23 @@ body
   cursor: none
   margin: 0
   padding: 0
+
+.cursor
+  @include cursorProps(5px,$red)
+  transition-duration: 180ms
+  transition-timing-function: ease-out
+
+.cursor2
+  @include cursorProps(30px,transparent)
+  border: 1.5px solid
+  color: white
+  top: 90vh
+  right: 7vh
+  transition-duration: 500ms
+  transition-timing-function: ease-out
+
+
+
 
 h1
   font: 100% $primFontStack
@@ -42,20 +46,34 @@ h2
 a, a:hover, a:visited
   text-decoration: none
 
-nav
+.logo img
+  height: 30px
+  margin: -1vh 0 0 2vh
+.logo span
+  color: white
+  font-family: Segoe UI
+  font-size: 18px
+  margin-left: 3px
+  line-height: 5vh
+
+main
   height: 100vh
   background: url("../img/cover.jpg")
   background-size: cover
-  box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.36)
+  box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.40)
 
 .preface
   color: white
-  justify-content: center
-  ins
-    text-decoration: none
-    margin: 20px 0 0 0
-  span
-    font: 100% $secFontStack
+  line-height: 0
+  margin-top: 15vh
+  & #Willkommen
+    margin-left: 50vh
+    line-height: 10vh
+  h3
+    font-size: 80px
+    margin-top: 3vh
+
+
 
 #excerpt
   @include setBackgroundColor($black)
@@ -63,7 +81,7 @@ nav
   margin: 0
   padding: 0
   & > div
-    justify-content: space-around
+    justify-content: space-
   img
     width: 50%
 
