@@ -82,8 +82,8 @@ main
 .grid-wrapper
   display: grid
   grid-template-columns: repeat(2,1fr)
-  margin-top: -6em
-  padding: 2em
+  margin-top: -4em
+  padding: 0 2em
   #scrollDown
     display: grid
     justify-self: start
@@ -115,13 +115,14 @@ main
 
 #excerpt
   @include setBackgroundColor($black)
-  width: 100%
-  margin: 0
-  padding: 0
+  // width: 100%
+  // margin: 0
+  // padding: 0
   & > div
     justify-content: space-between
   img
     width: 50%
+
 
 footer
   @include setBackgroundColor($blue)
