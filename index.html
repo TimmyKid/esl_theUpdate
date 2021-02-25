@@ -49,22 +49,31 @@
       </nav>
       <!-- /.Navbar-->
 
-      <div class="preFace">
-        <h1 id="text1">Welcome</h1>
-        <div class="text-center">
-          <h1>to</h1>
-          <h3>Elevete Solutions.</h3>
+      <!-- THIS IS THE EXPLICIT TRIAL WITH CSS GRID LAYOUT -->
+      <div class="grid-container">
+        <div id="preFace">
+          <h1>Welcome</h1>
+          <div class="text-center">
+            <h1>to</h1>
+            <h3>Elevete Solutions.</h3>
+          </div>
         </div>
       </div>
 
-      <div class="scrollDown">
-        <div class="scrollDownIcon"></div>
-        <i class="fas fa-mouse fa-2x pb-3"></i>
+      <div class="grid-wrapper">
+        <div id="scrollDown">
+          <div class="scrollDownIcon"></div>
+          <img src="./static/img/mouse (2).png" alt="mouseIcon" draggable="false"/>
+        </div>
+        <div class="audioController">
+          <div class="audioCircle">
+            <audio src="./static/audio/impermanence_201105INSPO.mp3"></audio>
+          </div>
+          <p>Sound: off</p>
+        </div>
       </div>
-
     </main>
 
-    <audio id="soundCheck" src="../audio/impermanence_201105INSPO.mp3"></audio>
 
     <section id="excerpt">
       <div class="firstConcept d-flex container">

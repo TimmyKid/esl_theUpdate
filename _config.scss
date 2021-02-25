@@ -1,4 +1,5 @@
 //Go select your laundry not my content
+/*
 body {
   user-drag: none;
   user-select: none;
@@ -6,6 +7,10 @@ body {
   -webkit-user-drag: none;
   -webkit-user-select: none;
   -ms-user-select: none;
+}*/
+@mixin defaultSpacing() {
+  margin: 0;
+  padding: 0;
 }
 //Set text color based on bgcolor
 @function setItemColor($color){
@@ -15,7 +20,6 @@ body {
     @return darken(#fff,12%);
   }
 }
-
 //set bg and text color (like function, but doesn't return anything)
 @mixin setBackgroundColor($color) {
   background-color: $color;
@@ -46,11 +50,19 @@ body {
   pointer-events: none;
   z-index: 99;
 }
-
+// Virtical Lines
 @mixin vl ($distance,$position) {
   border-left: 1px solid $grey;
   position: $position;
   height: 100%;
   left: $distance;
   opacity: 20%
+}
+// Circle
+@mixin circle($size,$color) {
+  height: $size;
+  width: $size;
+  border-radius: 50%;
+  border: 1px solid $color;
+  background-color: transparent;
 }

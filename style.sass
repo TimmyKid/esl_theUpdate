@@ -7,13 +7,13 @@ $red: #dc3545
 $primFontStack: Segoe UI Light, system-ui, Tahoma, sans-serif
 $secFontStack: PMingLiU-ExtB, MingLiU_HKSCS-ExtB, Garamond
 
-// fFONT-SIZES,DISTANCE,OFFSETS
+// fONT-SIZES,DISTANCE,OFFSETS, Spacings
 $title : 80px
 $subtitle: 50px
 $simpleText: 18px
 //offsetsFrom ==>
 $offsetFromBottom: 3em
-$offsetFromTop: 2em
+$offsetFromTop: 5em
 
 @import "config"
 
@@ -32,8 +32,7 @@ body
   background-color: $grey
   font-size: $simpleText
   cursor: none
-  margin: 0
-  padding: 0
+  @include defaultSpacing()
 
 .cursor
   @include cursorProps(5px,$red)
@@ -55,7 +54,7 @@ body
   font-family: Segoe UI
   font-size: $simpleText
   margin-left: 3px
-  line-height: $offsetFromTop
+  line-height: 2em
 
 main
   height: 100vh
@@ -63,25 +62,49 @@ main
   background-size: cover
   box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.40)
 
-// #soundCheck
-//   @include circle(30px,transparent,absolute)
-//     bottom: $offsetFromBottom
+.scrollDownIcon
+  @include vl(0,static)
+  border-color: $red
+  height: 8em
+  opacity: 80%
 
-
-
-.preface
+.grid-container
   display: grid
-  justify-content: center
   color: white
-  margin-top: 5em
-  #text1
-    margin-left: -.5em
-  & div
-    margin-top: -1em
-  h3
-    font: 100% $secFontStack
-    font-size: $title
-    line-height: 1.5em
+  margin-top: $offsetFromTop
+  grid-template-columns: 1fr 2fr 1fr
+  #preFace
+    align-self: center
+    grid-column: 2
+    h3
+      font-size: $title
+
+.grid-wrapper
+  display: grid
+  grid-template-columns: repeat(2,1fr)
+  margin-top: -6em
+  padding: 2em
+  #scrollDown
+    display: grid
+    justify-self: start
+    align-self: end
+    img
+      margin-top: 2em
+    .scrollDownIcon
+      margin-left: .9em
+  .audioController
+    justify-self: end
+    align-self: end
+    display: grid
+    justify-items: center
+    margin-bottom: -1.9em
+    p
+      font-size: 14px
+      color: $grey
+      visibility: hidden
+
+.audioCircle
+  @include circle(30px,white)
 
 .vl-1
   @include vl(20%,fixed)
@@ -90,20 +113,13 @@ main
 .vl-3
   @include vl(80%,fixed)
 
-.scrollDownIcon
-  @include vl(5%,absolute)
-  height: 10em
-  opacity: 80%
-  bottom: $offsetFromBottom+3
-
-
 #excerpt
   @include setBackgroundColor($black)
   width: 100%
   margin: 0
   padding: 0
   & > div
-    justify-content: space-
+    justify-content: space-between
   img
     width: 50%
 
@@ -112,10 +128,9 @@ footer
   justify-content: center
   text-align: center
   height: 100%
-  margin: 0 0
+  margin: 0
   h1
-    padding-top: 0.4em
-
+    padding-top: 0.5em
   ins
     font-family: Segoe UI
     font-size: 12.5px
