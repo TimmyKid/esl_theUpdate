@@ -68,7 +68,7 @@ main
   height: 8em
   opacity: 80%
 
-.grid-container
+.welcomeGridContainer
   display: grid
   color: white
   margin-top: $offsetFromTop
@@ -76,10 +76,13 @@ main
   #preFace
     align-self: center
     grid-column: 2
+    h1
+      // line-height: 1.0em
     h3
       font-size: $title
+      line-height: 1.2em
 
-.grid-wrapper
+.scrollDownWrapper
   display: grid
   grid-template-columns: repeat(2,1fr)
   margin-top: -4em
@@ -115,13 +118,28 @@ main
 
 #excerpt
   @include setBackgroundColor($black)
-  // width: 100%
-  // margin: 0
-  // padding: 0
+  padding: 110vh 0
+  // justify-content: space-between
+  // align-items: center
+  .container
+
+  .item
+    display: flex
+    align-items: end
+    height: 100vh
+    & img
+      height: 40%
+
+
+
+#team
+  display: grid
+  grid-template-columns: repeat(3, 100%)
+  height: 100vh
+  align-items: center
   & > div
+    display: flex
     justify-content: space-between
-  img
-    width: 50%
 
 
 footer

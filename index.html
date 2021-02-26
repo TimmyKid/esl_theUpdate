@@ -20,7 +20,6 @@
       <div class="vl-3"></div>
     </div>
 
-
     <main>
       <!--Navbar =========== Remember to remove the navigation from the main wrapper or make it stick at the top while scrolling. ========== -->
       <nav class="navbar navbar-light light-blue lighten-4 ">
@@ -48,9 +47,8 @@
         <!-- Collapsible content -->
       </nav>
       <!-- /.Navbar-->
-
       <!-- THIS IS THE EXPLICIT TRIAL WITH CSS GRID LAYOUT -->
-      <div class="grid-container">
+      <div class="welcomeGridContainer">
         <div id="preFace">
           <h1>Welcome</h1>
           <div class="text-center">
@@ -59,8 +57,7 @@
           </div>
         </div>
       </div>
-
-      <div class="grid-wrapper">
+      <div class="scrollDownWrapper">
         <div id="scrollDown">
           <div class="scrollDownIcon"></div>
           <img src="./static/img/mouse (2).png" alt="mouseIcon" draggable="false"/>
@@ -74,53 +71,57 @@
       </div>
     </main>
 
-
     <section id="excerpt">
-      <div class="firstConcept d-flex container">
-        <img src="./static/img/sales.jpeg" alt="excerptImg1">
-        <h1></h1>
-        <div class="text-left"> <h1>SALES</h1> We provide Export Documentation Solutions. From cold calling to outside sales, we offer a reliable supply chain management between point of origin and consumption in order to meet our customer requirements. Our Online, over the phone and face-to-face service delivers fast and accurate export documentation. We advise on Trade Documents as Single Administrative Document, Certificates of Conformity and facilitating acquisition of Certificates of Export by providing a link between Clients, the Shipping Line and Customs.</div>
-      </div>
-      <div class="secondConcept d-flex container justify-content start">
-        <img src="./static/img/fix.jpeg" alt="excerptImg2">
-        <div class="text-left"> <h1>IT SUPPORT</h1> We install and configure computer hardware and software systems, networks, printers; monitoring and maintaining computer systems and your networks. Respond in a timely style to service bugs and solicitations.</div>
-      </div>
-      <div class="thirdConcept d-flex container">
-        <img src="./static/img/software.jpg" alt="excerptImg3">
-        <div class="text-left"> <h1>SYSTEMS<br>AUDIT</h1>It's in our response to provide support in examination, evaluation and verification of your operating systems
-          procedures, internal controls, and recorded data for the information consistency and information security.</div>
+      <div class="container">
+        <div class="item">
+          <img src="./static/img/sales.jpeg" alt="excerptImg1">
+          <h1></h1>
+          <div class="text-left"> <h1>SALES</h1> We provide Export Documentation Solutions. From cold calling to outside sales, we offer a reliable supply chain management between point of origin and consumption in order to meet our customer requirements. Our Online, over the phone and face-to-face service delivers fast and accurate export documentation. We advise on Trade Documents as Single Administrative Document, Certificates of Conformity and facilitating acquisition of Certificates of Export by providing a link between Clients, the Shipping Line and Customs.</div>
+        </div>
+        <div class="item">
+          <img src="./static/img/fix.jpeg" alt="excerptImg2">
+          <div class="text-left"> <h1>IT SUPPORT</h1> We install and configure computer hardware and software systems, networks, printers; monitoring and maintaining computer systems and your networks. Respond in a timely style to service bugs and solicitations.</div>
+        </div>
+        <div class="item">
+          <img src="./static/img/software.jpg" alt="excerptImg3">
+          <div class="text-left"> <h1>SYSTEMS<br>AUDIT</h1>It's in our response to provide support in examination, evaluation and verification of your operating systems
+            procedures, internal controls, and recorded data for the information consistency and information security.</div>
+        </div>
       </div>
     </section>
 
-    <div class="team container">
-      <section>
-        <img src="./static/img/Brian.png" alt="avi1">
-      </section>
-      <section>
-        <h1>Brian Kelehi</h1>
-        <h2> iT Director.</h2>
-        <p>This man like igwe. He is the organization's information technology director. He also likes wearing colourful scarfs.</p>
-      </section>
-    </div>
-
-    <div class="team container">
-      <section>
-        <img src="./static/img/Bulimo.png" alt="avi2">
-      </section>
-      <section>
-        <h1>Francis Bulimo</h1>
-        <h2> Finance Director.</h2>
-        <p>This guy right here? He is the organization's financier. Yeap, that's right. He is also a part-time auditor, he does that for fun. Just like his fellow rich billionaires, he likes wearing a t-shirt to the office.</p>
-      </section>
-      <section>
-        <img src="./static/img/Rowny.png" alt="avi3">
-      </section>
-      <section>
-        <h1>Ronny Karimi</h1>
-        <h2> Chief of Operations.</h2>
-        <p>This guy Ron? He is the organization's COO. Don't let the flowers mislead you, what better way to operate a company than with the voluptuous fragrance of a daisy. Oh, and he also knows Muay Thai, so how's that for operating?</p>
-      </section>
-    </div>
+    <section id="team" class="container-fluid">
+      <div class="teamMate">
+        <section>
+          <img src="./static/img/Brian.png" alt="avi1">
+        </section>
+        <section>
+          <h1>Brian Kelehi</h1>
+          <h2> iT Director.</h2>
+          <p>This man like igwe. He is the organization's information technology director. He also likes wearing colourful scarfs.</p>
+        </section>
+      </div>
+      <div class="teamMate2">
+        <section>
+          <img src="./static/img/Bulimo.png" alt="avi2">
+        </section>
+        <section >
+          <h1>Francis Bulimo</h1>
+          <h2> Finance Director.</h2>
+          <p>This guy right here? He is the organization's financier. Yeap, that's right. He is also a part-time auditor, he does that for fun. Just like his fellow rich billionaires, he likes wearing a t-shirt to the office.</p>
+        </section>
+      </div>
+      <div class="teamMate3">
+        <section>
+          <img src="./static/img/Rowny.png" alt="avi3">
+        </section>
+        <section>
+          <h1>Ronny Karimi</h1>
+          <h2> Chief of Operations.</h2>
+          <p>This guy Ron? He is the organization's COO. Don't let the flowers mislead you, what better way to operate a company than with the voluptuous fragrance of a daisy. Oh, and he also knows Muay Thai, so how's that for operating?</p>
+        </section>
+      </div>
+    </section>
 
     <footer>
       <h1>Contact</h1>
