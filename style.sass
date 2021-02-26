@@ -24,6 +24,9 @@ h2
   font-size: $subtitle
 a, a:hover, a:visited
   text-decoration: none
+p
+  color: $grey
+  font-size: $simpleText
 
 body
   @include noScrollBar(0,0)
@@ -118,26 +121,31 @@ main
 
 #excerpt
   @include setBackgroundColor($black)
-  padding: 110vh 0
-  // justify-content: space-between
-  // align-items: center
-  .container
+  padding: 60vh 0
+  .container > div
+    padding: 40vh 0
+    display: grid
+    grid-template-columns: 1.5fr 1fr
+    grid-column-gap: 5em
+    img
+      max-width: 100%
+    & > div
+      margin-top: -5em
+      h1
+        margin-bottom: 1em
+  & .item2 p, .item3 p
+    margin-left: 1em
 
-  .item
-    display: flex
-    align-items: end
-    height: 100vh
-    & img
-      height: 40%
+
 
 
 
 #team
   display: grid
   grid-template-columns: repeat(3, 100%)
-  height: 100vh
+  height: 120vh
   align-items: center
-  & > div
+  &  div
     display: flex
     justify-content: space-between
 
