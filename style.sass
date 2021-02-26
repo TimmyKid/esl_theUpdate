@@ -143,13 +143,32 @@ main
   grid-template-columns: repeat(3, 100%)
   height: 110vh
   align-items: center
-  &  div
+  & > div
     display: flex
     width: 100%
     scroll-snap-align: center
-    padding: 0 15vh
+    padding: 0 20vh
+    & section
+      margin-left: 5em
+      text-align: right
+    hr
+      width: 20em
+      margin-left: 3em
     p
       color: $black
+      // margin-top: 7em
+      margin-right: 5em
+      text-align: left
+  & .teamMate section
+    margin-top: -5em
+  & .teamMate3 section
+    margin-top: -4em
+  //   hr
+  //     margin-left: 20em
+  // .teamMate3 section
+  //   margin-left: 20em
+  //   hr
+  //     margin-left: 15em
 
 
 footer

@@ -51,7 +51,7 @@ body {
 }
 // Virtical Lines
 @mixin vl ($distance,$position) {
-  border-left: 1px solid $grey;
+  border-left: 1px solid $black;
   position: $position;
   height: 100%;
   left: $distance;
