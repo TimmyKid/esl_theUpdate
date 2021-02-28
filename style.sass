@@ -9,7 +9,7 @@ $secFontStack: PMingLiU-ExtB, MingLiU_HKSCS-ExtB, Garamond
 
 // fONT-SIZES,DISTANCE,OFFSETS, Spacings
 $title : 80px
-$subtitle: 50px
+$subtitle: 45px
 $simpleText: 18px
 //offsetsFrom ==>
 $offsetFromBottom: 3em
@@ -144,31 +144,44 @@ main
   height: 110vh
   align-items: center
   & > div
-    display: flex
-    width: 100%
+    display: grid
+    grid-template-columns: 1fr 1fr
     scroll-snap-align: center
     padding: 0 20vh
-    & section
-      margin-left: 5em
-      text-align: right
-    hr
-      width: 20em
-      margin-left: 3em
-    p
-      color: $black
-      // margin-top: 7em
-      margin-right: 5em
-      text-align: left
   & .teamMate section
     margin-top: -5em
+    h1 & h2
+    text-align: right
+    margin-right: 4em
+    hr
+      @include underline(18em,7em)
+    p
+      @include paragraph($black, left, 6em, 5em)
+
+  & .teamMate2
+    img
+      width: 80%
+    section
+      margin-top: -5em
+    h1 & h2
+    text-align: right
+    margin-right: 4em
+    hr
+      @include underline(20em,5em)
+    p
+      @include paragraph($black, left, 6em, 7em)
+
   & .teamMate3 section
-    margin-top: -4em
-  //   hr
-  //     margin-left: 20em
-  // .teamMate3 section
-  //   margin-left: 20em
-  //   hr
-  //     margin-left: 15em
+    margin-top: -5em
+    h1 & h2
+    text-align: right
+    margin-right: 4em
+    hr
+      @include underline(20em,5em)
+    p
+      @include paragraph($black, left, 5em, 6em)
+
+
 
 
 footer

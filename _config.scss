@@ -65,3 +65,13 @@ body {
   border: 1px solid $color;
   background-color: transparent;
 }
+@mixin underline($width,$offset) {
+  width: $width;
+  margin-left: $offset;
+}
+@mixin paragraph($color, $alignment, $right, $top) {
+  color: $color;
+  text-align: $alignment;
+  margin-right: $right;
+  margin-top: $top;
+}
