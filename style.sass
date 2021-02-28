@@ -8,6 +8,7 @@ $primFontStack: Segoe UI Light, system-ui, Tahoma, sans-serif
 $secFontStack: PMingLiU-ExtB, MingLiU_HKSCS-ExtB, Garamond
 
 // fONT-SIZES,DISTANCE,OFFSETS, Spacings
+$big: 280px
 $title : 80px
 $subtitle: 45px
 $simpleText: 18px
@@ -137,7 +138,7 @@ main
   overflow-x: scroll
   display: grid
   grid-template-columns: repeat(3, 100%)
-  height: 110vh
+  height: 100vh
   align-items: center
   & > div
     display: grid
@@ -146,7 +147,7 @@ main
     padding: 0 20vh
   & .teamMate section
     margin-top: -5em
-    h1 & h2
+    // h1 & h2
     @include teamTitlePosition()
     hr
       @include underline(18em,7em)
@@ -158,7 +159,7 @@ main
       width: 80%
     section
       margin-top: -5em
-    h1 & h2
+    // h1 & h2
     @include teamTitlePosition()
     hr
       @include underline(20em,5em)
@@ -166,37 +167,26 @@ main
       @include paragraph($black, left, 6em, 7em)
   & .teamMate3 section
     margin-top: -5em
-    h1 & h2
+    // h1 & h2
     @include teamTitlePosition()
     hr
       @include underline(20em,5em)
     p
       @include paragraph($black, left, 5em, 6em)
   h3
-    position: absolute
-    font-size: 280px
-    margin-top: .6em
-    -webkit-text-fill-color: transparent
-    -webkit-text-stroke: .4px $black
+    @include sectionTitle()
+    margin-top: .5em
     margin-left: -.3em
-    z-index: -99
     padding: 0
 
 #aboutUs
   height: 100vh
   padding-top: 20vh
   h3
-    position: absolute
-    font-size: 280px
+    @include sectionTitle()
     margin-top: .7em
-    -webkit-text-fill-color: transparent
-    -webkit-text-stroke: .4px $black
-    z-index: -99
   .text-center
     padding: 0 15vh
-
-
-
 
 
 footer

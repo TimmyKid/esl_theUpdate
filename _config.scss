@@ -73,6 +73,16 @@ body {
   align-self: $align;
 }
 
+//==== PAGE TITLES on SECTIONS ======
+@mixin sectionTitle() {
+  position: absolute;
+  font-size: $big;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: .3px $black;
+  z-index: -999;
+}
+
+
 //=== functions Used For The Teams Section ========
 @mixin underline($width,$offset) {
   width: $width;
