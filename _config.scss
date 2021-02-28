@@ -65,6 +65,15 @@ body {
   border: 1px solid $color;
   background-color: transparent;
 }
+
+//===== Grid alignment mixin function for mouse scroll and audio controll =====
+@mixin selfGridPlacement($justify, $align) {
+  display: grid;
+  justify-self: $justify;
+  align-self: $align;
+}
+
+//=== functions Used For The Teams Section ========
 @mixin underline($width,$offset) {
   width: $width;
   margin-left: $offset;
@@ -74,4 +83,8 @@ body {
   text-align: $alignment;
   margin-right: $right;
   margin-top: $top;
+}
+@mixin teamTitlePosition() {
+  text-align: right;
+  margin-right: 4em;
 }
