@@ -72,6 +72,7 @@
       </div>
     </main>
 
+
     <section id="excerpt">
       <div class="container">
         <div class="item">
@@ -98,36 +99,56 @@
       </div>
     </section>
 
-    <section id="team">
-      <div class="teamMate">
-        <img src="./static/img/Brian.png" alt="avi1" draggable="false">
-        <h3>The team</h3>
-        <section>
-          <h1>Brian Karimi</h1>
-          <hr>
-          <h2> iT Director.</h2>
-          <p>This man like igwe. He is the organization's information technology director. He also likes wearing colourful scarfs.</p>
-        </section>
+     <div class="outer_wrapper">
+      <div id="team">
+        <div class="team Mate">
+          <img src="./static/img/Brian.png" alt="avi1" draggable="false">
+          <h3>The team</h3>
+          <section>
+            <h1>Brian Karimi</h1>
+            <hr>
+            <h2> iT Director.</h2>
+            <p>This man like igwe. He is the organization's information technology director. He also likes wearing colourful scarfs.</p>
+          </section>
+        </div>
+        <div class="team Mate2">
+          <img src="./static/img/Bulimo.png" alt="avi2" draggable="false">
+          <section>
+            <h1>Francis Bulimo</h1>
+            <hr>
+            <h2> Finance Director.</h2>
+            <p>This guy right here? He is the organization's financier. Yeap, that's right. He is also a part-time auditor, he does that for fun. Just like his fellow rich billionaires, he likes wearing a t-shirt to the office.</p>
+          </section>
+        </div>
+        <div class="team Mate3">
+          <img src="./static/img/Rowny.png" alt="avi3" draggable="false">
+          <section>
+            <h1>Ronny Kelehi</h1>
+            <hr>
+            <h2> Chief of Operations.</h2>
+            <p>This guy Ron? He is the organization's COO. Don't let the flowers mislead you, what better way to operate a company than with the voluptuous fragrance of a daisy. Oh, and he also knows Muay Thai, so how's that for operating?</p>
+          </section>
+        </div>
       </div>
-      <div class="teamMate2">
-        <img src="./static/img/Bulimo.png" alt="avi2" draggable="false">
-        <section>
-          <h1>Francis Bulimo</h1>
-          <hr>
-          <h2> Finance Director.</h2>
-          <p>This guy right here? He is the organization's financier. Yeap, that's right. He is also a part-time auditor, he does that for fun. Just like his fellow rich billionaires, he likes wearing a t-shirt to the office.</p>
-        </section>
-      </div>
-      <div class="teamMate3">
-        <img src="./static/img/Rowny.png" alt="avi3" draggable="false">
-        <section>
-          <h1>Ronny Kelehi</h1>
-          <hr>
-          <h2> Chief of Operations.</h2>
-          <p>This guy Ron? He is the organization's COO. Don't let the flowers mislead you, what better way to operate a company than with the voluptuous fragrance of a daisy. Oh, and he also knows Muay Thai, so how's that for operating?</p>
-        </section>
+    </div>
+
+    <section class="container-fluid">
+      <div class="outerWrapper">
+        <div class="wrapper">
+          <div class="team one">
+            <section>
+              <h1>Ronny Kelehi</h1>
+              <hr>
+              <h2> Chief of Operations.</h2>
+              <p>This guy Ron? He is the organization's COO. Don't let the flowers mislead you, what better way to operate a company than with the voluptuous fragrance of a daisy. Oh, and he also knows Muay Thai, so how's that for operating?</p>
+            </section>
+          </div>
+          <div class="team two"></div>
+          <div class="team three"></div>
+        </div>
       </div>
     </section>
+
 
     <section id="aboutUs">
       <div class="container-fluid">
@@ -169,13 +190,11 @@
       </div>
 
       <ins>
-        &copy;2021
-        <script>
-          // document.write(new Date().getFullYear())
-        </script>
+        &copy;<span id="year"></span>
         Copyright : <a href="https://Elevetesolutions.com/"><b>Elevetesolutions.com</b></a>
       </ins>
     </footer>
-  <script type="text/javascript" src="./static/js/app.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="./static/js/app.js"></script>
   </body>
 </html>
