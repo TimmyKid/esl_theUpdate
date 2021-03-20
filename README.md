@@ -27,7 +27,7 @@ New includes:
  Pull requests are accepted. For major changes, please open an issue first to discuss what you would like to change.
 
   **Experience this !]**
-   ![ About Us ](./static/img/About.png "About_section")
+   ![ Home_page ](./static/img/Landing.png "Landing_page")
 
 
  ## Licensing
