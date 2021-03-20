@@ -11,7 +11,7 @@ $secFontStack: PMingLiU-ExtB, MingLiU_HKSCS-ExtB, Garamond
 $big: 280px
 $title : 80px
 $subtitle: 45px
-$simpleText: 18px
+$simpleText: 19px
 //offsetsFrom ==>
 $offsetFromBottom: 3em
 $offsetFromTop: 5em
@@ -109,8 +109,8 @@ main
     margin-bottom: -1.9em
     p
       font-size: 14px
-      color: $grey
-      visibility: hidden
+      color: $blue
+      visibility: solid
 
 .audioCircle
   @include circle(30px,white)
@@ -150,18 +150,14 @@ main
   margin-bottom: -100vh
 // ( === wrapper)
 #team
-  // -ms-overflow-style: none
   display: flex
   flex-direction: row
   width: 300vw
   transform: rotate(90deg) translateY(-100vh)
   transform-origin: top left
   h3
-    @include sectionTitle()
-    margin-top: .5em
+    @include sectionTitle($black,1.3em)
     margin-left: -.3em
-    padding: 0
-    position: absolute
   //(teamMate === slide)
   & .team
     width: 100vw
@@ -206,7 +202,7 @@ main
   height: 100vw
   transform: rotate(-90deg) translateX(-100vh)
   transform-origin: top left
-  overflow-y: scroll
+  overflow-y: hidden
   position: absolute
   Z-index: -999
   .wrapper
@@ -216,22 +212,20 @@ main
       width: 100vw
       height: 100vh
     .one
-      background: lighten($black,30%)
+      background: lighten($black,35%)
     .two
       background: lighten($red,20%)
     .three
-      background: lighten(yellow,20%)
+      background: lighten($blue,35%)
 
 
 #aboutUs
   height: 100vh
-  // padding-top: 20
-  position: relative
   h3
-    @include sectionTitle()
-    margin-top: .7em
+    @include sectionTitle(white,1em)
   .text-center
     padding: 0 15vh
+    color: white
 
 footer
   @include setBackgroundColor($blue)

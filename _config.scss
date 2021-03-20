@@ -51,7 +51,7 @@ body {
 }
 // Virtical Lines
 @mixin vl ($distance,$position) {
-  border-left: 1px solid $black;
+  border-left: 1px solid $grey;
   position: $position;
   height: 100%;
   left: $distance;
@@ -74,12 +74,13 @@ body {
 }
 
 //==== PAGE TITLES on SECTIONS ======
-@mixin sectionTitle() {
+@mixin sectionTitle($color,$top) {
   position: absolute;
   font-size: $big;
   -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: .3px $black;
+  -webkit-text-stroke: .3px $color;
   z-index: -999;
+  margin-top: $top
 }
 
 
