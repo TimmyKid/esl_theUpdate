@@ -13,7 +13,7 @@ body {
 }
 //Set text color based on bgcolor
 @function setItemColor($color){
-  @if(lightness($color) > 50) {
+  @if(lightness($color) > 88) {
     @return $black;
   } @else {
     @return darken(#fff,12%);
@@ -51,7 +51,7 @@ body {
 }
 // Virtical Lines
 @mixin vl ($distance,$position) {
-  border-left: 1px solid $grey;
+  border-left: 1px solid setItemColor($grey);
   position: $position;
   height: 100%;
   left: $distance;

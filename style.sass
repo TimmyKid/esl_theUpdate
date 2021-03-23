@@ -178,6 +178,7 @@ main
   & .Mate2
     img
       width: 70%
+      height: auto
     section
       margin-top: -5em
     // h1 & h2
@@ -197,7 +198,7 @@ main
       @include paragraph($black, left, 5em, 6em)
 
 
-.outerWrapper
+// .outerWrapper
   width: 100vh
   height: 100vw
   transform: rotate(-90deg) translateX(-100vh)
@@ -222,10 +223,11 @@ main
 #aboutUs
   height: 100vh
   h3
-    @include sectionTitle(white,1em)
-  .text-center
+    @include sectionTitle($black,1em)
+  .text-left
     padding: 0 15vh
-    color: white
+    padding-top: 15vh
+    color: $black
 
 footer
   @include setBackgroundColor($blue)
@@ -266,3 +268,5 @@ footer
         color: darken($red,10%)
   & > ul li
       padding: 5px
+
+// <<<========================  MEDIA QUERIES  =========================>>>
