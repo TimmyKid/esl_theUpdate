@@ -8,10 +8,10 @@ $primFontStack: Segoe UI Light, system-ui, Tahoma, sans-serif
 $secFontStack: PMingLiU-ExtB, MingLiU_HKSCS-ExtB, Garamond
 
 // fONT-SIZES,DISTANCE,OFFSETS, Spacings
-$big: 21vw
-$title : 6vw
-$subtitle: 3.375vw
-$simpleText: 1.425vw
+$big: 18rem
+$title : 5.14rem
+$subtitle: 2.89rem
+$simpleText: 1.1rem
 //offsetsFrom ==>
 $offsetFromBottom: 3em
 $offsetFromTop: 5em
@@ -39,7 +39,7 @@ body
   @include noScrollBar(0,0)
   font: 100% $secFontStack
   overflow-x: hidden
-  background-color: $grey
+  background: url("../img/canvas.jpg")
   font-size: $simpleText
   cursor: none
   @include defaultSpacing()
@@ -73,7 +73,7 @@ body
   margin-right: 2vw
   .hamburger_icon
     width: 28px
-    height: .1em
+    height: 2px
     background-color: darken($grey, 20%)
     margin: 6px
   .top_bun
@@ -88,7 +88,6 @@ body
     width: 20px
   .hamburger_icon
     background-color: $grey
-
 
 main
   height: 100vh
@@ -118,7 +117,7 @@ menu_toggle_icon
 .scrollDownWrapper
   display: flex
   flex-direction: row
-  margin-top: -4em
+  margin-top: -3em
   padding: 0 2vw
   #scrollDown_animators .scrollDownIcon
     @include vl(0,static)
@@ -137,7 +136,7 @@ menu_toggle_icon
     .audioCircle
       @include circle(30px,white)
     p
-      font-size: 1vw
+      font-size: .9rem
 
 .vl-1
   @include vl(20%,fixed)
@@ -163,7 +162,7 @@ menu_toggle_icon
   & .item2 p, .item3 p
     margin-left: 1em
 
-#canvas
+// #canvas
   width: 100%
   height: 300vh
   repeat: no-repeat
@@ -231,6 +230,7 @@ menu_toggle_icon
         @include underline(20em,5em)
       p
         @include paragraph($black, left, 5em, 6em)
+
 
 
 // .outerWrapper
