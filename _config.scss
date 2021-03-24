@@ -47,7 +47,7 @@ body {
   border-radius: 50%;
   @include setBackgroundColor($color);
   pointer-events: none;
-  z-index: 99;
+  // z-index: 99;
 }
 // Virtical Lines
 @mixin vl ($distance,$position) {
@@ -79,7 +79,7 @@ body {
   font-size: $big;
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke: .3px $color;
-  z-index: -999;
+  z-index: -1;
   margin-top: $top
 }
 

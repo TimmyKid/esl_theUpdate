@@ -23,12 +23,16 @@
 
     <main>
       <!--Navbar =========== Remember to remove the navigation from the main wrapper or make it stick at the top while scrolling. ========== -->
-      <nav class="navbar navbar-light light-blue lighten-4 ">
+      <nav class="navbar navbar-light lighten-4">
         <a class="navbar-brand logo" href="/"><img src="./static/img/Elevete-logo.png" draggable="false" alt="c-logo"/><span>levete Solutions</span></a>
         <!-- Collapse button -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1"
+        <div class="button hamburger_wrapper" data-toggle="expand" data-target="#navbarSupportedContent1"
         aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation">
-        </button>
+          <div class="hamburger_icon top_bun rounded"></div>
+          <div class="hamburger_icon patty rounded"></div>
+          <div class="hamburger_icon bottom_bun rounded"></div>
+        </div>
+
         <!-- Collapsible content -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent1">
           <!-- Links *TO BE CHECKED* -->
@@ -58,12 +62,13 @@
           </div>
         </div>
       </div>
-      <div class="scrollDownWrapper">
-        <div id="scrollDown">
+
+      <div class="scrollDownWrapper container-fluid justify-content-between">
+        <div id="scrollDown_animators">
           <div class="scrollDownIcon"></div>
-          <img src="./static/img/mouse (2).png" alt="mouseIcon" draggable="false"/>
+          <img src="./static/img/mouse_2opt.svg" alt="mouseIcon" draggable="false"/>
         </div>
-        <div class="audioController">
+        <div id="audioController">
           <div class="audioCircle">
             <audio src="./static/audio/impermanence_201105INSPO.mp3"></audio>
           </div>
@@ -99,8 +104,8 @@
       </div>
     </section>
 
-     <div class="outer_wrapper">
-      <div id="team">
+    <div class="team_outer_wrapper">
+      <div id="team_inner_wrapper">
         <div class="team Mate">
           <img src="./static/img/Brian.png" alt="avi1" draggable="false">
           <h3>The team</h3>
@@ -135,14 +140,12 @@
     <section class="container-fluid">
       <div class="outerWrapper">
         <div class="wrapper">
-          <div class="team one">
-          </div>
+          <div class="team one"></div>
           <div class="team two"></div>
           <div class="team three"></div>
         </div>
       </div>
     </section>
-
 
     <section id="aboutUs">
       <div class="container-fluid">

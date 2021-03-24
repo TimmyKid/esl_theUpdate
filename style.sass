@@ -8,13 +8,14 @@ $primFontStack: Segoe UI Light, system-ui, Tahoma, sans-serif
 $secFontStack: PMingLiU-ExtB, MingLiU_HKSCS-ExtB, Garamond
 
 // fONT-SIZES,DISTANCE,OFFSETS, Spacings
-$big: 280px
-$title : 80px
-$subtitle: 45px
-$simpleText: 19px
+$big: 21vw
+$title : 6vw
+$subtitle: 3.375vw
+$simpleText: 1.425vw
 //offsetsFrom ==>
 $offsetFromBottom: 3em
 $offsetFromTop: 5em
+
 
 @import "config"
 *
@@ -46,6 +47,7 @@ body
 
 .cursor
   @include cursorProps(5px,$red)
+  z-index: 3
   transition-duration: 180ms
   transition-timing-function: ease-out
 
@@ -55,9 +57,10 @@ body
   color: white
   transition-duration: 500ms
   transition-timing-function: ease-out
+  z-index: 2
 
 .logo img
-  height: 30px
+  max-width: 2.25vw
   margin: -1vh 0 0 2vh
 .logo span
   color: white
@@ -66,17 +69,36 @@ body
   margin-left: 3px
   line-height: 2em
 
+.hamburger_wrapper
+  margin-right: 2vw
+  .hamburger_icon
+    width: 28px
+    height: .1em
+    background-color: darken($grey, 20%)
+    margin: 6px
+  .top_bun
+    width: 20px
+  .patty
+    width: 24px
+
+.hamburger_wrapper:hover
+  .top_bun
+    width: 28px
+  .bottom_bun
+    width: 20px
+  .hamburger_icon
+    background-color: $grey
+
+
 main
   height: 100vh
   background: url("../img/cover.jpg")
   background-size: cover
   box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.40)
 
-.scrollDownIcon
-  @include vl(0,static)
-  border-color: $red
-  height: 8em
-  opacity: 80%
+menu_toggle_icon
+  color: $grey
+  height: 2em
 
 .welcomeGridContainer
   display: grid
@@ -92,28 +114,30 @@ main
       font-size: $title
       line-height: 1.2em
 
-.scrollDownWrapper
-  display: grid
-  grid-template-columns: repeat(2,1fr)
-  margin-top: -4em
-  padding: 0 2em
-  #scrollDown
-    @include selfGridPlacement(start, end)
-    img
-      margin-top: 2em
-    .scrollDownIcon
-      margin-left: .9em
-  .audioController
-    @include selfGridPlacement(end,end)
-    justify-items: center
-    margin-bottom: -1.9em
-    p
-      font-size: 14px
-      color: $blue
-      visibility: solid
 
-.audioCircle
-  @include circle(30px,white)
+.scrollDownWrapper
+  display: flex
+  flex-direction: row
+  margin-top: -4em
+  padding: 0 2vw
+  #scrollDown_animators .scrollDownIcon
+    @include vl(0,static)
+    border-color: $red
+    height: 7.5em
+    opacity: 80%
+    margin-left: .9em
+  & img
+    max-width: 7%
+    margin-top: 1.5em
+  #audioController
+    display: flex
+    flex-direction: column
+    align-items: center
+    margin-top: calc(1.5em + 7.5em + 1px)
+    .audioCircle
+      @include circle(30px,white)
+    p
+      font-size: 1vw
 
 .vl-1
   @include vl(20%,fixed)
@@ -139,17 +163,23 @@ main
   & .item2 p, .item3 p
     margin-left: 1em
 
+#canvas
+  width: 100%
+  height: 300vh
+  repeat: no-repeat
+  background: url("../img/canvas.jpg")
 
 // OuterWrapper
-.outer_wrapper
+.team_outer_wrapper
   width: 100vh
   height: 100vw
   transform: rotate(-90deg) translateX(-100vh)
   transform-origin: top left
   overflow-y: scroll
   margin-bottom: -100vh
-// ( === wrapper)
-#team
+
+// ( === inner_wrapper) =====
+#team_inner_wrapper
   display: flex
   flex-direction: row
   width: 300vw
@@ -158,6 +188,9 @@ main
   h3
     @include sectionTitle($black,1.3em)
     margin-left: -.3em
+  img
+    max-width: 100%
+    height: auto
   //(teamMate === slide)
   & .team
     width: 100vw
@@ -176,9 +209,9 @@ main
       @include paragraph($black, left, 6em, 5em)
   //( === slide2)
   & .Mate2
+    margin-top: 2em
     img
       width: 70%
-      height: auto
     section
       margin-top: -5em
     // h1 & h2
@@ -188,14 +221,16 @@ main
     p
       @include paragraph($black, left, 6em, 7em)
   //( === slide3 )
-  & .Mate3 section
-    margin-top: -5em
-    // h1 & h2
-    @include teamTitlePosition()
-    hr
-      @include underline(20em,5em)
-    p
-      @include paragraph($black, left, 5em, 6em)
+  & .Mate3
+    margin-top: 2em
+    section
+      margin-top: -5em
+      // h1 & h2
+      @include teamTitlePosition()
+      hr
+        @include underline(20em,5em)
+      p
+        @include paragraph($black, left, 5em, 6em)
 
 
 // .outerWrapper
@@ -222,11 +257,11 @@ main
 
 #aboutUs
   height: 100vh
+  position: relative
   h3
     @include sectionTitle($black,1em)
   .text-left
-    padding: 0 15vh
-    padding-top: 15vh
+    padding: 15vh 15vh 0 15vh
     color: $black
 
 footer
@@ -270,3 +305,130 @@ footer
       padding: 5px
 
 // <<<========================  MEDIA QUERIES  =========================>>>
+/* Smartphones (portrait and landscape) ----------- */
+/* Styles */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px)
+  body
+    min-width: 320px
+
+
+/* Smartphones (landscape) ----------- */
+@media only screen and (min-width : 321px)
+/* Styles */
+
+
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width : 320px)
+/* Styles */
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px)
+/* Styles */
+
+
+/* iPads (landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape)
+/* Styles */
+
+
+/* iPads (portrait) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait)
+/* Styles */
+
+/********** iPad 3 **********/
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio : 2)
+/* Styles */
+
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) and (-webkit-min-device-pixel-ratio : 2)
+/* Styles */
+
+/* Desktops and laptops ----------- */
+@media only screen  and (min-width : 1224px)
+/* Styles */
+
+
+/* Large screens ----------- */
+@media only screen  and (min-width : 1824px)
+/* Styles */
+
+
+/* iPhone 4 ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio : 2)
+/* Styles */
+
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : portrait) and (-webkit-min-device-pixel-ratio : 2)
+/* Styles */
+
+
+/* iPhone 5 ----------- */
+@media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2)
+/* Styles */
+
+
+@media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2)
+/* Styles */
+
+
+/* iPhone 6, 7, 8 ----------- */
+@media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2)
+/* Styles */
+
+
+@media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2)
+/* Styles */
+
+
+/* iPhone 6+, 7+, 8+ ----------- */
+@media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2)
+/* Styles */
+
+
+@media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2)
+/* Styles */
+
+
+/* iPhone X ----------- */
+@media only screen and (min-device-width: 375px) and (max-device-height: 812px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 3)
+/* Styles */
+
+
+@media only screen and (min-device-width: 375px) and (max-device-height: 812px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 3)
+/* Styles */
+
+
+/* iPhone XS Max, XR ----------- */
+@media only screen and (min-device-width: 414px) and (max-device-height: 896px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 3)
+/* Styles */
+
+
+@media only screen and (min-device-width: 414px) and (max-device-height: 896px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 3)
+/* Styles */
+
+
+/* Samsung Galaxy S3 ----------- */
+@media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2)
+/* Styles */
+
+
+@media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2)
+/* Styles */
+
+
+/* Samsung Galaxy S4 ----------- */
+@media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 3)
+/* Styles */
+
+
+@media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 3)
+/* Styles */
+
+
+/* Samsung Galaxy S5 ----------- */
+@media only screen and (min-device-width: 360px) and (max-device-height: 640px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 3)
+/* Styles */
+
+
+@media only screen and (min-device-width: 360px) and (max-device-height: 640px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 3)
+/* Styles */
