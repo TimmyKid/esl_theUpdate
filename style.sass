@@ -1,3 +1,6 @@
+@import "config"
+@import "function"
+
 $black: #1d1d1d
 $grey: #dedede
 $blue: #1c2331
@@ -9,7 +12,7 @@ $secFontStack: PMingLiU-ExtB, MingLiU_HKSCS-ExtB, Garamond
 
 // fONT-SIZES,DISTANCE,OFFSETS, Spacings
 $big: 17.5rem
-$title : 5rem
+$title : get_vw(5)
 $subtitle: 2.813rem
 $simpleText: 1.125rem
 //offsetsFrom ==>
@@ -17,7 +20,7 @@ $offsetFromBottom: 3em
 $offsetFromTop: 5em
 
 
-@import "config"
+
 *
   cursor: none
 h1
@@ -39,7 +42,8 @@ body
   @include noScrollBar(0,0)
   font: 100% $secFontStack
   overflow-x: hidden
-  background: url("../img/canvas.jpg")
+  // background: url("../img/canvas.jpg")
+  background-color: $grey
   font-size: $simpleText
   cursor: none
   @include defaultSpacing()
@@ -137,6 +141,7 @@ menu_toggle_icon
       @include circle(30px,white)
     p
       font-size: .9rem
+      // visibility: hidden
 
 .vl-1
   @include vl(20%,fixed)
@@ -210,15 +215,16 @@ menu_toggle_icon
   & .Mate2
     margin-top: 2em
     img
-      width: 70%
+      max-width: 70%
+      height: auto
     section
-      margin-top: -5em
+      margin-top: -4em
     // h1 & h2
     @include teamTitlePosition()
     hr
       @include underline(20em,5em)
     p
-      @include paragraph($black, left, 6em, 7em)
+      @include paragraph($black, left, 7em, 6em)
   //( === slide3 )
   & .Mate3
     margin-top: 2em
@@ -229,7 +235,7 @@ menu_toggle_icon
       hr
         @include underline(20em,5em)
       p
-        @include paragraph($black, left, 5em, 6em)
+        @include paragraph($black, left, 6em, 5em)
 
 
 
@@ -269,7 +275,6 @@ footer
   justify-content: center
   text-align: center
   height: 100vh
-  margin: 0
   h1
     padding-top: 0.5em
     margin-bottom: 1em
@@ -310,6 +315,20 @@ footer
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px)
   body
     min-width: 320px
+    overflow-X: hidden
+  .vl-md, .cursor, .cursor2, #scrollDown_animators
+    visibility: hidden
+
+  #excerpt
+    padding: 80vh 0
+    .container > div
+      display: flex
+      flex-direction: column
+    .item3 h1
+      margin: -8vh 0 0 2vw
+
+  // $simpleText: 2vw
+
 
 
 /* Smartphones (landscape) ----------- */
@@ -320,6 +339,7 @@ footer
 /* Smartphones (portrait) ----------- */
 @media only screen and (max-width : 320px)
 /* Styles */
+
 
 /* iPads (portrait and landscape) ----------- */
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px)

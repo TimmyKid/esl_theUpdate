@@ -11,13 +11,9 @@ body {
   margin: 0;
   padding: 0;
 }
-//Set text color based on bgcolor
-@function setItemColor($color){
-  @if(lightness($color) > 88) {
-    @return $black;
-  } @else {
-    @return darken(#fff,12%);
-  }
+// ========lets create a clamp_hybrid_mixin_function=======
+@mixin hybrClamp($min,$norm,$max) {
+  font-size: clamp($min,get_vw($norm),$max)
 }
 //set bg and text color (like function, but doesn't return anything)
 @mixin setBackgroundColor($color) {
@@ -89,11 +85,11 @@ body {
   width: $width;
   margin-left: $offset;
 }
-@mixin paragraph($color, $alignment, $right, $top) {
+@mixin paragraph($color, $alignment, $top, $right) {
   color: $color;
   text-align: $alignment;
-  margin-right: $right;
   margin-top: $top;
+  margin-right: $right;
 }
 @mixin teamTitlePosition() {
   text-align: right;
