@@ -1,0 +1,14 @@
+/* Various funcions used to calculate certain **Stuff** yeah. */
+
+// Convert rems to viewport width for scalability
+@function get_vw($rem) {
+  @return($rem * 1.172 + vw);
+};
+//Set text color based on bgcolor
+@function setItemColor($color){
+  @if(lightness($color) > 88) {
+    @return $black;
+  } @else {
+    @return darken(#fff,12%);
+  }
+};
