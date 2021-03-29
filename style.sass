@@ -11,18 +11,22 @@ $primFontStack: Segoe UI Light, system-ui, Tahoma, sans-serif
 $secFontStack: PMingLiU-ExtB, MingLiU_HKSCS-ExtB, Garamond
 
 // fONT-SIZES,DISTANCE,OFFSETS, Spacings
-$big: 17.5rem
-$title : get_vw(5)
+$big: clamp(4rem, 20.51vw, 40rem)
+$title : clamp(3rem, 5.86vw, 7rem)
 $subtitle: 2.813rem
 $simpleText: 1.125rem
-//offsetsFrom ==>
+//offsets spacing and margins around Relative Viewports ==>
 $offsetFromBottom: 3em
 $offsetFromTop: 5em
 
-
-
+// {{{{{{{{ ESSENTIALS }}}}}}}}
 *
   cursor: none
+::-webkit-scrollbar
+  display: none
+p
+  color: $grey
+  font-size: $simpleText
 h1
   font: 100% $primFontStack
   font-size: $title
@@ -30,13 +34,7 @@ h2
   font-size: $subtitle
 a, a:hover, a:visited
   text-decoration: none
-  // cursor: none
-p
-  color: $grey
-  font-size: $simpleText
 
-::-webkit-scrollbar
-  display: none
 
 body
   @include noScrollBar(0,0)
@@ -47,7 +45,6 @@ body
   font-size: $simpleText
   cursor: none
   @include defaultSpacing()
-
 
 .cursor
   @include cursorProps(5px,$red)
@@ -62,6 +59,13 @@ body
   transition-duration: 500ms
   transition-timing-function: ease-out
   z-index: 2
+
+.vl-1
+  @include vl(20%,fixed)
+.vl-md
+  @include vl(50%,absolute)
+.vl-3
+  @include vl(80%,fixed)
 
 .logo img
   max-width: 2.25vw
@@ -84,7 +88,6 @@ body
     width: 20px
   .patty
     width: 24px
-
 .hamburger_wrapper:hover
   .top_bun
     width: 28px
@@ -99,10 +102,6 @@ main
   background-size: cover
   box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.40)
 
-menu_toggle_icon
-  color: $grey
-  height: 2em
-
 .welcomeGridContainer
   display: grid
   color: white
@@ -116,7 +115,6 @@ menu_toggle_icon
     h3
       font-size: $title
       line-height: 1.2em
-
 
 .scrollDownWrapper
   display: flex
@@ -137,18 +135,12 @@ menu_toggle_icon
     flex-direction: column
     align-items: center
     margin-top: calc(1.5em + 7.5em + 1px)
+
     .audioCircle
       @include circle(30px,white)
     p
       font-size: .9rem
       // visibility: hidden
-
-.vl-1
-  @include vl(20%,fixed)
-.vl-md
-  @include vl(50%,absolute)
-.vl-3
-  @include vl(80%,fixed)
 
 #excerpt
   @include setBackgroundColor($black)
@@ -264,6 +256,7 @@ menu_toggle_icon
 #aboutUs
   height: 100vh
   position: relative
+  overflow-Y: hidden
   h3
     @include sectionTitle($black,1em)
   .text-left
@@ -272,17 +265,23 @@ menu_toggle_icon
 
 footer
   @include setBackgroundColor($blue)
+  position: relative
   justify-content: center
   text-align: center
-  height: 100vh
+  overflow-y: hidden
+  padding: 8vh 0
+  min-height: 100vh
   h1
     padding-top: 0.5em
     margin-bottom: 1em
+  & > ul li
+    padding: 5px
+  //social media Icons styling ==> **Explicitly** >>>>>>><<<<<
   #socials > ul li a
-    @include circle(45px,$grey)
+    @include circle(45px,none)
     display: block
-    padding: 2px
-    margin: 2em .7em 2em .7em
+    padding: 2.5px
+    margin: 1em .7em
     background: linear-gradient(0deg,#9e9e9e,#fff)
     box-shadow: 0 15px 18px rgba(0,0,0,0.4)
     transition: .5s
@@ -295,6 +294,7 @@ footer
       font-size: $simpleText
     &:hover
       box-shadow: 0 2px 5px rgba(0,0,0.3)
+  // {Copyright. Rights and License reserved.} ====
   ins
     font-family: Segoe UI
     font-size: 12.5px
@@ -306,8 +306,7 @@ footer
       color: $red
       &:hover
         color: darken($red,10%)
-  & > ul li
-      padding: 5px
+
 
 // <<<========================  MEDIA QUERIES  =========================>>>
 /* Smartphones (portrait and landscape) ----------- */
@@ -318,7 +317,15 @@ footer
     overflow-X: hidden
   .vl-md, .cursor, .cursor2, #scrollDown_animators
     visibility: hidden
-
+  .welcomeGridContainer
+    margin-top: 2.5em
+  .scrollDownWrapper
+    position: fixed
+    & #audiocontroller
+      margin-top: $offsetFromTop
+      p
+        font-size: .4em
+        visibility: hidden
   #excerpt
     padding: 80vh 0
     .container > div
@@ -326,7 +333,10 @@ footer
       flex-direction: column
     .item3 h1
       margin: -8vh 0 0 2vw
-
+  footer
+    padding: 5vh
+    ins
+      padding: 3% 8%
   // $simpleText: 2vw
 
 
