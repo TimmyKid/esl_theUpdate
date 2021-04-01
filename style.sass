@@ -11,10 +11,10 @@ $primFontStack: Segoe UI Light, system-ui, Tahoma, sans-serif
 $secFontStack: PMingLiU-ExtB, MingLiU_HKSCS-ExtB, Garamond
 
 // fONT-SIZES,DISTANCE,OFFSETS, Spacings
-$big: clamp(4rem, 20.51vw, 40rem)
+$big: clamp(5rem, 20.51vw, 40rem)
 $title : clamp(3rem, 5.86vw, 7rem)
-$subtitle: 2.813rem
-$simpleText: 1.125rem
+$subtitle: clamp(1.6rem, 3.296836vw, 4.5rem)
+$simpleText: clamp(.955rem, 1.3185vw, 2.125rem)
 //offsets spacing and margins around Relative Viewports ==>
 $offsetFromBottom: 3em
 $offsetFromTop: 5em
@@ -34,17 +34,18 @@ h2
   font-size: $subtitle
 a, a:hover, a:visited
   text-decoration: none
+h4
+  font-size: $big
 
 
 body
   @include noScrollBar(0,0)
-  font: 100% $secFontStack
-  overflow-x: hidden
-  // background: url("../img/canvas.jpg")
-  background-color: $grey
+  @include defaultSpacing()
   font-size: $simpleText
   cursor: none
-  @include defaultSpacing()
+  font: 100% $secFontStack
+  overflow-x: hidden
+  background-color: $grey
 
 .cursor
   @include cursorProps(5px,$red)
@@ -68,7 +69,7 @@ body
   @include vl(80%,fixed)
 
 .logo img
-  max-width: 2.25vw
+  width: clamp(1.3rem,2.25vw,2rem)
   margin: -1vh 0 0 2vh
 .logo span
   color: white
@@ -80,19 +81,21 @@ body
 .hamburger_wrapper
   margin-right: 2vw
   .hamburger_icon
-    width: 28px
+    width: 1.75rem
     height: 2px
     background-color: darken($grey, 20%)
     margin: 6px
   .top_bun
-    width: 20px
+    width: 1.25rem
   .patty
-    width: 24px
+    width: 1.5rem
 .hamburger_wrapper:hover
   .top_bun
-    width: 28px
+    animation: bunHoverEffect .5s
+    @include keyframes(bunHoverEffect, width, 1.25rem, 1.75rem)
   .bottom_bun
-    width: 20px
+    animation: botHoverEffect .5s
+    @include keyframes(botHoverEffect, width, 1.75rem, 1.25rem)
   .hamburger_icon
     background-color: $grey
 
@@ -159,11 +162,6 @@ main
   & .item2 p, .item3 p
     margin-left: 1em
 
-// #canvas
-  width: 100%
-  height: 300vh
-  repeat: no-repeat
-  background: url("../img/canvas.jpg")
 
 // OuterWrapper
 .team_outer_wrapper
@@ -173,7 +171,6 @@ main
   transform-origin: top left
   overflow-y: scroll
   margin-bottom: -100vh
-
 // ( === inner_wrapper) =====
 #team_inner_wrapper
   display: flex
@@ -181,12 +178,11 @@ main
   width: 300vw
   transform: rotate(90deg) translateY(-100vh)
   transform-origin: top left
-  h3
+  h4
     @include sectionTitle($black,1.3em)
     margin-left: -.3em
   img
     max-width: 100%
-    height: auto
   //(teamMate === slide)
   & .team
     width: 100vw
@@ -195,20 +191,19 @@ main
     display: grid
     grid-template-columns: 1fr 1fr
     padding: 0 20vh
-  & .Mate section
-    margin-top: -5em
-    // h1 & h2
-    @include teamTitlePosition()
-    hr
-      @include underline(18em,7em)
-    p
-      @include paragraph($black, left, 6em, 5em)
+  & .Mate
+    section
+      @include teamTitlePosition()
+      hr
+        @include underline(18em,7em)
+      p
+        @include paragraph($black, left, 6em, 5em)
   //( === slide2)
   & .Mate2
     margin-top: 2em
+    overflow-Y: hidden
     img
       max-width: 70%
-      height: auto
     section
       margin-top: -4em
     // h1 & h2
@@ -229,35 +224,10 @@ main
       p
         @include paragraph($black, left, 6em, 5em)
 
-
-
-// .outerWrapper
-  width: 100vh
-  height: 100vw
-  transform: rotate(-90deg) translateX(-100vh)
-  transform-origin: top left
-  overflow-y: hidden
-  position: absolute
-  Z-index: -999
-  .wrapper
-    // transform: rotate(90deg) translateY(-100vh)
-    transform-origin: top left
-    .team
-      width: 100vw
-      height: 100vh
-    .one
-      background: lighten($black,35%)
-    .two
-      background: lighten($red,20%)
-    .three
-      background: lighten($blue,35%)
-
-
 #aboutUs
-  height: 100vh
+  min-height: 100vh
   position: relative
-  overflow-Y: hidden
-  h3
+  h4
     @include sectionTitle($black,1em)
   .text-left
     padding: 15vh 15vh 0 15vh
@@ -269,7 +239,7 @@ footer
   justify-content: center
   text-align: center
   overflow-y: hidden
-  padding: 8vh 0
+  padding: 5vh 0
   min-height: 100vh
   h1
     padding-top: 0.5em
@@ -315,14 +285,27 @@ footer
   body
     min-width: 320px
     overflow-X: hidden
-  .vl-md, .cursor, .cursor2, #scrollDown_animators
+  .logo span, .vl-md, .cursor, .cursor2, #scrollDown_animators
     visibility: hidden
-  .welcomeGridContainer
-    margin-top: 2.5em
+  .logo img
+    margin-left: -1vw
+  .hamburger_wrapper
+    margin-right: -4vw
+    .hamburger_icon
+      width: 1.5rem
+      height: 1px
+    .top_bun
+      width: 1rem
+    .patty
+      width: 1.25rem
+  .hamburger_wrapper:hover
+    .top_bun, .bottom_bun
+      animation: none
   .scrollDownWrapper
     position: fixed
     & #audiocontroller
-      margin-top: $offsetFromTop
+      margin-top: $offsetFromTop + 1
+      margin-right: 2vw
       p
         font-size: .4em
         visibility: hidden
@@ -332,7 +315,31 @@ footer
       display: flex
       flex-direction: column
     .item3 h1
-      margin: -8vh 0 0 2vw
+      margin: -10vh 0 0 2vw
+  .team_outer_wrapper
+    margin-bottom: 40vh
+  #team_inner_wrapper
+    img
+      min-width: 80%
+    h4
+      @include sectionTitle($black, 3em)
+    & .team
+      display: grid
+      grid-template-rows: 1fr 1fr 1fr 1fr
+      // align-content: start
+    & .Mate
+      margin-top: 10em
+      p
+        @include defaultSpacing()
+    .Mate2
+      margin-top: 15em
+    .Mate3 section
+      margin-top: 15em
+      hr
+        @include underline(20em, 3em)
+      p
+        text-align: left
+        @include defaultSpacing()
   footer
     padding: 5vh
     ins
@@ -354,6 +361,10 @@ footer
 /* iPads (portrait and landscape) ----------- */
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px)
 /* Styles */
+  .cursor, .cursor2
+    visibility: hidden
+
+
 
 
 /* iPads (landscape) ----------- */
