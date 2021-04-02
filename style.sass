@@ -12,7 +12,7 @@ $secFontStack: PMingLiU-ExtB, MingLiU_HKSCS-ExtB, Garamond
 
 // fONT-SIZES,DISTANCE,OFFSETS, Spacings
 $big: clamp(5rem, 20.51vw, 40rem)
-$title : clamp(3rem, 5.86vw, 7rem)
+$title : clamp(2.75rem, 5.86vw, 7rem)
 $subtitle: clamp(1.6rem, 3.296836vw, 4.5rem)
 $simpleText: clamp(.955rem, 1.3185vw, 2.125rem)
 //offsets spacing and margins around Relative Viewports ==>
@@ -123,7 +123,7 @@ main
 .scrollDownWrapper
   display: flex
   flex-direction: row
-  margin-top: -3em
+  margin-top: -2em
   padding: 0 2vw
   #scrollDown_animators .scrollDownIcon
     @include vl(0,static)
@@ -138,12 +138,13 @@ main
     display: flex
     flex-direction: column
     align-items: center
-    margin-top: calc(1.5em + 7.5em + 1px)
+    margin-top: calc(1.5em + 7.5em)
 
     .audioCircle
-      @include circle(30px,white)
+      @include circle(clamp(1.775rem,2.195vw,2.875rem),white)
     p
       font-size: .9rem
+      margin-top: .2rem
       // visibility: hidden
 
 #excerpt
@@ -183,6 +184,7 @@ main
     @include sectionTitle($black,1.3em)
     margin-left: -.3em
   img
+    // width: clamp(5rem, 20vw, 7rem)
     max-width: 100%
   //(teamMate === slide)
   & .team
@@ -191,26 +193,25 @@ main
     align-content: center
     display: grid
     grid-template-columns: 1fr 1fr
-    padding: 0 20vh
-  & .Mate
-    section
-      @include teamTitlePosition()
-      hr
-        @include underline(18em,7em)
-      p
-        @include paragraph($black, left, 6em, 5em)
+    padding: 0 clamp(5vw,10vw,15vw)
+  & .Mate section
+    @include teamTitlePosition()
+    hr
+      @include underline(18em,7em)
+    p
+      @include paragraph($black, left, 6em, 5em)
   //( === slide2)
   & .Mate2
     margin-top: 2em
     overflow-Y: hidden
+    @include teamTitlePosition()
     img
-      max-width: 70%
+      // width: clamp(5rem, 20vw, 7rem)
+      width: 70%
     section
       margin-top: -4em
-    // h1 & h2
-    @include teamTitlePosition()
     hr
-      @include underline(20em,5em)
+      @include underline(20em,6em)
     p
       @include paragraph($black, left, 7em, 6em)
   //( === slide3 )
@@ -218,7 +219,6 @@ main
     margin-top: 2em
     section
       margin-top: -5em
-      // h1 & h2
       @include teamTitlePosition()
       hr
         @include underline(20em,5em)
@@ -231,8 +231,9 @@ main
   h4
     @include sectionTitle($black,1em)
   .text-left
-    padding: 15vh 15vh 0 15vh
+    font-size: $simpleText
     color: $black
+    padding: 15vh 15vh 0 15vh
 
 footer
   @include setBackgroundColor($blue)
@@ -242,6 +243,7 @@ footer
   overflow-y: hidden
   padding: 5vh 0
   min-height: 100vh
+  font-size: $simpleText
   h1
     padding-top: 0.5em
     margin-bottom: 1em
@@ -286,12 +288,15 @@ footer
   body
     min-width: 320px
     overflow-X: hidden
+    //
   .logo span, .vl-md, .cursor, .cursor2, #scrollDown_animators
     visibility: hidden
+    //
   .logo img
     margin-left: -1vw
+    //
   .hamburger_wrapper
-    margin-right: -4vw
+    margin-right: -2.5vw
     .hamburger_icon
       width: 1.5rem
       height: 1px
@@ -302,14 +307,17 @@ footer
   .hamburger_wrapper:hover
     .top_bun, .bottom_bun
       animation: none
+      //
   .scrollDownWrapper
     position: fixed
     & #audiocontroller
-      margin-top: $offsetFromTop + 1
+      margin-top: $offsetFromTop
       margin-right: 2vw
       p
         font-size: .4em
         visibility: hidden
+        //
+
   #excerpt
     padding: 80vh 0
     .container > div
@@ -317,30 +325,32 @@ footer
       flex-direction: column
     .item3 h1
       margin: -10vh 0 0 2vw
+      //
+
   .team_outer_wrapper
     margin-bottom: 40vh
   #team_inner_wrapper
-    img
-      min-width: 80%
     h4
-      @include sectionTitle($black, 3em)
+      @include sectionTitle($black, 4.5em)
     & .team
-      display: grid
-      grid-template-rows: 1fr 1fr 1fr 1fr
-      // align-content: start
-    & .Mate
-      margin-top: 10em
+      display: flex
+      flex-direction: column
+      & section hr
+        @include underline(12rem,0)
+    & .Mate section
+      // text-align: center
+      margin: 0
       p
-        @include defaultSpacing()
-    .Mate2
-      margin-top: 15em
-    .Mate3 section
-      margin-top: 15em
-      hr
-        @include underline(20em, 3em)
+        margin: 2em 0
+    & .Mate2 section, .Mate3 section
+      margin: 0
+      // text-align: center
       p
-        text-align: left
-        @include defaultSpacing()
+        margin: 1em 0
+    // & .Mate2
+      @include defaultSpacing()
+
+
   footer
     padding: 5vh
     ins
