@@ -219,6 +219,7 @@ main
     margin-top: 2em
     section
       margin-top: -5em
+      // h1 & h2
       @include teamTitlePosition()
       hr
         @include underline(20em,5em)
@@ -335,21 +336,28 @@ footer
     & .team
       display: flex
       flex-direction: column
-      & section hr
-        @include underline(12rem,0)
+      & section
+        hr
+          @include underline(12rem,1em)
+        h2
+          text-align: end
     & .Mate section
-      // text-align: center
+      text-align: center
       margin: 0
       p
         margin: 2em 0
+    & .Mate2, & .Mate3
+      margin: 0
     & .Mate2 section, .Mate3 section
       margin: 0
-      // text-align: center
+      text-align: center
       p
         margin: 1em 0
-    // & .Mate2
-      @include defaultSpacing()
-
+    & .Mate2
+      section h1
+        font-size: 2.35rem
+      img
+        width: 100%
 
   footer
     padding: 5vh
