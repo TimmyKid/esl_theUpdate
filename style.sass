@@ -331,39 +331,34 @@ footer
   .team_outer_wrapper
     margin-bottom: 40vh
   #team_inner_wrapper
+    margin-left: -3em
+    //==== This adds padding, across 90° rotation =====
     h4
-      @include sectionTitle($black, 4.5em)
+      @include sectionTitle($black, 3.7em)
     & .team
       display: flex
       flex-direction: column
+      img
+        width: 70%
+        align-self: center
       & section
+        margin: 0
+        text-align: center
+        p
+          margin: 1em 0
         hr
           @include underline(12rem,1em)
         h2
           text-align: end
-    & .Mate section
-      text-align: center
-      margin: 0
-      p
-        margin: 2em 0
     & .Mate2, & .Mate3
       margin: 0
-    & .Mate2 section, .Mate3 section
-      margin: 0
-      text-align: center
-      p
-        margin: 1em 0
-    & .Mate2
-      section h1
+    & .Mate2 section h1
         font-size: 2.35rem
-      img
-        width: 100%
-
+        //
   footer
     padding: 5vh
     ins
       padding: 3% 8%
-  // $simpleText: 2vw
 
 
 
