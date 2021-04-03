@@ -80,7 +80,7 @@ body
   line-height: 2em
 
 .hamburger_wrapper
-  margin-right: 2vw
+  margin-right: 1vw
   .hamburger_icon
     width: 1.75rem
     height: 2px
@@ -446,8 +446,53 @@ footer
 /* Small screens, Laptops (portrait and landscape) ----------- */
 /* Styles */
 @media only screen and (min-device-width : 769px) and (max-device-width : 1024px)
-
-
+  .hamburger_wrapper
+    margin-right: .5vw
+    //
+  .welcomeGridContainer
+    margin-top: $offsetFromTop + 3
+  .scrollDownWrapper
+    & img
+      width: 6%
+      margin-left: .1vw
+  .team_outer_wrapper
+    margin-bottom: -50vh
+  #team_inner_wrapper
+    h4
+      @include sectionTitle($black, 1.9em)
+    // & .team
+    & .Mate
+      padding: 0 0 0 11vw
+      section p
+        margin: 3em 3em 0 3em
+        //
+    & .Mate2
+      padding: 0 10vw
+      img
+        width: 100%
+      section
+        margin: 0
+        p
+          margin: 3em 2em 3em 3em
+          //
+    & .Mate3
+      margin: 2vw 2vw 0 0
+      section
+        margin: -2em 0 0 0
+        p
+          margin: 3em 0em 0 3em
+          //
+  #aboutUs
+    h4
+      @include sectionTitle($black, 2em)
+    .text
+      padding: 10vh 10vw
+      text-align: center
+      //
+  footer h1
+      margin: 1em 0
+      font-size: 6.86vw
+      //
 
 /* Desktops and Large Screens (portrait and landscape) ----------- */
 /* Styles */
