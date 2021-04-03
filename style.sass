@@ -143,7 +143,7 @@ main
     .audioCircle
       @include circle(clamp(1.775rem,2.195vw,2.875rem),white)
     p
-      font-size: .9rem
+      font-size: .8rem
       margin-top: .2rem
       // visibility: hidden
 
@@ -383,6 +383,21 @@ footer
   .cursor, .cursor2
     visibility: hidden
     //
+  .hamburger_wrapper
+    margin-right: 1vw
+    &:hover
+      .top_bun, .bottom_bun
+        animation: none
+        //
+  .scrollDownWrapper
+    margin-top: -5em
+    & img
+      width: 6%
+      margin-left: .1vw
+      //
+  #excerpt .item p
+    margin-left: -3em
+    //
   .team_outer_wrapper
     margin-bottom: -50vh
   #team_inner_wrapper
@@ -411,8 +426,22 @@ footer
           margin: 3em 0em 0 3em
           //
   #aboutUs
-    
-
+    h4
+      @include sectionTitle($black, 1.6em)
+    .text
+      padding: 10vh 10vw
+      text-align: center
+    .scrollTrack
+      @include vl(4em,absolute)
+      border-color: $black
+      height: 16rem
+      margin-top: 2em
+    .tracker
+      @include circle(1em, black)
+      background: $grey
+      margin-left: -.5em
+      margin-top: 10vh
+      //
 
 /* Small screens, Laptops (portrait and landscape) ----------- */
 /* Styles */
