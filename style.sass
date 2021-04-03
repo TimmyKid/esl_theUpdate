@@ -218,7 +218,6 @@ main
     margin-top: 2em
     section
       margin-top: -5em
-      // h1 & h2
       @include teamTitlePosition()
       hr
         @include underline(20em,5em)
@@ -381,7 +380,38 @@ footer
 /* Ipads and tablets. (portrait and landscape) ----------- */
 /* Styles */
 @media only screen and (min-device-width : 481px) and (max-device-width : 768px)
-
+  .cursor, .cursor2
+    visibility: hidden
+    //
+  .team_outer_wrapper
+    margin-bottom: -50vh
+  #team_inner_wrapper
+    h4
+      @include sectionTitle($black, 1.9em)
+    // & .team
+    & .Mate
+      padding: 0 0 0 11vw
+      section p
+        margin: 3em 3em 0 3em
+        //
+    & .Mate2
+      padding: 0 10vw
+      img
+        width: 100%
+      section
+        margin: 0
+        p
+          margin: 3em 2em 3em 3em
+          //
+    & .Mate3
+      margin: 2vw 2vw 0 0
+      section
+        margin: -2em 0 0 0
+        p
+          margin: 3em 0em 0 3em
+          //
+  #aboutUs
+    
 
 
 /* Small screens, Laptops (portrait and landscape) ----------- */
