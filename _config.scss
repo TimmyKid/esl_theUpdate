@@ -11,13 +11,9 @@ body {
   margin: 0;
   padding: 0;
 }
-//Set text color based on bgcolor
-@function setItemColor($color){
-  @if(lightness($color) > 88) {
-    @return $black;
-  } @else {
-    @return darken(#fff,12%);
-  }
+// ========lets create a clamp_hybrid_mixin_function=======
+@mixin hybrClamp($min,$norm,$max) {
+  font-size: clamp($min,get_vw($norm),$max)
 }
 //set bg and text color (like function, but doesn't return anything)
 @mixin setBackgroundColor($color) {
@@ -75,27 +71,51 @@ body {
 
 //==== PAGE TITLES on SECTIONS ======
 @mixin sectionTitle($color,$top) {
-  position: absolute;
-  font-size: $big;
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke: .3px $color;
+  position: absolute;
+  margin-top: $top;
   z-index: -1;
-  margin-top: $top
 }
-
 
 //=== functions Used For The Teams Section ========
 @mixin underline($width,$offset) {
   width: $width;
   margin-left: $offset;
 }
-@mixin paragraph($color, $alignment, $right, $top) {
+@mixin paragraph($color, $alignment, $top, $right) {
   color: $color;
   text-align: $alignment;
-  margin-right: $right;
   margin-top: $top;
+  margin-right: $right;
 }
 @mixin teamTitlePosition() {
   text-align: right;
   margin-right: 4em;
+}
+
+
+// ========= @keyframes animations ==============
+/*-- Hamburger hover action keyframe, IK it's a lot! --*/
+@mixin keyframes($name,$attribute,$property1,$property2) {
+  @-webkit-keyframes #{$name} {
+    0% {#{$attribute}:#{$property1}};
+    50%{#{$attribute}:#{$property2}};
+    100%{#{$attribute}:#{$property1}};
+  }
+  @-moz-keyframes #{$name} {
+    0% {#{$attribute}:#{$property1}};
+    50%{#{$attribute}:#{$property2}};
+    100%{#{$attribute}:#{$property1}};
+  }
+  @-ms-keyframes #{$name} {
+    0% {#{$attribute}:#{$property1}};
+    50%{#{$attribute}:#{$property2}};
+    100%{#{$attribute}:#{$property1}};
+  }
+  @keyframes #{$name} {
+    0% {#{$attribute}:#{$property1}};
+    50%{#{$attribute}:#{$property2}};
+    100%{#{$attribute}:#{$property1}};
+  };
 }
