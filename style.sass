@@ -27,16 +27,15 @@ $offsetFromTop: 5em
 p
   color: $grey
   font-size: $simpleText
-h1
+h1, #sideBar ul
   font: 100% $primFontStack
   font-size: $title
 h2
   font-size: $subtitle
-a, a:hover, a:visited
+a, a:hover, a:visited, ins
   text-decoration: none
 h4
   font-size: $big
-
 
 body
   @include noScrollBar(0,0)
@@ -68,6 +67,7 @@ body
   @include vl(50%,absolute)
 .vl-3
   @include vl(80%,fixed)
+  z-index: 1
 
 .logo img
   width: clamp(1.3rem,2.25vw,2rem)
@@ -81,6 +81,7 @@ body
 
 .hamburger_wrapper
   margin-right: 1vw
+  z-index: 2
   .hamburger_icon
     width: 1.75rem
     height: 2px
@@ -99,6 +100,53 @@ body
     @include keyframes(botHoverEffect, width, 1.75rem, 1.25rem)
   .hamburger_icon
     background-color: $grey
+
+#sideBar
+  width: 50vw
+  height: 100vh
+  background-color: $black
+  position: absolute
+  right: 0
+  top: 0
+  .void
+    @include circle(20em,$grey)
+    position: absolute
+  .voidControl
+    @include circle(7em,$grey)
+    position: absolute
+    top: 15em
+    left: 18em
+  ul
+    margin: .6em 1em .5em 1em
+    text-align: left
+    li a
+      color: darken($grey,20%)
+    hr
+      border-color: darken($grey,20%)
+      @include defaultSpacing()
+      margin-bottom: .3rem
+    ins
+      color: darken($grey,20%)
+      font-size: $simpleText
+      font-family: $secFontStack
+      margin-left: 15vw
+  .one hr
+      @include underline(2.8em,0)
+  .two
+    hr
+      @include underline(4em,0)
+    ins
+      margin-left: 22vw
+  .three
+    hr
+      @include underline(5.45em,0)
+    ins
+      margin-left: 30.5vw
+  .four
+    hr
+      @include underline(3.5em,0)
+    ins
+      margin-left: 19vw
 
 main
   height: 100vh
@@ -124,13 +172,13 @@ main
   display: flex
   flex-direction: row
   margin-top: -2em
-  padding: 0 2vw
+  padding: 0 4vw 0 3vw
   #scrollDown_animators .scrollDownIcon
     @include vl(0,static)
     border-color: $red
     height: 7.5em
     opacity: 80%
-    margin-left: 1em
+    margin-left: 1.1em
   & img
     max-width: 7%
     margin-top: 1.5em
@@ -139,12 +187,13 @@ main
     flex-direction: column
     align-items: center
     margin-top: calc(1.5em + 7.5em)
-
     .audioCircle
       @include circle(clamp(1.775rem,2.195vw,2.875rem),white)
+      position: fixed
     p
       font-size: .8rem
-      margin-top: .2rem
+      margin-top: 2rem
+      position: fixed
       // visibility: hidden
 
 #excerpt
@@ -243,6 +292,7 @@ footer
   padding: 5vh 0
   min-height: 100vh
   font-size: $simpleText
+  z-index: 3
   h1
     padding-top: 0.5em
     margin-bottom: 1em
@@ -270,7 +320,6 @@ footer
   ins
     font-family: Segoe UI
     font-size: 12.5px
-    text-decoration: none
     background-color: $darkBlue
     padding: 0.5% 13%
     border-radius: 25px
