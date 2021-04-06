@@ -91,6 +91,7 @@ body
     width: 1.25rem
   .patty
     width: 1.5rem
+
 .hamburger_wrapper:hover
   .top_bun
     animation: bunHoverEffect .3s
@@ -110,13 +111,13 @@ body
   top: 0
   z-index: 2
   .void
-    @include circle(20em,$grey)
+    @include circle(clamp(10em,23.4vw,20em),$grey)
     position: absolute
   .voidControl
-    @include circle(7em,$grey)
+    @include circle(clamp(3.5em,8.204vw,7em),$grey)
     position: absolute
-    top: 15em
-    left: 18em
+    top: 25%
+    left: 48%
   ul
     margin: .6em 1em .5em 1em
     text-align: left
@@ -356,11 +357,14 @@ footer
     .top_bun, .bottom_bun
       animation: none
       //
+  #sideBar
+    width: 100%
+    ul
+      margin-top: 1.2em
   .scrollDownWrapper
-    position: fixed
-    & #audiocontroller
+    #audiocontroller
       margin-top: $offsetFromTop
-      margin-right: 2vw
+      margin-right: 4vw
       p
         font-size: .4em
         visibility: hidden
@@ -501,12 +505,15 @@ footer
     //
   .welcomeGridContainer
     margin-top: $offsetFromTop + 3
+    //
   .scrollDownWrapper
     & img
       width: 6%
       margin-left: .1vw
+      //
   .team_outer_wrapper
     margin-bottom: -50vh
+    //
   #team_inner_wrapper
     h4
       @include sectionTitle($black, 1.9em)
@@ -515,7 +522,6 @@ footer
       padding: 0 0 0 11vw
       section p
         margin: 3em 3em 0 3em
-        //
     & .Mate2
       padding: 0 10vw
       img
@@ -524,7 +530,6 @@ footer
         margin: 0
         p
           margin: 3em 2em 3em 3em
-          //
     & .Mate3
       margin: 2vw 2vw 0 0
       section
