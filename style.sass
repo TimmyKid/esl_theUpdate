@@ -49,7 +49,7 @@ body
 
 .cursor
   @include cursorProps(5px,$red)
-  z-index: 3
+  z-index: 4
   transition-duration: 180ms
   transition-timing-function: ease-out
 
@@ -59,7 +59,7 @@ body
   color: white
   transition-duration: 500ms
   transition-timing-function: ease-out
-  z-index: 2
+  z-index: 3
 
 .vl-1
   @include vl(20%,fixed)
@@ -119,8 +119,9 @@ body
     top: 25%
     left: 48%
   ul
-    margin: 6vh 1em .5em 1em
+    margin: 6vh 1em .5em 0
     text-align: left
+    list-style: none
     li a
       color: darken($grey,20%)
     hr
@@ -149,6 +150,10 @@ body
       @include underline(3.5em,0)
     ins
       margin-left: 19vw
+  .sideBar_foo
+    margin: 0 -10vw
+    p
+      color: white
 
 main
   height: 100vh
@@ -461,7 +466,7 @@ footer
   #sideBar
     width: 100%
     ul
-      margin-top: 15vh
+      margin: 15vh 0 0 12em
   #excerpt .item p
     margin-left: -3em
     //
@@ -516,6 +521,12 @@ footer
   .hamburger_wrapper
     margin-right: .5vw
     //
+  #sideBar
+    ul
+      margin-top: 15vh
+    .sideBar_foo
+      margin: 0 -2vw
+      padding-top: 10vh
   .welcomeGridContainer
     margin-top: $offsetFromTop + 3
     //
