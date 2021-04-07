@@ -27,16 +27,15 @@ $offsetFromTop: 5em
 p
   color: $grey
   font-size: $simpleText
-h1
+h1, #sideBar ul
   font: 100% $primFontStack
   font-size: $title
 h2
   font-size: $subtitle
-a, a:hover, a:visited
+a, a:hover, a:visited, ins
   text-decoration: none
 h4
   font-size: $big
-
 
 body
   @include noScrollBar(0,0)
@@ -50,7 +49,7 @@ body
 
 .cursor
   @include cursorProps(5px,$red)
-  z-index: 3
+  z-index: 4
   transition-duration: 180ms
   transition-timing-function: ease-out
 
@@ -60,7 +59,7 @@ body
   color: white
   transition-duration: 500ms
   transition-timing-function: ease-out
-  z-index: 2
+  z-index: 3
 
 .vl-1
   @include vl(20%,fixed)
@@ -68,6 +67,7 @@ body
   @include vl(50%,absolute)
 .vl-3
   @include vl(80%,fixed)
+  z-index: 3
 
 .logo img
   width: clamp(1.3rem,2.25vw,2rem)
@@ -81,6 +81,7 @@ body
 
 .hamburger_wrapper
   margin-right: 1vw
+  z-index: 3
   .hamburger_icon
     width: 1.75rem
     height: 2px
@@ -90,6 +91,7 @@ body
     width: 1.25rem
   .patty
     width: 1.5rem
+
 .hamburger_wrapper:hover
   .top_bun
     animation: bunHoverEffect .3s
@@ -99,6 +101,59 @@ body
     @include keyframes(botHoverEffect, width, 1.75rem, 1.25rem)
   .hamburger_icon
     background-color: $grey
+
+#sideBar
+  width: 50vw
+  height: 100vh
+  background-color: $black
+  position: absolute
+  right: 0
+  top: 0
+  z-index: 2
+  .void
+    @include circle(clamp(10em,23.4vw,20em),$grey)
+    position: absolute
+  .voidControl
+    @include circle(clamp(3.5em,8.204vw,7em),$grey)
+    position: absolute
+    top: 25%
+    left: 48%
+  ul
+    margin: 6vh 1em .5em 0
+    text-align: left
+    list-style: none
+    li a
+      color: darken($grey,20%)
+    hr
+      border-color: darken($grey,20%)
+      @include defaultSpacing()
+      margin-bottom: .3rem
+    ins
+      color: darken($grey,20%)
+      font-size: $simpleText
+      font-family: $secFontStack
+      margin-left: 15vw
+  .one hr
+      @include underline(2.8em,0)
+  .two
+    hr
+      @include underline(4em,0)
+    ins
+      margin-left: 22vw
+  .three
+    hr
+      @include underline(5.45em,0)
+    ins
+      margin-left: 30.5vw
+  .four
+    hr
+      @include underline(3.5em,0)
+    ins
+      margin-left: 19vw
+  .sideBar_foo
+    margin: 0 -10vw
+    p
+      color: white
 
 main
   height: 100vh
@@ -124,13 +179,13 @@ main
   display: flex
   flex-direction: row
   margin-top: -2em
-  padding: 0 2vw
+  padding: 0 4vw 0 3vw
   #scrollDown_animators .scrollDownIcon
     @include vl(0,static)
     border-color: $red
     height: 7.5em
     opacity: 80%
-    margin-left: 1em
+    margin-left: 1.1em
   & img
     max-width: 7%
     margin-top: 1.5em
@@ -139,12 +194,13 @@ main
     flex-direction: column
     align-items: center
     margin-top: calc(1.5em + 7.5em)
-
     .audioCircle
       @include circle(clamp(1.775rem,2.195vw,2.875rem),white)
+      position: fixed
     p
       font-size: .8rem
-      margin-top: .2rem
+      margin-top: 2rem
+      position: fixed
       // visibility: hidden
 
 #excerpt
@@ -243,6 +299,7 @@ footer
   padding: 5vh 0
   min-height: 100vh
   font-size: $simpleText
+  z-index: 3
   h1
     padding-top: 0.5em
     margin-bottom: 1em
@@ -270,7 +327,6 @@ footer
   ins
     font-family: Segoe UI
     font-size: 12.5px
-    text-decoration: none
     background-color: $darkBlue
     padding: 0.5% 13%
     border-radius: 25px
@@ -293,6 +349,12 @@ footer
   .logo img
     margin-left: -1vw
     //
+  .vl-md
+    z-index: 4
+    visibility: visible
+  .vl-3
+    z-index: 1
+    //
   .hamburger_wrapper
     margin-right: -2.5vw
     .hamburger_icon
@@ -306,11 +368,14 @@ footer
     .top_bun, .bottom_bun
       animation: none
       //
+  #sideBar
+    width: 100%
+    ul
+      margin-top: 15vh
   .scrollDownWrapper
-    position: fixed
-    & #audiocontroller
+    #audiocontroller
       margin-top: $offsetFromTop
-      margin-right: 2vw
+      margin-right: 4vw
       p
         font-size: .4em
         visibility: hidden
@@ -383,6 +448,9 @@ footer
   .cursor, .cursor2
     visibility: hidden
     //
+  .vl-1
+    z-index: 3
+    //
   .hamburger_wrapper
     margin-right: 1vw
     &:hover
@@ -395,6 +463,10 @@ footer
       width: 6%
       margin-left: .1vw
       //
+  #sideBar
+    width: 100%
+    ul
+      margin: 15vh 0 0 12em
   #excerpt .item p
     margin-left: -3em
     //
@@ -449,14 +521,23 @@ footer
   .hamburger_wrapper
     margin-right: .5vw
     //
+  #sideBar
+    ul
+      margin-top: 15vh
+    .sideBar_foo
+      margin: 0 -2vw
+      padding-top: 10vh
   .welcomeGridContainer
     margin-top: $offsetFromTop + 3
+    //
   .scrollDownWrapper
     & img
       width: 6%
       margin-left: .1vw
+      //
   .team_outer_wrapper
     margin-bottom: -50vh
+    //
   #team_inner_wrapper
     h4
       @include sectionTitle($black, 1.9em)
@@ -465,7 +546,6 @@ footer
       padding: 0 0 0 11vw
       section p
         margin: 3em 3em 0 3em
-        //
     & .Mate2
       padding: 0 10vw
       img
@@ -474,7 +554,6 @@ footer
         margin: 0
         p
           margin: 3em 2em 3em 3em
-          //
     & .Mate3
       margin: 2vw 2vw 0 0
       section
