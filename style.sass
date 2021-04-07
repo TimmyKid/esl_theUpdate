@@ -67,7 +67,7 @@ body
   @include vl(50%,absolute)
 .vl-3
   @include vl(80%,fixed)
-  z-index: 1
+  z-index: 3
 
 .logo img
   width: clamp(1.3rem,2.25vw,2rem)
@@ -119,7 +119,7 @@ body
     top: 25%
     left: 48%
   ul
-    margin: .6em 1em .5em 1em
+    margin: 6vh 1em .5em 1em
     text-align: left
     li a
       color: darken($grey,20%)
@@ -344,6 +344,12 @@ footer
   .logo img
     margin-left: -1vw
     //
+  .vl-md
+    z-index: 4
+    visibility: visible
+  .vl-3
+    z-index: 1
+    //
   .hamburger_wrapper
     margin-right: -2.5vw
     .hamburger_icon
@@ -360,7 +366,7 @@ footer
   #sideBar
     width: 100%
     ul
-      margin-top: 1.2em
+      margin-top: 15vh
   .scrollDownWrapper
     #audiocontroller
       margin-top: $offsetFromTop
@@ -437,6 +443,9 @@ footer
   .cursor, .cursor2
     visibility: hidden
     //
+  .vl-1
+    z-index: 3
+    //
   .hamburger_wrapper
     margin-right: 1vw
     &:hover
@@ -449,6 +458,10 @@ footer
       width: 6%
       margin-left: .1vw
       //
+  #sideBar
+    width: 100%
+    ul
+      margin-top: 15vh
   #excerpt .item p
     margin-left: -3em
     //
