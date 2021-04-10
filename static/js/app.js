@@ -7,4 +7,7 @@ document.addEventListener("mousemove", e => {
   cursor.setAttribute( "style", "left: "+(e.clientX - 2.5)+"px; top:"+(e.clientY - 2.5)+"px;");
   cursor2.setAttribute( "style", "left: "+(e.clientX - 15)+"px; top:"+(e.clientY - 15)+"px;");
 });
+document.ready(function() {
+  document.getElementById("#sound")[0].play();
+});
 // document.write(new Date().getFullYear());
