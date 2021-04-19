@@ -1,12 +1,12 @@
 //Go select your laundry not my content
-body {
-  user-drag: none;
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-drag: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-}
+// * {
+//   user-drag: none;
+//   user-select: none;
+//   -moz-user-select: none;
+//   -webkit-user-drag: none;
+//   -webkit-user-select: none;
+//   -ms-user-select: none;
+// }
 @mixin defaultSpacing() {
   margin: 0;
   padding: 0;
@@ -43,7 +43,6 @@ body {
   border-radius: 50%;
   @include setBackgroundColor($color);
   pointer-events: none;
-  // z-index: 99;
 }
 // Virtical Lines
 @mixin vl ($distance,$position) {
