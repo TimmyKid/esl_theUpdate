@@ -19,10 +19,12 @@ $(window).on( "load", function(){
     cursor2.setAttribute("style", "left: 94.89254%; top:88.281%")
   });
 
+
   //Footer/Copyright current date
   date.innerHTML = (new Date().getFullYear());
 
-  //=== Navabar Toggler == 
+  //=== SideBar Toggle Animations ==
+  // ====== Variables Being Used Here =====
   var sB = 0;
   document.querySelector(".button").addEventListener( "click", function i() {
     if (!sB) {
@@ -33,7 +35,13 @@ $(window).on( "load", function(){
       sB = 0
     };
   });
-  const sideBarTimeline = gsap.timeline({ paused: true, })
+
+  var burger_shadow = document.querySelector(".hamburger_wrapper").cloneNode(true);
+  let incision = $(document.querySelector(".button").appendChild(burger_shadow)).css("margin-top","-1.5em");
+
+  const sideBarTimeline = gsap.timeline({ paused: true,})
+    .to( $(burger_shadow),{keyframes: [{x: "75%", autoAlpha: 1},{rotation: 180}, {x:"-=30%"}]})
+    // .to(".top_bun", {x:"30%"})
     .fromTo("#sideBar", {
       x: "100%",
     }, {
@@ -42,13 +50,42 @@ $(window).on( "load", function(){
       ease: "power1.easeIn",
       duration: 1,
       stagger: 0.3,
-    })
+    },"<")
     .from( "#sideBar hr", {x: "50%", autoAlpha: 0, duration: 1},"<")
     .from( "#sideBar ul li a ", { y: "20%", autoAlpha: 0, duration: .5, ease: "circ.easeInOut", stagger: 0.2})
     .from( "#sideBar ins",{ y: "-50%", autoAlpha: 0,})
     .from( ".sideBar_foo", { y: "20%", autoAlpha: 0, ease: "sine.easeIn" },"<.2")
     .from(".void" ,{  autoAlpha: 0, duration: .5})
     .from(".voidControl" ,{  autoAlpha: 0, duration: .5}, "<.1")
+
+  // === Void Animations ===
+  // const voide = document.querySelector(".void");
+  // const voidControl = document.querySelector(".voidControl");
+
+  $( "#sideBar" ).mouseleave( function (w) {
+    gsap.to( '.void, .voidControl', {scale: 1, duration: 0.3, x: 0, y: 0});
+  });
+  $( "#sideBar" ).mouseenter( function (w){
+    gsap.to( '.void', {scale: 1.3, duration: 0.3})
+  });
+  $( "#sideBar" ).mousemove( function (w) {
+    callParallax(w);
+  });
+  function callParallax(w) {
+    parallaxIt(w,'.void',80);
+    parallaxIt(w,'.voidControl',-40);
+  };
+  function parallaxIt(w, target, movement) {
+    var $this = $('.voidControl');
+    var relX = w.clientX - $this.offset().left;
+    var relY = w.clientY - $this.offset().top;
+    gsap.to( target, {
+      duration: 0.3,
+      x: (relX - $this.width() + 485 /2)/$this.width()* movement,
+      y: (relY - $this.height() + 300/3)/$this.height()*movement,
+    })
+  };
+
 
 
   // >>>> Cursive__behaviour >>>>
@@ -62,9 +99,10 @@ $(window).on( "load", function(){
 
 
   // GSAP -- ANIMATIONS ----
-// gsap.registerPlugin(MotionPathPlugin);
 
-// gsap.to("#dot",{duration: 4, motionPath:"#path"});
+  // gsap.registerPlugin(MotionPathPlugin);
+  // gsap.to("#dot",{duration: 4, motionPath:"#path"});
+
   // Gsap Global Variables >>>>>
   const word = ["Elevete Solutions."]
 
@@ -149,7 +187,6 @@ $(window).on( "load", function(){
     ease: "circ.easeIn",
     duration: 1.5,
   });
-
   // ==== Team animations -- Reveal on Scroll ====
 
 
