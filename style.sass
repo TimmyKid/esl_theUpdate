@@ -36,12 +36,6 @@ a, a:hover, a:visited, ins
   text-decoration: none
 h4
   font-size: $big
-.hover-on-link
-  transform: scale(1.3)
-  backdrop-filter: none
-
-
-
 
 body
   @include noScrollBar(0,0)
@@ -69,6 +63,7 @@ body
   transition-timing-function: ease-out
   top: 90.281%
   left: 95.77254%
+
 .cursor2
   @include cursorProps(35px,transparent)
   border: 1.5px solid
@@ -78,6 +73,9 @@ body
   top: 88.281%
   left: 94.89254%
   backdrop-filter: blur(5px)
+
+.hover-on-link
+  @include hoverthismf(overlay)
 
 .vl-1
   @include vl(20%,fixed)

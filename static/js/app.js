@@ -11,6 +11,7 @@ $(window).on( "load", function(){
     cursor.setAttribute( "style", "left: "+(e.clientX - 2.5)+"px; top:"+(e.clientY - 2.5)+"px;");
     cursor2.setAttribute( "style", "left: "+(e.clientX - 17.5)+"px; top:"+(e.clientY - 17.5)+"px;");
   });
+
   // document.onload()
   $(window).mouseleave(function() {
       // cursor.setAttribute("style", "opacity: 0")
@@ -22,11 +23,31 @@ $(window).on( "load", function(){
   //Footer/Copyright current date
   date.innerHTML = (new Date().getFullYear());
 
+  // Hover over links and images effects
+  var whatToHover = [$('a'),$('img')]
+
+  whatToHover.forEach(element => {
+    element.mouseover(function mouseWentOverYourHead() {
+      cursor2.classList.add("hover-on-link")
+      console.log("found it!")
+    });
+    element.mouseleave(function mouseWentOverYourHead() {
+      cursor2.classList.remove("hover-on-link")
+      console.log("found it!")
+    });
+  });
+
+
+
   //=== SideBar Toggle Animations ==
   // ====== Variables Being Used Here =====
   var sB = 0;
+  var burger = document.querySelector(".hamburger_wrapper")
+
   document.querySelector(".button").addEventListener( "click", function i() {
     if (!sB) {
+      // $( burger ).click(false);
+      // $('.hamburger_wrapper').click(function(){return false;});
       sideBarTimeline.play()
       sB = 1
     } else {
@@ -35,12 +56,10 @@ $(window).on( "load", function(){
     };
   });
 
-  var burger = document.querySelector(".hamburger_wrapper")
   let burger_shadow = burger.cloneNode(true);
   //== set Clone New unique clone name ==
   var theClassName = burger_shadow.getAttribute('class');
   burger_shadow.setAttribute('class', theClassName + " clone");
-
 
 
   let incision = $(document.querySelector(".button").appendChild(burger_shadow)).css("margin-top","-1.5em");
@@ -115,9 +134,7 @@ $(window).on( "load", function(){
   };
 
 
-
   // >>>> Cursive__behaviour >>>>
-
 
   // document.ready(function() {
   //   document.getElementById("#sound")[0].play();
@@ -154,7 +171,7 @@ $(window).on( "load", function(){
   //
 
   // ==== Excerpt Reveal on Scroll ====
-  gsap.from("#excerpt .item h1", {
+  gsap.from(".item h1", {
     scrollTrigger: {
       trigger: "#excerpt .item h1",
       toggleActions: "play pause restart reset"
@@ -164,7 +181,7 @@ $(window).on( "load", function(){
     ease: "circ.easeIn",
     duration: 1
   });
-  gsap.from("#excerpt .item2 h1", {
+  gsap.from(".item2 h1", {
     scrollTrigger: {
       trigger: "#excerpt .item2 h1",
       toggleActions: "play pause restart reset"
@@ -174,7 +191,7 @@ $(window).on( "load", function(){
     ease: "circ.easeIn",
     duration: 1
   });
-  gsap.from("#excerpt .item3 h1", {
+  gsap.from(".item3 h1", {
     scrollTrigger: {
       trigger: "#excerpt .item3 h1",
       toggleActions: "play pause restart reset"
@@ -185,7 +202,7 @@ $(window).on( "load", function(){
     duration: 1
   });
   // == Excerpt Section Paragraph
-  gsap.from("#excerpt .item p", {
+  gsap.from(".item p", {
     scrollTrigger: {
       trigger: "#excerpt .item p",
       toggleActions: "play pause restart reset"
@@ -195,7 +212,7 @@ $(window).on( "load", function(){
     ease: "circ.easeIn",
     duration: 1.5,
   });
-  gsap.from("#excerpt .item2 p", {
+  gsap.from(".item2 p", {
     scrollTrigger: {
       trigger: "#excerpt .item2 p",
       toggleActions: "play pause restart reset"
@@ -205,7 +222,7 @@ $(window).on( "load", function(){
     ease: "circ.easeIn",
     duration: 1.5,
   });
-  gsap.from("#excerpt .item3 p", {
+  gsap.from(".item3 p", {
     scrollTrigger: {
       trigger: "#excerpt .item3 p",
       toggleActions: "play pause restart reset"
