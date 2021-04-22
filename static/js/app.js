@@ -9,7 +9,7 @@ $(window).on( "load", function(){
   // Custom cursor animations ========
   document.addEventListener("mousemove", e => {
     cursor.setAttribute( "style", "left: "+(e.clientX - 2.5)+"px; top:"+(e.clientY - 2.5)+"px;");
-    cursor2.setAttribute( "style", "left: "+(e.clientX - 15)+"px; top:"+(e.clientY - 15)+"px;");
+    cursor2.setAttribute( "style", "left: "+(e.clientX - 17.5)+"px; top:"+(e.clientY - 17.5)+"px;");
   });
   // document.onload()
   $(window).mouseleave(function() {
@@ -18,7 +18,6 @@ $(window).on( "load", function(){
     $(cursor).css("opacity","0")
     cursor2.setAttribute("style", "left: 94.89254%; top:88.281%")
   });
-
 
   //Footer/Copyright current date
   date.innerHTML = (new Date().getFullYear());
@@ -36,22 +35,54 @@ $(window).on( "load", function(){
     };
   });
 
-  var burger_shadow = document.querySelector(".hamburger_wrapper").cloneNode(true);
-  let incision = $(document.querySelector(".button").appendChild(burger_shadow)).css("margin-top","-1.5em");
+  var burger = document.querySelector(".hamburger_wrapper")
+  let burger_shadow = burger.cloneNode(true);
+  //== set Clone New unique clone name ==
+  var theClassName = burger_shadow.getAttribute('class');
+  burger_shadow.setAttribute('class', theClassName + " clone");
 
+
+
+  let incision = $(document.querySelector(".button").appendChild(burger_shadow)).css("margin-top","-1.5em");
   const sideBarTimeline = gsap.timeline({ paused: true,})
-    .to( $(burger_shadow),{keyframes: [{x: "75%", autoAlpha: 1},{rotation: 180}, {x:"-=30%"}]})
-    // .to(".top_bun", {x:"30%"})
+    // .from( "#overlay", { y: '-100%',visibility: 'show'  duration: .4})
+    .to( $(burger_shadow),{keyframes: [{x: "75%", autoAlpha: 1, duration: .3},{rotationX: 180, duration: .3}]})
+    // === Bun and Patties partying ===
+    .to( ".clone .top_bun", { x:"-15%",duration: .1})
+    .to( ".clone .patty", {x:"-30%",duration: .3},"<")
+    .to( ".clone .bottom_bun", {x:"-40%",duration: .3},"<")
+
+    // === This is cool ===
+    .to( ".clone .patty, .clone .bottom_bun", {y:"-400%",})
+    .to( ".top_bun, .patty", {y:"400%"},"<")
+    .to( ".clone .top_bun", { y: "0%"},"<")
+    // $(".clone").off()
+    .to( ".clone .patty, .clone .bottom_bun", {y:"-400%"},"<")
+    .to( ".bottom_bun", {rotate: "90%", y:"500%",transformOrigin: "90% 0%"},"<")
+    .to( ".clone .top_bun", {rotate: "-90", x:"-25%", y:"-410%",transformOrigin: "-9% 0%"},"<")
+    .to( ".clone .bottom_bun", {rotate: "0%", y:"-350%"}, "<")
+    .to( ".top_bun", {y:"800%", duration: 1},"<")
+    .to( ".clone .top_bun", {y:"-410%", duration: 1.5},"<")
+    .to( ".clone .bottom_bun", {y:"-800%", duration: .8},"<")
+    .to( ".patty",{rotate:"45%", transformOrigin: "right"},"<.5")
+    .to( ".clone .patty", {rotate:"-45%", transformOrigin: "left"},"<")
+
+    // multiplier = 0.6625
+    // .to( "j")s
+    // .to( ".clone .top_bun", {rotate: "90%", transformOrigin: "-150% -150%"})
+    // .to( "justAnimating .bottom_bun, .clone .top_bun", { y:(75 - 39 + "%" )},"<")
+
+
     .fromTo("#sideBar", {
       x: "100%",
     }, {
       x: "0%",
       className: "-=container-fluid",
       ease: "power1.easeIn",
-      duration: 1,
+      duration: .8,
       stagger: 0.3,
-    },"<")
-    .from( "#sideBar hr", {x: "50%", autoAlpha: 0, duration: 1},"<")
+    },"<-0.7")
+    .from( "#sideBar hr", {x: "50%", autoAlpha: 0, duration: 1},"<.5")
     .from( "#sideBar ul li a ", { y: "20%", autoAlpha: 0, duration: .5, ease: "circ.easeInOut", stagger: 0.2})
     .from( "#sideBar ins",{ y: "-50%", autoAlpha: 0,})
     .from( ".sideBar_foo", { y: "20%", autoAlpha: 0, ease: "sine.easeIn" },"<.2")
@@ -59,9 +90,6 @@ $(window).on( "load", function(){
     .from(".voidControl" ,{  autoAlpha: 0, duration: .5}, "<.1")
 
   // === Void Animations ===
-  // const voide = document.querySelector(".void");
-  // const voidControl = document.querySelector(".voidControl");
-
   $( "#sideBar" ).mouseleave( function (w) {
     gsap.to( '.void, .voidControl', {scale: 1, duration: 0.3, x: 0, y: 0});
   });
@@ -76,7 +104,7 @@ $(window).on( "load", function(){
     parallaxIt(w,'.voidControl',-40);
   };
   function parallaxIt(w, target, movement) {
-    var $this = $('.voidControl');
+    var $this = $('.voidControl, .void');
     var relX = w.clientX - $this.offset().left;
     var relY = w.clientY - $this.offset().top;
     gsap.to( target, {
