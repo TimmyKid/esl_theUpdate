@@ -12,6 +12,19 @@
     <title>Elevete Solutions</title>
   </head>
   <body>
+    <!-- Pre-loader -->
+    <div id="preLoader" class="page">
+      <div class="vl vl-1"></div>
+      <div class="vl vl-3"></div>
+      <div class="hollowVoidSpace">
+        <div class="hollowVoid"></div>
+      </div>
+      <div class="action">
+        <div class="loadVoid"></div>
+        <p>78%</p>
+        <p id="informatics" class="text-center">Loading...</p>
+      </div>
+    </div>
     <!-- Verical Lines -->
     <div class="virtical_lines">
       <div class="vl vl-1"></div>
@@ -76,7 +89,7 @@
           <div class="text-center">
             <h1>to</h1>
             <div class="d-flex justify-content-center">
-              <h3 class="introText" onmouseover="mouseWentOverYourHead(this)">Elevete Solutions.</h3>
+              <h3 class="introText">Elevete Solutions.</h3>
               <span class="blinkr"></span>
             </div>
           </div>
@@ -132,7 +145,7 @@
       <div id="team_inner_wrapper">
         <div class="team Mate">
             <img src="./static/img/Brian.png" alt="avi1" draggable="false">
-            <h4>The team</h4>
+            <h4 id="titleBig">The team</h4>
             <section>
               <h1>Brian Karimi</h1>
               <hr>
@@ -163,7 +176,7 @@
 
     <section id="aboutUs">
       <div class="container-fluid">
-        <h4>About us</h4>
+        <h4 id="titleBig">About us</h4>
         <!-- The scrollTrack & tracker for mobile devices -->
         <div class="scrollTrack">
           <div class="tracker"></div>
@@ -186,13 +199,13 @@
       <address class="my-2">
         Mpaka Plaza, 3rd Flr | Mpaka Road Nairobi, KE<br>
         P.O Box 43121 00100<br><br>
-        <i class="fa fa-envelope"></i> info@elevetesolutions.com<br>
+        <i class="fa fa-envelope"></i> <a href="mailto:info@elevetesolutions.com?subject=Mail%20from%20Our%20Site">info@elevetesolutions.com</a><br>
         +254 731 727 568<br>
         +254 721 862 780 | +254 722 886 961 |<br>
         +254 726 448 025
       </address>
       <!-- Gibberish dots used as underline before the socials icons -->
-      <ul id="underline" class="d-flex justify-content-center">
+      <ul id="underline" class="d-flex justify-content-center pt-4">
         <li></li><li></li><li></li><li></li><!-- underline -->
       </ul>
       <!-- Social Media buttons -->
@@ -205,10 +218,10 @@
         </ul>
       </div>
       <!-- End Note and copyright Bar -->
-      <ins class="mb-5 link">
+      <div id="ins" class="link justify-content-center">
         &copy;<span id="year"></span>
         Copyright : <a href="https://Elevetesolutions.com/"><b>Elevetesolutions.com</b></a>
-      </ins>
+      </div>
     </footer>
 
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.js"></script> -->

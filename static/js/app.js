@@ -24,32 +24,27 @@ $(window).on( "load", function(){
   date.innerHTML = (new Date().getFullYear());
 
   // Hover over links and images effects
-  var whatToHover = [$('a'),$('img')]
-
+  var whatToHover = [$('a'),$('img'),$('.hamburger_wrapper')]
   whatToHover.forEach(element => {
     element.mouseover(function mouseWentOverYourHead() {
       cursor2.classList.add("hover-on-link")
-      console.log("found it!")
     });
     element.mouseleave(function mouseWentOverYourHead() {
-      cursor2.classList.remove("hover-on-link")
-      console.log("found it!")
+      cursor2.classList.remove("hover-on-link").animate(.5)
     });
   });
-
-
 
   //=== SideBar Toggle Animations ==
   // ====== Variables Being Used Here =====
   var sB = 0;
   var burger = document.querySelector(".hamburger_wrapper")
-
   document.querySelector(".button").addEventListener( "click", function i() {
     if (!sB) {
-      // $( burger ).click(false);
-      // $('.hamburger_wrapper').click(function(){return false;});
       sideBarTimeline.play()
       sB = 1
+      // sideBarTimeline.play().onComplete(() => {
+      //   $('.hamburger_wrapper').click(function(){return true;});
+      // });
     } else {
       sideBarTimeline.reverse();
       sB = 0
@@ -57,10 +52,9 @@ $(window).on( "load", function(){
   });
 
   let burger_shadow = burger.cloneNode(true);
-  //== set Clone New unique clone name ==
+  //== get && set Clone's New unique clone name ==
   var theClassName = burger_shadow.getAttribute('class');
   burger_shadow.setAttribute('class', theClassName + " clone");
-
 
   let incision = $(document.querySelector(".button").appendChild(burger_shadow)).css("margin-top","-1.5em");
   const sideBarTimeline = gsap.timeline({ paused: true,})
@@ -86,12 +80,7 @@ $(window).on( "load", function(){
     .to( ".patty",{rotate:"45%", transformOrigin: "right"},"<.5")
     .to( ".clone .patty", {rotate:"-45%", transformOrigin: "left"},"<")
 
-    // multiplier = 0.6625
-    // .to( "j")s
-    // .to( ".clone .top_bun", {rotate: "90%", transformOrigin: "-150% -150%"})
-    // .to( "justAnimating .bottom_bun, .clone .top_bun", { y:(75 - 39 + "%" )},"<")
-
-
+    // === SideBar coming through ===
     .fromTo("#sideBar", {
       x: "100%",
     }, {
@@ -104,7 +93,7 @@ $(window).on( "load", function(){
     .from( "#sideBar hr", {x: "50%", autoAlpha: 0, duration: 1},"<.5")
     .from( "#sideBar ul li a ", { y: "20%", autoAlpha: 0, duration: .5, ease: "circ.easeInOut", stagger: 0.2})
     .from( "#sideBar ins",{ y: "-50%", autoAlpha: 0,})
-    .from( ".sideBar_foo", { y: "20%", autoAlpha: 0, ease: "sine.easeIn" },"<.2")
+    .from( ".sideBar_foo", { yPercent: "20%", autoAlpha: 0, ease: "power4", duration: 1.5},"<.2")
     .from(".void" ,{  autoAlpha: 0, duration: .5})
     .from(".voidControl" ,{  autoAlpha: 0, duration: .5}, "<.1")
 
@@ -112,12 +101,15 @@ $(window).on( "load", function(){
   $( "#sideBar" ).mouseleave( function (w) {
     gsap.to( '.void, .voidControl', {scale: 1, duration: 0.3, x: 0, y: 0});
   });
+
   $( "#sideBar" ).mouseenter( function (w){
     gsap.to( '.void', {scale: 1.3, duration: 0.3})
   });
+
   $( "#sideBar" ).mousemove( function (w) {
     callParallax(w);
   });
+
   function callParallax(w) {
     parallaxIt(w,'.void',80);
     parallaxIt(w,'.voidControl',-40);
@@ -128,8 +120,8 @@ $(window).on( "load", function(){
     var relY = w.clientY - $this.offset().top;
     gsap.to( target, {
       duration: 0.3,
-      x: (relX - $this.width() + 485 /2)/$this.width()* movement,
-      y: (relY - $this.height() + 300/3)/$this.height()*movement,
+      x: (relX - $this.width() /2)/$this.width(),
+      y: (relY - $this.height() /2)/$this.height(),
     })
   };
 
@@ -171,68 +163,183 @@ $(window).on( "load", function(){
   //
 
   // ==== Excerpt Reveal on Scroll ====
-  gsap.from(".item h1", {
-    scrollTrigger: {
-      trigger: "#excerpt .item h1",
-      toggleActions: "play pause restart reset"
-    },
-    x: "20%",
-    autoAlpha: 0,
-    ease: "circ.easeIn",
-    duration: 1
-  });
-  gsap.from(".item2 h1", {
-    scrollTrigger: {
-      trigger: "#excerpt .item2 h1",
-      toggleActions: "play pause restart reset"
-    },
-    x: "20%",
-    autoAlpha: 0,
-    ease: "circ.easeIn",
-    duration: 1
-  });
-  gsap.from(".item3 h1", {
-    scrollTrigger: {
-      trigger: "#excerpt .item3 h1",
-      toggleActions: "play pause restart reset"
-    },
-    x: "20%",
-    autoAlpha: 0,
-    ease: "circ.easeIn",
-    duration: 1
+  slideTheseTitles = [$(".item h1"),$(".item2 h1"),$(".item3 h1")];
+  slideTheseTitles.forEach(item => {
+    gsap.from( item, {
+      scrollTrigger: {
+        trigger: item,
+        toggleActions: "play pause restart reset"
+      },
+      x: "20%",
+      autoAlpha: 0,
+      ease: "circ.easeIn",
+      duration: 1
+    })
   });
   // == Excerpt Section Paragraph
-  gsap.from(".item p", {
-    scrollTrigger: {
-      trigger: "#excerpt .item p",
-      toggleActions: "play pause restart reset"
-    },
-    x: "20%",
-    autoAlpha: 0,
-    ease: "circ.easeIn",
-    duration: 1.5,
+  slideTheseParagraphs = [$(".item p"), $(".item2 p"), $(".item3 p")];
+  slideTheseParagraphs.forEach(paragraph => {
+    gsap.from(paragraph, {
+      scrollTrigger: {
+        trigger: paragraph,
+        toggleActions: "play pause restart reset"
+      },
+      x: "20%",
+      autoAlpha: 0,
+      ease: "circ.easeIn",
+      duration: 1.5,
+    });
   });
-  gsap.from(".item2 p", {
-    scrollTrigger: {
-      trigger: "#excerpt .item2 p",
-      toggleActions: "play pause restart reset"
-    },
-    x: "20%",
-    autoAlpha: 0,
-    ease: "circ.easeIn",
-    duration: 1.5,
-  });
-  gsap.from(".item3 p", {
-    scrollTrigger: {
-      trigger: "#excerpt .item3 p",
-      toggleActions: "play pause restart reset"
-    },
-    x: "20%",
-    autoAlpha: 0,
-    ease: "circ.easeIn",
-    duration: 1.5,
-  });
+
+
   // ==== Team animations -- Reveal on Scroll ====
+  gsap.from(".mate h1", {
+    scrollTrigger: {
+      trigger: ".team h1",
+      toggleActions: "play pause restart reset"
+    },
+    x: "20%",
+    autoAlpha: 0,
+    ease: "circ.easeIn",
+    duration: 1.,
+  });
+  gsap.from(".mate h2", {
+    scrollTrigger: {
+      trigger: ".team h2",
+      toggleActions: "play pause restart reset"
+    },
+    x: "20%",
+    autoAlpha: 0,
+    ease: "circ.easeIn",
+    duration: 2
+  });
+  gsap.from(".mate p", {
+    scrollTrigger: {
+      trigger: ".team p",
+      toggleActions: "play pause restart reset"
+    },
+    x:"40%",
+    autoAlpha: 0,
+    ease: "circ.easeIn",
+    duration: 2
+  });
 
+  // Second Character P.S Can this be anymore redundant??? *sigh* // TO BE LOOKED AT AFTER SNAP IS WRITTEN
+  gsap.from(".mate2 h1", {
+    scrollTrigger: {
+      trigger: ".mate2 h1",
+      toggleActions: "play pause restart reset"
+    },
+    x: "20%",
+    autoAlpha: 0,
+    ease: "circ.easeIn",
+    duration: 1.,
+  });
+  gsap.from(".mate2 h2", {
+    scrollTrigger: {
+      trigger: ".mate2 h2",
+      toggleActions: "play pause restart reset"
+    },
+    x: "20%",
+    autoAlpha: 0,
+    ease: "circ.easeIn",
+    duration: 2
+  });
+  gsap.from(".mate2 p", {
+    scrollTrigger: {
+      trigger: ".mate2 p",
+      toggleActions: "play pause restart reset"
+    },
+    x:"40%",
+    autoAlpha: 0,
+    ease: "circ.easeIn",
+    duration: 2
+  });
+  // Second Character P.S Can this be anymore redundant??? *sigh*
+  gsap.from(".mate3 h1", {
+    scrollTrigger: {
+      trigger: ".mate3 h1",
+      toggleActions: "play pause restart reset"
+    },
+    x: "20%",
+    autoAlpha: 0,
+    ease: "circ.easeIn",
+    duration: 1.,
+  });
+  gsap.from(".mate3 h2", {
+    scrollTrigger: {
+      trigger: ".mate3 h2",
+      toggleActions: "play pause restart reset"
+    },
+    x: "20%",
+    autoAlpha: 0,
+    ease: "circ.easeIn",
+    duration: 2
+  });
+  gsap.from(".mate3 p", {
+    scrollTrigger: {
+      trigger: ".mate3 p",
+      toggleActions: "play pause restart reset"
+    },
+    x:"40%",
+    autoAlpha: 0,
+    ease: "circ.easeIn",
+    duration: 2
+  });
 
+  //About Section
+  gsap.from(".text", {
+    scrollTrigger: {
+      trigger: ".text",
+      toggleActions: "play pause restart reset"
+    },
+    y: "80%",
+    ease: "circ.easeIn",
+    duration: 10,
+    delay: 1.5
+  });
+
+  // footer text animation??
+  gsap.from($("footer h1"), {
+    scrollTrigger: {
+      trigger: "footer h1",
+      toggleActions: "play none restart reset"
+    },
+    autoAlpha:0 ,
+    ease: "circ.easeIn",
+    duration: 2
+  });
+  gsap.from($("address"), {
+    scrollTrigger: {
+      trigger: "address",
+      toggleActions: "play reset restart reset"
+    },
+    y:"40%",
+    autoAlpha:0 ,
+    ease: "circ.easeIn",
+    duration: 1
+  });
+  gsap.from($("footer ul"), {
+    scrollTrigger: {
+      trigger: "footer ul",
+      toggleActions: "play reset restart reset"
+    },
+    autoAlpha:0,
+    duration: 1,
+    y:"40%",
+    scale: 0.3,
+  });
+  gsap.from($("#ins"), {
+    scrollTrigger: {
+      trigger: "#ins",
+      toggleActions: "play restart restart reset"
+    },
+    autoAlpha: 0,
+    ease: "circ.easeIn",
+    duration: 2,
+    rotate: "1780%",
+    y: "520%",
+    zIndex: -1
+  });
+  // ==== END OF SESSION, CLASS DISMISSED BY timothyTheyKnow.
 });

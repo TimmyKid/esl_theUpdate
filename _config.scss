@@ -50,8 +50,8 @@
   transform: scale(1.3);
   border-color: none;
   backdrop-filter: none;
-  background-color: darken($grey,20%);
   mix-blend-mode: $bMmode;
+  background-color: $grey;
 }
 
 // Virtical Lines
@@ -103,7 +103,6 @@
   text-align: right;
   margin-right: 4em;
 }
-
 
 // ========= @keyframes animations ==============
 /*-- Hamburger hover action keyframe, IK it's a lot! --*/
