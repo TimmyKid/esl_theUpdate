@@ -17,7 +17,8 @@ $(window).on( "load", function(){
       // cursor.setAttribute("style", "opacity: 0")
       // cursor2.style.opacity = "0"
     $(cursor).css("opacity","0")
-    cursor2.setAttribute("style", "left: 94.89254%; top:88.281%")
+    $(cursor2).css("z-index","0")
+    gsap.to($(cursor2),{css:{x:"100%",y:"100%"}})
   });
 
   //Footer/Copyright current date
@@ -26,13 +27,37 @@ $(window).on( "load", function(){
   // Hover over links and images effects
   var whatToHover = [$('a'),$('img'),$('.hamburger_wrapper')]
   whatToHover.forEach(element => {
-    element.mouseover(function mouseWentOverYourHead() {
+    element.mouseover(function mouseWentOverYourHead() { x:"-20%"
       cursor2.classList.add("hover-on-link")
     });
     element.mouseleave(function mouseWentOverYourHead() {
-      cursor2.classList.remove("hover-on-link").animate(.5)
+      cursor2.classList.remove("hover-on-link")
     });
   });
+
+  // Image reveal animations
+  gsap.utils.toArray('#excerpt img, .team img').forEach((el, index) => {
+  let imgEnter = gsap.timeline({
+    scrollTrigger: {
+      trigger: el,
+      start: "top bottom",
+      toggleActions: "play none none reverse",
+      // markers: true
+    }
+  });
+  imgEnter
+    .set(el, {transformOrigin: 'center center'})
+    .fromTo(el, { opacity: 0, scale: 0.8, y: "+=100"}, {opacity: 1, scale: 1, y: 0, duration: 1, immediateRender: false})
+  })
+
+  // Logo animations
+  gsap.utils.toArray("h5 span").forEach((el, index) => {
+    document.querySelector(".spanFirst").addEventListener("mouseenter", function(){
+      console.log('It works')
+      gsap.to(el, {x:"50%", duration: 3})
+    });
+  });
+
 
   //=== SideBar Toggle Animations ==
   // ====== Variables Being Used Here =====
@@ -56,7 +81,7 @@ $(window).on( "load", function(){
   var theClassName = burger_shadow.getAttribute('class');
   burger_shadow.setAttribute('class', theClassName + " clone");
 
-  let incision = $(document.querySelector(".button").appendChild(burger_shadow)).css("margin-top","-1.5em");
+  let incision = $(document.querySelector(".button").appendChild(burger_shadow)).css("margin-top","-1.7924vw");
   const sideBarTimeline = gsap.timeline({ paused: true,})
     // .from( "#overlay", { y: '-100%',visibility: 'show'  duration: .4})
     .to( $(burger_shadow),{keyframes: [{x: "75%", autoAlpha: 1, duration: .3},{rotationX: 180, duration: .3}]})
@@ -87,29 +112,27 @@ $(window).on( "load", function(){
       x: "0%",
       className: "-=container-fluid",
       ease: "power1.easeIn",
-      duration: .8,
+      duration: .5,
       stagger: 0.3,
-    },"<-0.7")
-    .from( "#sideBar hr", {x: "50%", autoAlpha: 0, duration: 1},"<.5")
-    .from( "#sideBar ul li a ", { y: "20%", autoAlpha: 0, duration: .5, ease: "circ.easeInOut", stagger: 0.2})
-    .from( "#sideBar ins",{ y: "-50%", autoAlpha: 0,})
-    .from( ".sideBar_foo", { yPercent: "20%", autoAlpha: 0, ease: "power4", duration: 1.5},"<.2")
-    .from(".void" ,{  autoAlpha: 0, duration: .5})
-    .from(".voidControl" ,{  autoAlpha: 0, duration: .5}, "<.1")
+    },"<-1.3")
+    .from( "#sideBar hr", {x: "50%", autoAlpha: 0, duration: .5},"<.5")
+    .from( "#sideBar ul li a ", { y: "20%", autoAlpha: 0, duration: .5, ease: "circ.easeInOut", stagger: 0.2},"<-.5")
+    .from( "#sideBar ins",{ y: "-50%", autoAlpha: 0},"<.8")
+    .from( ".sideBar_foo", { yPercent: "20%", autoAlpha: 0, ease: "power4", duration: 1.5},"<.5")
+    .from(".void" ,{  autoAlpha: 0, duration: .5},"<.2")
+    .from(".voidControl" ,{  autoAlpha: 0, duration: .5}, "<")
 
-  // === Void Animations ===
+  // === Void Control Animation for the sideBar ===
   $( "#sideBar" ).mouseleave( function (w) {
     gsap.to( '.void, .voidControl', {scale: 1, duration: 0.3, x: 0, y: 0});
   });
-
   $( "#sideBar" ).mouseenter( function (w){
     gsap.to( '.void', {scale: 1.3, duration: 0.3})
   });
-
   $( "#sideBar" ).mousemove( function (w) {
     callParallax(w);
   });
-
+  // Call to action
   function callParallax(w) {
     parallaxIt(w,'.void',80);
     parallaxIt(w,'.voidControl',-40);
@@ -120,14 +143,12 @@ $(window).on( "load", function(){
     var relY = w.clientY - $this.offset().top;
     gsap.to( target, {
       duration: 0.3,
-      x: (relX - $this.width() /2)/$this.width(),
-      y: (relY - $this.height() /2)/$this.height(),
+      x: (relX - $this.width() + 485 /2)/$this.width()* movement,
+      y: (relY - $this.height() + 300/3)/$this.height()*movement,
     })
   };
 
-
   // >>>> Cursive__behaviour >>>>
-
   // document.ready(function() {
   //   document.getElementById("#sound")[0].play();
   // });
@@ -336,10 +357,8 @@ $(window).on( "load", function(){
     },
     autoAlpha: 0,
     ease: "circ.easeIn",
-    duration: 2,
-    rotate: "1780%",
-    y: "520%",
-    zIndex: -1
+    duration: 1,
+    y: "200%",
   });
   // ==== END OF SESSION, CLASS DISMISSED BY timothyTheyKnow.
 });

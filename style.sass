@@ -12,7 +12,7 @@ $secFontStack: PMingLiU-ExtB, MingLiU_HKSCS-ExtB, Garamond
 
 // fONT-SIZES,DISTANCE,OFFSETS, Spacings
 $big: clamp(5rem, 20.51vw, 40rem)
-$title : clamp(2.95rem, 5.86vw, 7rem)
+$title : clamp(2.75rem, 5.86vw, 7rem)
 $subtitle: clamp(1.6rem, 3.296836vw, 4.5rem)
 $simpleText: clamp(.955rem, 1.3185vw, 2.125rem)
 //offsets spacing and margins around Relative Viewports ==>
@@ -53,7 +53,7 @@ body
   width: 100vw
   background-color: $grey
   background-image: inherit
-  overflow-y: hidden
+  visibility: hidden
   z-index: 5
   .vl
     position: absolute
@@ -83,7 +83,6 @@ body
     font-size: $simpleText
     margin: clamp(6.5em,12.5vw,20em) 0 0 3.5vw
 
-
 #overlay
   position: absolute
   height: 100vh
@@ -96,23 +95,29 @@ body
 .cursor
   @include cursorProps(5px,$red)
   z-index: 6
+  top: 42.1%
+  left: 49.8%
   // transition-duration: 180ms
   // transition-timing-function: ease-out
-  top: 90.281%
-  left: 95.77254%
 
 .cursor2
   @include cursorProps(35px,transparent)
   border: 1.5px solid
   z-index: 5
-  top: 88.281%
-  left: 94.89254%
+  top: 40%
+  left: 48.7%
   backdrop-filter: blur(5px)
   transition-duration: 500ms
   transition-timing-function: ease-out
 
+.navbar-brand, .button
+  margin-top: .5em
 .hover-on-link
   @include hoverthismf(overlay)
+main .float-right
+  color: white
+  margin: 5em 1.5em 0 0
+  z-index: 55555
 
 .vl-1
   @include vl(20%,fixed)
@@ -138,7 +143,6 @@ body
   color: white
   font-family: Segoe UI
   font-size: $simpleText
-  margin-left: 3px
   line-height: 2em
 
 .hamburger_wrapper
@@ -188,10 +192,9 @@ body
     list-style: none
     li a
       color: darken($grey,20%)
-    li a:hover
-      color: $red
-      transition: all ease-in 1s
-      transform: transition(0%)
+    & a:hover
+      color: white !important
+      transition: all ease-in 150ms
     hr
       border-color: darken($grey,20%)
       @include defaultSpacing()
@@ -241,6 +244,7 @@ main
   #preFace
     align-self: center
     grid-column: 2
+    margin-top: 1em
     h1
       // line-height: 1.0em ============================
     h3
@@ -396,7 +400,7 @@ footer
       box-shadow: 0 2px 5px rgba(0,0,0.3)
   // {Copyright. Rights and License reserved.} ====
   #ins
-    display: block
+    display: inline-block
     // position: absolute
     // justify-content: center
     // align-self: center
@@ -404,10 +408,12 @@ footer
     font-size: 12.5px
     background-color: $darkBlue
     padding: 0.5% 13%
-    margin-top: clamp(5vh,0,-55vh)
-    margin-right: 28vw
-    margin-left: 28vw
+    margin-top: 1em
+    // margin-top: clamp(5vh,0,-55vh)
+    // margin-right: 28vw
+    // margin-left: 28vw
     border-radius: 25px
+    z-index: 100
     a
       color: $red
       &:hover
@@ -439,12 +445,12 @@ footer
     //
   .vl-md
     z-index: 4
-    visibility: visible
+    visibility: hidden
   .vl-3
     z-index: 1
     //
   .hamburger_wrapper
-    margin-right: -2.5vw
+    margin-right: -2vw
     .hamburger_icon
       width: 1.5rem
       height: 1px
@@ -452,6 +458,9 @@ footer
       width: 1rem
     .patty
       width: 1.25rem
+  .clone
+    // background-color: red
+    margin-top: -1.313em !important
   .hamburger_wrapper:hover
     .top_bun, .bottom_bun
       animation: none
@@ -462,8 +471,8 @@ footer
       margin-top: 15vh
   .scrollDownWrapper
     #audiocontroller
-      margin-top: $offsetFromTop
-      margin-right: 4vw
+      margin-top: $offsetFromTop + 2
+      margin-right: 5vw
       p
         font-size: .4em
         visibility: hidden
@@ -525,8 +534,9 @@ footer
     padding: 5vh
     h1
       padding-top: 0
-    ins
+    #ins
       padding: 3% 8%
+      margin: -1.5em
       //
 
 
