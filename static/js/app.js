@@ -64,7 +64,6 @@ $(window).on( "load", function(){
   // })
 
 
-
   // Logo animations
   gsap.utils.toArray("h5 span").forEach((el, index) => {
     document.querySelector(".spanFirst").addEventListener("mouseenter", function(){
@@ -225,98 +224,44 @@ $(window).on( "load", function(){
   });
 
   // ==== Team animations -- Reveal on Scroll ====
-  gsap.from(".mate h1", {
-    scrollTrigger: {
-      trigger: ".team h1",
-      toggleActions: "play pause restart reset"
-    },
-    x: "20%",
-    autoAlpha: 0,
-    ease: "circ.easeIn",
-    duration: 1.,
+  teamMainHeadAnimate = [$(".mate h1"), $(".mate2 h1"), $(".mate3 h1")];
+  teamMainHeadAnimate.forEach(head => {
+    gsap.from(head, {
+      scrollTrigger: {
+        trigger: head,
+        toggleActions: "play pause restart reset"
+      },
+      x: "20%",
+      autoAlpha: 0,
+      ease: "circ.easeIn",
+      duration: 1.,
+    })
   });
-  gsap.from(".mate h2", {
-    scrollTrigger: {
-      trigger: ".team h2",
-      toggleActions: "play pause restart reset"
-    },
-    x: "20%",
-    autoAlpha: 0,
-    ease: "circ.easeIn",
-    duration: 2
+  teamSubHeadAnimate = [$(".mate h2"), $(".mate2 h2"), $(".mate3 h2")];
+  teamSubHeadAnimate.forEach(subHead => {
+    gsap.from(subHead, {
+      scrollTrigger: {
+        trigger: subHead,
+        toggleActions: "play pause restart reset"
+      },
+      x: "20%",
+      autoAlpha: 0,
+      ease: "circ.easeIn",
+      duration: 2
+    });
   });
-  gsap.from(".mate p", {
-    scrollTrigger: {
-      trigger: ".team p",
-      toggleActions: "play pause restart reset"
-    },
-    x:"40%",
-    autoAlpha: 0,
-    ease: "circ.easeIn",
-    duration: 2
-  });
-
-  // Second Character P.S Can this be anymore redundant??? *sigh* // TO BE LOOKED AT AFTER SNAP IS WRITTEN
-  gsap.from(".mate2 h1", {
-    scrollTrigger: {
-      trigger: ".mate2 h1",
-      toggleActions: "play pause restart reset"
-    },
-    x: "20%",
-    autoAlpha: 0,
-    ease: "circ.easeIn",
-    duration: 1.,
-  });
-  gsap.from(".mate2 h2", {
-    scrollTrigger: {
-      trigger: ".mate2 h2",
-      toggleActions: "play pause restart reset"
-    },
-    x: "20%",
-    autoAlpha: 0,
-    ease: "circ.easeIn",
-    duration: 2
-  });
-  gsap.from(".mate2 p", {
-    scrollTrigger: {
-      trigger: ".mate2 p",
-      toggleActions: "play pause restart reset"
-    },
-    x:"40%",
-    autoAlpha: 0,
-    ease: "circ.easeIn",
-    duration: 2
-  });
-  // Second Character P.S Can this be anymore redundant??? *sigh*
-  gsap.from(".mate3 h1", {
-    scrollTrigger: {
-      trigger: ".mate3 h1",
-      toggleActions: "play pause restart reset"
-    },
-    x: "20%",
-    autoAlpha: 0,
-    ease: "circ.easeIn",
-    duration: 1,
-  });
-  gsap.from(".mate3 h2", {
-    scrollTrigger: {
-      trigger: ".mate3 h2",
-      toggleActions: "play pause restart reset"
-    },
-    x: "20%",
-    autoAlpha: 0,
-    ease: "circ.easeIn",
-    duration: 2
-  });
-  gsap.from(".mate3 p", {
-    scrollTrigger: {
-      trigger: ".mate3 p",
-      toggleActions: "play pause restart reset"
-    },
-    x:"40%",
-    autoAlpha: 0,
-    ease: "circ.easeIn",
-    duration: 2
+  teamParAnimate = [$(".mate p"), $(".mate2 p"), $(".mate3 p")];
+  teamParAnimate.forEach(par => {
+    gsap.from(par, {
+      scrollTrigger: {
+        trigger: par,
+        toggleActions: "play pause restart reset"
+      },
+      x:"40%",
+      autoAlpha: 0,
+      ease: "circ.easeIn",
+      duration: 2
+    });
   });
 
   //About Section
@@ -339,7 +284,7 @@ $(window).on( "load", function(){
     .to($("h4"), {
       autoAlpha: 0,
       duration: 8,
-    },"<")
+    },"<");
 
   // footer text animation??
   gsap.from($("footer h1"), {
@@ -381,5 +326,6 @@ $(window).on( "load", function(){
     duration: 1,
     y: "200%",
   });
-  // ==== END OF SESSION, CLASS DISMISSED BY timothyTheyKnow.
 });
+
+// ==== END OF SESSION, CLASS DISMISSED BY timothyTheyKnow. =======
