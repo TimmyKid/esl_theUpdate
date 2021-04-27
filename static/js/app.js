@@ -48,7 +48,22 @@ $(window).on( "load", function(){
   imgEnter
     .set(el, {transformOrigin: 'center center'})
     .fromTo(el, { opacity: 0, scale: 0.8, y: "+=100"}, {opacity: 1, scale: 1, y: 0, duration: 1, immediateRender: false})
-  })
+  });
+
+  //Scroll
+  // gsap.to($("#excerpt"), {
+  //   scrollTrigger: {
+  //     trigger: "#excerpt",
+  //     start: "top 20%",
+  //     toggleActions: "play pause reverse reset",
+  //     markers: true
+  //   },
+  //   y: "-10%",
+  //   duration: 2,
+  //   ease: "power1.easeIn"
+  // })
+
+
 
   // Logo animations
   gsap.utils.toArray("h5 span").forEach((el, index) => {
@@ -64,15 +79,12 @@ $(window).on( "load", function(){
   var sB = 0;
   var burger = document.querySelector(".hamburger_wrapper")
   document.querySelector(".button").addEventListener( "click", function i() {
-    if (!sB) {
-      sideBarTimeline.play()
-      sB = 1
-      // sideBarTimeline.play().onComplete(() => {
-      //   $('.hamburger_wrapper').click(function(){return true;});
-      // });
-    } else {
+    if (sB == true) {
       sideBarTimeline.reverse();
       sB = 0
+    } else {
+      sideBarTimeline.play()
+      sB = 1
     };
   });
 
@@ -97,11 +109,11 @@ $(window).on( "load", function(){
     // $(".clone").off()
     .to( ".clone .patty, .clone .bottom_bun", {y:"-400%"},"<")
     .to( ".bottom_bun", {rotate: "90%", y:"500%",transformOrigin: "90% 0%"},"<")
+    .to( ".clone .bottom_bun", {rotate: "-0%", y:"-400%"}, "<")
     .to( ".clone .top_bun", {rotate: "-90", x:"-25%", y:"-410%",transformOrigin: "-9% 0%"},"<")
-    .to( ".clone .bottom_bun", {rotate: "0%", y:"-350%"}, "<")
-    .to( ".top_bun", {y:"800%", duration: 1},"<")
+    .to( ".top_bun", {y:"800%"},"<.3")
     .to( ".clone .top_bun", {y:"-410%", duration: 1.5},"<")
-    .to( ".clone .bottom_bun", {y:"-800%", duration: .8},"<")
+    .to( ".clone .bottom_bun", {y:"-800%"},"<")
     .to( ".patty",{rotate:"45%", transformOrigin: "right"},"<.5")
     .to( ".clone .patty", {rotate:"-45%", transformOrigin: "left"},"<")
 
@@ -203,7 +215,7 @@ $(window).on( "load", function(){
     gsap.from(paragraph, {
       scrollTrigger: {
         trigger: paragraph,
-        toggleActions: "play pause restart reset"
+        toggleActions: "play pause restart reset",
       },
       x: "20%",
       autoAlpha: 0,
@@ -211,7 +223,6 @@ $(window).on( "load", function(){
       duration: 1.5,
     });
   });
-
 
   // ==== Team animations -- Reveal on Scroll ====
   gsap.from(".mate h1", {
@@ -285,7 +296,7 @@ $(window).on( "load", function(){
     x: "20%",
     autoAlpha: 0,
     ease: "circ.easeIn",
-    duration: 1.,
+    duration: 1,
   });
   gsap.from(".mate3 h2", {
     scrollTrigger: {
@@ -309,16 +320,26 @@ $(window).on( "load", function(){
   });
 
   //About Section
-  gsap.from(".text", {
-    scrollTrigger: {
-      trigger: ".text",
-      toggleActions: "play pause restart reset"
-    },
-    y: "80%",
-    ease: "circ.easeIn",
-    duration: 10,
-    delay: 1.5
-  });
+  let aboutTl = gsap.timeline({  scrollTrigger: {
+      trigger: "#aboutUs",
+      start: "top top",
+      toggleActions: "play pause resume pause",
+      scrub: true,
+      pin: true,
+    },})
+  aboutTl
+    .from($(".text"), {
+      y:"100%",
+      duration: 10,
+    })
+    .to($(".tracker"), {
+      y: "1000%",
+      duration: 8,
+    },"<")
+    .to($("h4"), {
+      autoAlpha: 0,
+      duration: 8,
+    },"<")
 
   // footer text animation??
   gsap.from($("footer h1"), {
