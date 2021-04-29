@@ -56,7 +56,15 @@ $(window).on( "load", function(){
   var burger = document.querySelector(".hamburger_wrapper")
   document.querySelector(".button").addEventListener( "click", function i() {
     if (sB == true) {
-      let xx = sideBarTimeline.reverse();
+      var reversed = sideBarTimeline.reversed();
+      var progress = sideBarTimeline.progress();
+      var duration = reversed ? 30 : 2
+
+      sideBarTimeline.reverse()
+        .duration(reversed ? 30 : 4)
+        .progress(progress)
+        document.querySelector(".button").classList.add("winClosed")
+
       sB = 0
       $("body").css("overflow","visible")
     } else {
@@ -64,7 +72,6 @@ $(window).on( "load", function(){
       sB = 1
       document.querySelector(".button").classList.remove("winClosed")
       document.querySelector(".clone").classList.remove("winClosed")
-      console.log(document.querySelector(".clone").getAttribute("class"))
       $("body").css("overflow","hidden")
     };
   });
