@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="./static/css/style.css">
     <title>Elevete Solutions</title>
   </head>
-  <body id ="overwatch">
+  <body>
     <!-- Pre-loader -->
     <div id="preLoader" class="page">
       <div class="vl vl-1"></div>
@@ -32,7 +32,7 @@
       <div class="vl vl-3"></div>
     </div>
 
-    <main>
+    <main id="home">
       <!--Navbar =========== Remember to remove the navigation from the main wrapper or make it stick at the top while scrolling. ========== -->
       <nav class="navbar navbar-light lighten-4">
         <a class="navbar-brand logo" href="/">
@@ -41,7 +41,7 @@
           <span>S</span><span>o</span><span>l</span><span>u</span><span>t</span><span>i</span><span>o</span><span>n</span><span>s</span>
            </a>
         <!-- Collapse button -->
-        <div class="button hamburger_wrapper orgn" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="sideBar" aria-expanded="false" aria-label="Toggle navigation">
+        <div class="button hamburger_wrapper orgn winClosed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="sideBar" aria-expanded="false" aria-label="Toggle navigation">
           <div class="hamburger_icon top_bun rounded"></div>
           <div class="hamburger_icon patty rounded"></div>
           <div class="hamburger_icon bottom_bun rounded"></div>
@@ -66,19 +66,19 @@
             </div>
           </li>
           <li class="two">
-            <div class="list-item"><a href="#" class="nav-item">About us</a>
+            <div class="list-item"><a href="#excerpt" class="nav-item">What we do</a>
               <hr>
               <ins>02</ins>
             </div>
           </li>
           <li class="three">
-            <div class="list-item"><a href="#" class="nav-item">Get in touch</a>
+            <div class="list-item"><a href="#get-in-touch" class="nav-item">About us</a>
               <hr>
               <ins>03</ins>
             </div>
           </li>
           <li class="four">
-            <div class="list-item"><a href="#" class="nav-item">Contact</a>
+            <div class="list-item"><a href="#contact" class="nav-item">Contact</a>
               <hr>
               <ins>04</ins>
             </div>
@@ -172,7 +172,7 @@
             </section>
           </div>
         <div class="team Mate3">
-            <img src="./static/img/Rowny.png" alt="avi3" draggable="false">
+            <img class="m3I" src="./static/img/Rowny.png" alt="avi3" draggable="false">
             <section>
               <h1>Ronny Kelehi</h1>
               <hr>

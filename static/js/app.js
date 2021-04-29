@@ -50,40 +50,22 @@ $(window).on( "load", function(){
     .fromTo(el, { opacity: 0, scale: 0.8, y: "+=100"}, {opacity: 1, scale: 1, y: 0, duration: 1, immediateRender: false})
   });
 
-  //Scroll
-  // gsap.to($("#excerpt"), {
-  //   scrollTrigger: {
-  //     trigger: "#excerpt",
-  //     start: "top 20%",
-  //     toggleActions: "play pause reverse reset",
-  //     markers: true
-  //   },
-  //   y: "-10%",
-  //   duration: 2,
-  //   ease: "power1.easeIn"
-  // })
-
-
-  // Logo animations
-  gsap.utils.toArray("h5 span").forEach((el, index) => {
-    document.querySelector(".spanFirst").addEventListener("mouseenter", function(){
-      console.log('It works')
-      gsap.to(el, {x:"50%", duration: 3})
-    });
-  });
-
-
   //=== SideBar Toggle Animations ==
   // ====== Variables Being Used Here =====
   var sB = 0;
   var burger = document.querySelector(".hamburger_wrapper")
   document.querySelector(".button").addEventListener( "click", function i() {
     if (sB == true) {
-      sideBarTimeline.reverse();
+      let xx = sideBarTimeline.reverse();
       sB = 0
+      $("body").css("overflow","visible")
     } else {
       sideBarTimeline.play()
       sB = 1
+      document.querySelector(".button").classList.remove("winClosed")
+      document.querySelector(".clone").classList.remove("winClosed")
+      console.log(document.querySelector(".clone").getAttribute("class"))
+      $("body").css("overflow","hidden")
     };
   });
 
@@ -94,8 +76,8 @@ $(window).on( "load", function(){
 
   let incision = $(document.querySelector(".button").appendChild(burger_shadow)).css("margin-top","-1.7924vw");
   const sideBarTimeline = gsap.timeline({ paused: true,})
-    // .from( "#overlay", { y: '-100%',visibility: 'show'  duration: .4})
-    .to( $(burger_shadow),{keyframes: [{x: "75%", autoAlpha: 1, duration: .3},{rotationX: 180, duration: .3}]})
+    .from( "#overlay", { x: '200%',visibility: 'visible',  duration: .4})
+    .to( $(burger_shadow),{keyframes: [{x: "75%", autoAlpha: 1, duration: .3},{rotationX: 180, duration: .3}]},"<")
     // === Bun and Patties partying ===
     .to( ".clone .top_bun", { x:"-15%",duration: .1})
     .to( ".clone .patty", {x:"-30%",duration: .3},"<")
@@ -103,9 +85,9 @@ $(window).on( "load", function(){
 
     // === This is cool ===
     .to( ".clone .patty, .clone .bottom_bun", {y:"-400%",})
+    // $(".clone .top_bun").unbind()
     .to( ".top_bun, .patty", {y:"400%"},"<")
     .to( ".clone .top_bun", { y: "0%"},"<")
-    // $(".clone").off()
     .to( ".clone .patty, .clone .bottom_bun", {y:"-400%"},"<")
     .to( ".bottom_bun", {rotate: "90%", y:"500%",transformOrigin: "90% 0%"},"<")
     .to( ".clone .bottom_bun", {rotate: "-0%", y:"-400%"}, "<")
@@ -125,9 +107,9 @@ $(window).on( "load", function(){
       ease: "power1.easeIn",
       duration: .5,
       stagger: 0.3,
-    },"<-1.3")
-    .from( "#sideBar hr", {x: "50%", autoAlpha: 0, duration: .5},"<.5")
-    .from( "#sideBar ul li a ", { y: "20%", autoAlpha: 0, duration: .5, ease: "circ.easeInOut", stagger: 0.2},"<-.5")
+    },"<-1.7")
+    .from( "#sideBar hr", {x: "50%", autoAlpha: 0, duration: .5},"<.4")
+    .from( "#sideBar ul li a ", { y: "20%", autoAlpha: 0, duration: .5, ease: "circ.easeInOut", stagger: 0.2},"<-.8")
     .from( "#sideBar ins",{ y: "-50%", autoAlpha: 0},"<.8")
     .from( ".sideBar_foo", { yPercent: "20%", autoAlpha: 0, ease: "power4", duration: 1.5},"<.5")
     .from(".void" ,{  autoAlpha: 0, duration: .5},"<.2")
@@ -168,10 +150,6 @@ $(window).on( "load", function(){
 
 
   // GSAP -- ANIMATIONS ----
-
-  // gsap.registerPlugin(MotionPathPlugin);
-  // gsap.to("#dot",{duration: 4, motionPath:"#path"});
-
   // Gsap Global Variables >>>>>
   const word = ["Elevete Solutions."]
 
@@ -195,6 +173,7 @@ $(window).on( "load", function(){
   //
 
   // ==== Excerpt Reveal on Scroll ====
+  let parallaxItems = gsap.utils.toArray("#excerpt img")
   slideTheseTitles = [$(".item h1"),$(".item2 h1"),$(".item3 h1")];
   slideTheseTitles.forEach(item => {
     gsap.from( item, {
@@ -206,7 +185,18 @@ $(window).on( "load", function(){
       autoAlpha: 0,
       ease: "circ.easeIn",
       duration: 1
-    })
+    });
+    parallaxItems.forEach((item) => {
+      let parallax = gsap.timeline({
+        scrollTrigger: {
+          trigger: item,
+          start: "top 85%",
+          end: "bottom 20%",
+          scrub: 2
+        }, ease: "power1.easeInOut"
+      })
+      .to(item, {y:-75, duration:2, ease:'circ.easeInOut'})
+    });
   });
   // == Excerpt Section Paragraph
   slideTheseParagraphs = [$(".item p"), $(".item2 p"), $(".item3 p")];
@@ -224,8 +214,7 @@ $(window).on( "load", function(){
   });
 
   // ==== Team animations -- Reveal on Scroll ====
-  teamMainHeadAnimate = [$(".mate h1"), $(".mate2 h1"), $(".mate3 h1")];
-  teamMainHeadAnimate.forEach(head => {
+  gsap.utils.toArray(".team h1").forEach((head) => {
     gsap.from(head, {
       scrollTrigger: {
         trigger: head,
@@ -234,11 +223,10 @@ $(window).on( "load", function(){
       x: "20%",
       autoAlpha: 0,
       ease: "circ.easeIn",
-      duration: 1.,
+      duration: 1,
     })
   });
-  teamSubHeadAnimate = [$(".mate h2"), $(".mate2 h2"), $(".mate3 h2")];
-  teamSubHeadAnimate.forEach(subHead => {
+  gsap.utils.toArray(".team h2").forEach((subHead,index) => {
     gsap.from(subHead, {
       scrollTrigger: {
         trigger: subHead,
@@ -250,8 +238,7 @@ $(window).on( "load", function(){
       duration: 2
     });
   });
-  teamParAnimate = [$(".mate p"), $(".mate2 p"), $(".mate3 p")];
-  teamParAnimate.forEach(par => {
+  gsap.utils.toArray(".team p").forEach((par) => {
     gsap.from(par, {
       scrollTrigger: {
         trigger: par,
@@ -264,6 +251,23 @@ $(window).on( "load", function(){
     });
   });
 
+  let teamTl = gsap.timeline({scrollTrigger: {
+    trigger: "#team_inner_wrapper",
+    start: "top top",
+    scrub: 1,
+    pin: ".team_outer_wrapper",
+    toggleActions: "play reset reverse reset",
+    end: "center top",
+  }, ease: "circ.easeInOut",
+  });
+
+  function endfunction() {
+    let endPoint = document.getElementById("team_inner_wrapper");
+    console.log(endPoint.clientHeight);
+    console.log(endPoint.offsetHeight);
+    console.log(endPoint.offsetWidth);
+  };
+
   //About Section
   let aboutTl = gsap.timeline({  scrollTrigger: {
       trigger: "#aboutUs",
@@ -275,7 +279,7 @@ $(window).on( "load", function(){
   aboutTl
     .from($(".text"), {
       y:"100%",
-      duration: 10,
+      duration: 12,
     })
     .to($(".tracker"), {
       y: "1000%",
@@ -283,7 +287,7 @@ $(window).on( "load", function(){
     },"<")
     .to($("h4"), {
       autoAlpha: 0,
-      duration: 8,
+      duration: 15,
     },"<");
 
   // footer text animation??
