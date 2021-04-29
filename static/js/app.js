@@ -149,9 +149,15 @@ $(window).on( "load", function(){
   };
 
   // >>>> Cursive__behaviour >>>>
-  // document.ready(function() {
-  //   document.getElementById("#sound")[0].play();
-  // });
+  $( document ).ready(function() {
+    let playPause = document.querySelector(".audioCircle");
+    let audio = $( "audio" );
+    audio.loop = true;
+    let sound = $("#sound").attr("src"); /* sound src*/
+    if (audio.paused) gsap.set(audio, { volume: 0, playbackRate: 0.5 });
+    gsap.to(audio ,{volume: 1, playbackRate: 1})
+    audio[0].play()
+  });
   // ======= END OF JQUERY =========
 
 
