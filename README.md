@@ -20,7 +20,7 @@ New includes:
    + sass
    + gsap
    + html5
-   + nodeJs
+   + jquery
 
 
  ## Contributing
