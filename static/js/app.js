@@ -137,18 +137,20 @@ $(window).on( "load", function(){
   var play = document.getElementById("play");
   var pause = document.getElementById("pause");
   var sound = $("#sound").attr("src");  /* sound src*/
-  const audio = $( "audio" );
 
-  audio.loop = true;
-  audio[0].pause()
+  // audio.loop = true;
+  // audio[0].pause()
+  var audio = document.getElementById("sound");
+    audio.play()
 
-  var binary = 1
-  document.getElementById("audioController").addEventListener("click", b => {
-    var timeplay = gsap.timeline()
-    gsap.to($(".soundSituation"),{autoAlpha: 1})
+  var binary = 0
+  document.getElementById("audioController").addEventListener("click", () => {
+    var audio = document.getElementById("sound");
+    var timeplay = gsap.timeline();
+    gsap.to($(".soundSituation"),{autoAlpha: 1});
 
     if (binary) {
-      // if (audio.paused)
+      audio.play()
         timeplay
         //   .set(audio, { volume: 0, playbackRate: 0.5 })
         //   .to(audio, { volume: 1, playbackRate: 1 })
@@ -161,6 +163,7 @@ $(window).on( "load", function(){
         console.log("on")
         binary = 0
       } else {
+        audio.pause()
         timeplay
         // .to($("#sound"), { volume: 0, playbackRate: 0.5, onComplete: audio.pause, callbackScope: audio })
           // .to($(".soundSituation"),{autoAlpha: 1})
