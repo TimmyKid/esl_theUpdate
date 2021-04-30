@@ -138,16 +138,23 @@ $(window).on( "load", function(){
   var pause = document.getElementById("pause");
   var sound = $("#sound").attr("src");  /* sound src*/
 
-  // audio.loop = true;
-  // audio[0].pause()
-  var audio = document.getElementById("sound");
-    audio.play()
+
+  jQuery(window).load(function()
+  {
+    document.getElementById("sound").play();
+    console.log("doing it")
+  });
+
+  window.onload=function(){
+    alert ('loading item');
+    jQuery("main").blur();
+  }
 
   var binary = 0
   document.getElementById("audioController").addEventListener("click", () => {
     var audio = document.getElementById("sound");
     var timeplay = gsap.timeline();
-    gsap.to($(".soundSituation"),{autoAlpha: 1});
+    gsap.to($(".soundSituation"),{autoAlpha: 1, ease: "circ"});
 
     if (binary) {
       audio.play()
@@ -156,7 +163,7 @@ $(window).on( "load", function(){
         //   .to(audio, { volume: 1, playbackRate: 1 })
           .to($("#pause"), { autoAlpha: 0, ease: "none",duration: .01 }, "<")
           .to($("#play"), { autoAlpha: 1, ease: "none",duration: .01 }, "<")
-          .to($(".soundSituation"), { autoAlpha: 0, duration: 3})
+          .to($(".soundSituation"), { autoAlpha: 0, duration: 2, ease: "circ"})
           $(".soundSituation").html("Sound: On");
 
         // audio[0].play()
@@ -169,7 +176,7 @@ $(window).on( "load", function(){
           // .to($(".soundSituation"),{autoAlpha: 1})
           .to($("#play"), { autoAlpha: 0, ease: "none", duration: .01 }, "<")
           .to($("#pause"), { autoAlpha: 1, ease: "none",duration: .01 }, "<")
-          .to($(".soundSituation"), { autoAlpha: 0, duration: 3})
+          .to($(".soundSituation"), { autoAlpha: 0, duration: 2, ease: "circ"})
           $(".soundSituation").html("Sound: Off");
 
 

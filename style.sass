@@ -96,7 +96,7 @@ body
 
 .cursor
   @include cursorProps(5px,$red)
-  z-index: 6
+  z-index: 9
   top: 42.1%
   left: 49.8%
   // transition-duration: 180ms
@@ -105,7 +105,7 @@ body
 .cursor2
   @include cursorProps(35px,transparent)
   border: 1.5px solid
-  z-index: 5
+  z-index: 8
   top: 40%
   left: 48.7%
   backdrop-filter: blur(5px)
@@ -149,7 +149,7 @@ main .float-right
 
 .hamburger_wrapper
   margin-right: 1vw
-  z-index: 3
+  z-index: 8
   .hamburger_icon
     width: 1.75rem
     height: 2px
@@ -177,7 +177,7 @@ main .float-right
   position: absolute
   right: 0
   top: 0
-  z-index: 2
+  z-index: 7
   overflow-Y: hidden
   .void
     @include circle(clamp(10em,23.4vw,20em),darken($grey,60%))
@@ -264,6 +264,7 @@ main
     flex-direction: column
     align-items: center
     margin-top: calc(1.5em + 7.5em)
+    z-index: 6
     .audioCircle
       @include circle(clamp(1.775rem,2.195vw,2.875rem),white)
       position: fixed
@@ -280,7 +281,6 @@ main
       margin-top: 2rem
       position: fixed
       // visibility: hidden
-
 
 #excerpt
   @include setBackgroundColor($black)
@@ -376,7 +376,6 @@ main
     padding: 15vw 0 0 0
     margin-top: -5em
 
-
 footer
   @include setBackgroundColor($blue)
   position: relative
@@ -386,7 +385,7 @@ footer
   padding: 5vh 0
   min-height: 100vh
   font-size: $simpleText
-  z-index: 3
+  z-index: 7
   scroll-snap-align: start
   h1
     margin: 4vh 0 10vh 0
@@ -505,6 +504,8 @@ footer
       margin-top: $offsetFromTop + 5
       margin-right: 5vw
       z-index: 3
+      #pause
+        margin: 3px -20px 0 5px
       p
         font-size: .7em
         // visibility: hidden
