@@ -145,11 +145,6 @@ $(window).on( "load", function(){
     console.log("doing it")
   });
 
-  window.onload=function(){
-    alert ('loading item');
-    jQuery("main").blur();
-  }
-
   var binary = 0
   document.getElementById("audioController").addEventListener("click", () => {
     var audio = document.getElementById("sound");
