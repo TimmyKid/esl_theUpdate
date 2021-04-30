@@ -35,20 +35,6 @@ $(window).on( "load", function(){
     });
   });
 
-  // Image reveal animations
-  gsap.utils.toArray('#excerpt img, .team img').forEach((el, index) => {
-  let imgEnter = gsap.timeline({
-    scrollTrigger: {
-      trigger: el,
-      start: "top bottom",
-      toggleActions: "play none none reverse",
-      // markers: true
-    }
-  });
-  imgEnter
-    .set(el, {transformOrigin: 'center center'})
-    .fromTo(el, { opacity: 0, scale: 0.8, y: "+=100"}, {opacity: 1, scale: 1, y: 0, duration: 1, immediateRender: false})
-  });
 
   //=== SideBar Toggle Animations ==
   // ====== Variables Being Used Here =====
@@ -58,7 +44,7 @@ $(window).on( "load", function(){
     if (sB == true) {
       var reversed = sideBarTimeline.reversed();
       var progress = sideBarTimeline.progress();
-      var duration = reversed ? 30 : 2
+      var duration = reversed ? 30 : 3
 
       sideBarTimeline.reverse()
         .duration(reversed ? 30 : 4)
@@ -67,9 +53,11 @@ $(window).on( "load", function(){
 
       sB = 0
       $("body").css("overflow","visible")
+
     } else {
       sideBarTimeline.play()
       sB = 1
+
       document.querySelector(".button").classList.remove("winClosed")
       document.querySelector(".clone").classList.remove("winClosed")
       $("body").css("overflow","hidden")
@@ -185,45 +173,49 @@ $(window).on( "load", function(){
     // } }, "<1")
   //
 
-  // ==== Excerpt Reveal on Scroll ====
-  let parallaxItems = gsap.utils.toArray("#excerpt img")
-  slideTheseTitles = [$(".item h1"),$(".item2 h1"),$(".item3 h1")];
-  slideTheseTitles.forEach(item => {
-    gsap.from( item, {
-      scrollTrigger: {
-        trigger: item,
-        toggleActions: "play pause restart reset"
-      },
-      x: "20%",
-      autoAlpha: 0,
-      ease: "circ.easeIn",
-      duration: 1
-    });
-    parallaxItems.forEach((item) => {
-      let parallax = gsap.timeline({
-        scrollTrigger: {
-          trigger: item,
-          start: "top 85%",
-          end: "bottom 20%",
-          scrub: 2
-        }, ease: "power1.easeInOut"
-      })
-      .to(item, {y:-75, duration:2, ease:'circ.easeInOut'})
-    });
+
+  //// Image reveal animations
+  gsap.utils.toArray('#excerpt img, .team img').forEach((el, index) => {
+  let imgEnter = gsap.timeline({
+    scrollTrigger: {
+      trigger: el,
+      start: "top 105%",
+      toggleActions: "play none none reverse",
+      // markers: tru3
+    }, ease: "circ.easeIn", duration: .1
   });
-  // == Excerpt Section Paragraph
-  slideTheseParagraphs = [$(".item p"), $(".item2 p"), $(".item3 p")];
-  slideTheseParagraphs.forEach(paragraph => {
+  imgEnter
+    .set(el, {transformOrigin: 'center center'})
+    .fromTo(el, { opacity: 0, scale: 0.8, y: "+=100"}, {opacity: 1, scale: 1, y: 0, duration: 1, immediateRender: true})
+  });
+
+  // ==== Excerpt Reveal on Scroll ====
+  gsap.utils.toArray("#excerpt img").forEach((item) => {
+   let parallax = gsap.timeline({
+    scrollTrigger: {
+      trigger: item,
+      start: "top 105%",
+      end: "bottom -5%",
+      scrub: 2,
+      toggleActions: "play play reverse reset"
+    }, ease: "power1.easeInOut"})
+    .to(item, {y:-75, duration:2, ease:'circ.easeInOut'})
+  });
+  // == Excerpt Section Titles ===
+  gsap.utils.toArray(".item h1, .item2 h1, .item3 h1").forEach((title,index) => {
+    gsap.from( title, {
+      scrollTrigger: {
+        trigger: title,
+        toggleActions: "play pause restart reset"
+      }, x: "20%", autoAlpha: 0, ease: "circ.easeIn", duration: 1 });
+  });
+  // == Excerpt Section Paragraph ===
+  gsap.utils.toArray(".item p, .item2 p, .item3 p").forEach((paragraph) => {
     gsap.from(paragraph, {
       scrollTrigger: {
         trigger: paragraph,
         toggleActions: "play pause restart reset",
-      },
-      x: "20%",
-      autoAlpha: 0,
-      ease: "circ.easeIn",
-      duration: 1.5,
-    });
+      }, x: "20%", autoAlpha: 0, ease: "circ.easeIn", duration: 1.5});
   });
 
   // ==== Team animations -- Reveal on Scroll ====
@@ -232,36 +224,21 @@ $(window).on( "load", function(){
       scrollTrigger: {
         trigger: head,
         toggleActions: "play pause restart reset"
-      },
-      x: "20%",
-      autoAlpha: 0,
-      ease: "circ.easeIn",
-      duration: 1,
-    })
+      }, x: "20%", autoAlpha: 0, ease: "circ.easeIn", duration: 1})
   });
   gsap.utils.toArray(".team h2").forEach((subHead,index) => {
     gsap.from(subHead, {
       scrollTrigger: {
         trigger: subHead,
         toggleActions: "play pause restart reset"
-      },
-      x: "20%",
-      autoAlpha: 0,
-      ease: "circ.easeIn",
-      duration: 2
-    });
+      }, x: "20%", autoAlpha: 0, ease: "circ.easeIn", duration: 2});
   });
   gsap.utils.toArray(".team p").forEach((par) => {
     gsap.from(par, {
       scrollTrigger: {
         trigger: par,
         toggleActions: "play pause restart reset"
-      },
-      x:"40%",
-      autoAlpha: 0,
-      ease: "circ.easeIn",
-      duration: 2
-    });
+      }, x:"40%", autoAlpha: 0, ease: "circ.easeIn", duration: 2 });
   });
 
   let teamTl = gsap.timeline({scrollTrigger: {
@@ -271,8 +248,7 @@ $(window).on( "load", function(){
     pin: ".team_outer_wrapper",
     toggleActions: "play reset reverse reset",
     end: "center top",
-  }, ease: "circ.easeInOut",
-  });
+  }, ease: "circ.easeInOut",});
 
   function endfunction() {
     let endPoint = document.getElementById("team_inner_wrapper");
@@ -289,60 +265,31 @@ $(window).on( "load", function(){
       scrub: true,
       pin: true,
     },})
-  aboutTl
-    .from($(".text"), {
-      y:"100%",
-      duration: 12,
-    })
-    .to($(".tracker"), {
-      y: "1000%",
-      duration: 8,
-    },"<")
-    .to($("h4"), {
-      autoAlpha: 0,
-      duration: 15,
-    },"<");
+    .from($(".text"), { y:"100%", duration: 12,})
+    .to($(".tracker"), { y: "1000%", duration: 8,},"<")
+    .to($("h4"), { autoAlpha: 0, duration: 15,},"<");
 
   // footer text animation??
   gsap.from($("footer h1"), {
     scrollTrigger: {
       trigger: "footer h1",
       toggleActions: "play none restart reset"
-    },
-    autoAlpha:0 ,
-    ease: "circ.easeIn",
-    duration: 2
-  });
+    }, autoAlpha:0, ease: "circ.easeIn", duration: 2});
   gsap.from($("address"), {
     scrollTrigger: {
       trigger: "address",
       toggleActions: "play reset restart reset"
-    },
-    y:"40%",
-    autoAlpha:0 ,
-    ease: "circ.easeIn",
-    duration: 1
-  });
+    }, y: "40%", autoAlpha:0, ease: "circ.easeIn", duration: 1});
   gsap.from($("footer ul"), {
     scrollTrigger: {
       trigger: "footer ul",
       toggleActions: "play reset restart reset"
-    },
-    autoAlpha:0,
-    duration: 1,
-    y:"40%",
-    scale: 0.3,
-  });
+    }, autoAlpha:0, duration: 1, y:"40%", scale: 0.3,});
   gsap.from($("#ins"), {
     scrollTrigger: {
       trigger: "#ins",
       toggleActions: "play restart restart reset"
-    },
-    autoAlpha: 0,
-    ease: "circ.easeIn",
-    duration: 1,
-    y: "200%",
-  });
+    }, autoAlpha: 0, ease: "circ.easeIn", duration: 1, y: "200%",});
+    //End of All Footer Animations ===
 });
-
 // ==== END OF SESSION, CLASS DISMISSED BY timothyTheyKnow. =======
