@@ -44,20 +44,16 @@ $(window).on( "load", function(){
     if (sB == true) {
       var reversed = sideBarTimeline.reversed();
       var progress = sideBarTimeline.progress();
-      var duration = reversed ? 30 : 3
 
       sideBarTimeline.reverse()
-        .duration(reversed ? 30 : 4)
+        .duration(reversed ? 30 : 2.3)
         .progress(progress)
         document.querySelector(".button").classList.add("winClosed")
-
       sB = 0
       $("body").css("overflow","visible")
-
     } else {
       sideBarTimeline.play()
       sB = 1
-
       document.querySelector(".button").classList.remove("winClosed")
       document.querySelector(".clone").classList.remove("winClosed")
       $("body").css("overflow","hidden")
@@ -136,16 +132,74 @@ $(window).on( "load", function(){
     })
   };
 
-  // >>>> Cursive__behaviour >>>>
-  $( document ).ready(function() {
-    let playPause = document.querySelector(".audioCircle");
-    let audio = $( "audio" );
-    audio.loop = true;
-    let sound = $("#sound").attr("src"); /* sound src*/
-    if (audio.paused) gsap.set(audio, { volume: 0, playbackRate: 0.5 });
-    gsap.to(audio ,{volume: 1, playbackRate: 1})
-    audio[0].play()
+  // >>>> Sound Play >>>>
+  // alert("document ready occurred!");
+  var play = document.getElementById("play");
+  var pause = document.getElementById("pause");
+  var sound = $("#sound").attr("src");  /* sound src*/
+  const audio = $( "audio" );
+
+  audio.loop = true;
+  audio[0].pause()
+
+  var binary = 1
+  document.getElementById("audioController").addEventListener("click", b => {
+    var timeplay = gsap.timeline()
+    gsap.to($(".soundSituation"),{autoAlpha: 1})
+
+    if (binary) {
+      // if (audio.paused)
+        timeplay
+        //   .set(audio, { volume: 0, playbackRate: 0.5 })
+        //   .to(audio, { volume: 1, playbackRate: 1 })
+          .to($("#pause"), { autoAlpha: 0, ease: "none",duration: .01 }, "<")
+          .to($("#play"), { autoAlpha: 1, ease: "none",duration: .01 }, "<")
+          .to($(".soundSituation"), { autoAlpha: 0, duration: 3})
+          $(".soundSituation").html("Sound: On");
+
+        // audio[0].play()
+        console.log("on")
+        binary = 0
+      } else {
+        timeplay
+        // .to($("#sound"), { volume: 0, playbackRate: 0.5, onComplete: audio.pause, callbackScope: audio })
+          // .to($(".soundSituation"),{autoAlpha: 1})
+          .to($("#play"), { autoAlpha: 0, ease: "none", duration: .01 }, "<")
+          .to($("#pause"), { autoAlpha: 1, ease: "none",duration: .01 }, "<")
+          .to($(".soundSituation"), { autoAlpha: 0, duration: 3})
+          $(".soundSituation").html("Sound: Off");
+
+
+        console.log("off")
+        binary = 1
+      };
   });
+
+  // >>>> Color Swatch >>>>
+  let toBlack = document.getElementById("sound").scrollY
+  function colorSwatch() {
+    if (this.scrollY > this.innerHeight * 5.2) {
+      gsap.to($(".vl"),{ duration: .5, borderColor: "#1d1d1d",  ease: "circ.easeInOut"})
+      gsap.to($(".audioCircle"),{ duration: .5, borderColor: "#1d1d1d",  ease: "circ.easeOut"})
+      gsap.to($(".soundSituation"),{ duration: .5, color: "#1d1d1d",  ease: "circ.easeOut"})
+
+    } else {
+      gsap.to($(".vl"),{ duration: .5, borderColor: "#dedede",  ease: "circ.easeInOut"})
+      gsap.to($(".audioCircle"),{ duration: .5, borderColor: "#dedede",  ease: "circ.easeIn"})
+      gsap.to($(".soundSituation"),{ duration: .5, color: "#dedede",  ease: "circ.easeIn"})
+    };
+    if (this.scrollY > this.innerHeight * 8.75) {
+      gsap.to($("footer"),{ duration: 1, backgroundColor: "#1c2331",  ease: "circ.easeInOut"})
+      gsap.to($("body"),{ duration: .5, backgroundColor: "#10161F",  ease: "circ.easeInOut"})
+      gsap.to($(".text"),{ duration: .5, color: "#dedede",  ease: "circ.easeInOut"})
+      gsap.to($(".vl"),{ duration: .5, borderColor: "#dedede",  ease: "circ.easeInOut"})
+    } else {
+      gsap.to($(".text"),{ duration: .5, color: "#1d1d1d",  ease: "circ.easeInOut"})
+      gsap.to($("body"),{ duration: .5, backgroundColor: "#dedede",  ease: "circ.easeInOut"})
+    };
+  }
+  window.addEventListener("scroll", colorSwatch)
+
   // ======= END OF JQUERY =========
 
 
