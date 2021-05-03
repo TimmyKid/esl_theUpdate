@@ -669,7 +669,7 @@ footer
       @include vl(4em,absolute)
       border-color: $black
       height: 16rem
-      margin-top: 2em
+      margin-top: 2vh
     .tracker
       @include circle(1em, black)
       background: $grey
@@ -690,12 +690,27 @@ footer
       margin: 0 -2vw
       padding-top: 10vh
   .welcomeGridContainer
-    margin-top: $offsetFromTop + 3
+    margin-top: $offsetFromTop
+    //
+  .hamburger_wrapper
+    .clone
+      margin-left: -0.043em
+      margin-top: -1.513em !important
     //
   .scrollDownWrapper
     & img
       width: 6%
       margin-left: .1vw
+    #audioController
+      .audioCircle
+        margin-top: -.5em
+        margin-right: 1em
+        img:nth-child(1)
+          margin: 5px -20px 0 5px
+        img:nth-child(2)
+          margin: 5px 0 0 0
+      p
+        margin-top: 2em
       //
   .team_outer_wrapper
     margin-bottom: -50vh
@@ -726,6 +741,8 @@ footer
   #aboutUs
     h4
       @include sectionTitle($black, 1.5em)
+    .scrollTrack
+      margin-top: 5vh
     .text
       padding: 10vh 10vw
       text-align: center

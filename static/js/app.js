@@ -218,6 +218,7 @@ $(window).on( "load", function(){
   const word = ["Elevete Solutions."]
 
   //Introductory text animations...
+  /*
   const timeline = gsap.timeline({defaults: { duration: 3, ease: "circ", whileRunning: justStarted()}, paused:false})
   timeline
     .from(".vl",{height: "0%", duration: 5})
@@ -234,7 +235,7 @@ $(window).on( "load", function(){
     .to(".blinkr", {autoAlpha: 0, duration: .6, ease: "circ.easeOut", onComplete: () => {
       timeline.kill()
       dDone()
-    } }, "<1")
+    } }, "<1") */
 
   function justStarted() {
     gsap.to($("body"), {css: {overflowY: "hidden"}})
