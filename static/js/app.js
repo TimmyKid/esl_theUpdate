@@ -1,5 +1,9 @@
 // App.js -- Web~AnimationS --
 $(window).on( "load", function(){
+  // autoPlay sound on load >>
+  audio = document.getElementById("sound");
+  audio.autoplay = true
+
   // JQuery Variables >>>>>>
   const cursor = document.querySelector(".cursor");
   const cursor2 = document.querySelector(".cursor2");
@@ -21,7 +25,7 @@ $(window).on( "load", function(){
     gsap.to($(cursor2),{css:{x:"100%",y:"100%"}})
   });
 
-  //Footer/Copyright current date
+  //Footer/Copyright current date >>
   date.innerHTML = (new Date().getFullYear());
 
   // Hover over links and images effects
@@ -34,7 +38,6 @@ $(window).on( "load", function(){
       cursor2.classList.remove("hover-on-link")
     });
   });
-
 
   //=== SideBar Toggle Animations ==
   // ====== Variables Being Used Here =====
@@ -76,7 +79,6 @@ $(window).on( "load", function(){
 
     // === This is cool ===
     .to( ".clone .patty, .clone .bottom_bun", {y:"-400%",})
-    // $(".clone .top_bun").unbind()
     .to( ".top_bun, .patty", {y:"400%"},"<")
     .to( ".clone .top_bun", { y: "0%"},"<")
     .to( ".clone .patty, .clone .bottom_bun", {y:"-400%"},"<")
@@ -133,22 +135,12 @@ $(window).on( "load", function(){
   };
 
   // >>>> Sound Play >>>>
-  // alert("document ready occurred!");
-  var play = document.getElementById("play");
-  var pause = document.getElementById("pause");
-  var sound = $("#sound").attr("src");  /* sound src*/
-
-
-  jQuery(window).load(function()
-  {
-    document.getElementById("sound").play();
-    console.log("doing it")
-  });
-
-  var binary = 0
+  var binary = 1
   document.getElementById("audioController").addEventListener("click", () => {
     var audio = document.getElementById("sound");
+
     var timeplay = gsap.timeline();
+
     gsap.to($(".soundSituation"),{autoAlpha: 1, ease: "circ"});
 
     if (binary) {
@@ -174,7 +166,6 @@ $(window).on( "load", function(){
           .to($(".soundSituation"), { autoAlpha: 0, duration: 2, ease: "circ"})
           $(".soundSituation").html("Sound: Off");
 
-
         console.log("off")
         binary = 1
       };
@@ -193,7 +184,7 @@ $(window).on( "load", function(){
       gsap.to($(".audioCircle"),{ duration: .5, borderColor: "#dedede",  ease: "circ.easeIn"})
       gsap.to($(".soundSituation"),{ duration: .5, color: "#dedede",  ease: "circ.easeIn"})
     };
-    if (this.scrollY > this.innerHeight * 8.75) {
+    if (this.scrollY > this.innerHeight * 8.55) {
       gsap.to($("footer"),{ duration: 1, backgroundColor: "#1c2331",  ease: "circ.easeInOut"})
       gsap.to($("body"),{ duration: .5, backgroundColor: "#10161F",  ease: "circ.easeInOut"})
       gsap.to($(".text"),{ duration: .5, color: "#dedede",  ease: "circ.easeInOut"})
@@ -204,7 +195,6 @@ $(window).on( "load", function(){
     };
   }
   window.addEventListener("scroll", colorSwatch)
-
   // ======= END OF JQUERY =========
 
 
@@ -231,7 +221,6 @@ $(window).on( "load", function(){
     //   timeline.kill()
     // } }, "<1")
   //
-
 
   //// Image reveal animations
   gsap.utils.toArray('#excerpt img, .team img').forEach((el, index) => {
@@ -324,8 +313,8 @@ $(window).on( "load", function(){
       scrub: true,
       pin: true,
     },})
-    .from($(".text"), { y:"100%", duration: 12,})
-    .to($(".tracker"), { y: "1000%", duration: 8,},"<")
+    .from($(".text"), { y:"100%", duration: 8,})
+    .to($(".tracker"), { y: "700%", duration: 8,},"<")
     .to($("h4"), { autoAlpha: 0, duration: 15,},"<");
 
   // footer text animation??
