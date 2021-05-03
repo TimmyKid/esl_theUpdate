@@ -216,9 +216,8 @@ $(window).on( "load", function(){
   // GSAP -- ANIMATIONS ----
   // Gsap Global Variables >>>>>
   const word = ["Elevete Solutions."]
-
-  //Introductory text animations...
   /*
+  //Introductory text animations...
   const timeline = gsap.timeline({defaults: { duration: 3, ease: "circ", whileRunning: justStarted()}, paused:false})
   timeline
     .from(".vl",{height: "0%", duration: 5})

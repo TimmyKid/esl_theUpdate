@@ -106,7 +106,7 @@ body
 
 .cursor
   @include cursorProps(5px,$red)
-  z-index: 9
+  z-index: 10
   top: 42.1%
   left: 49.8%
   // transition-duration: 180ms
@@ -763,3 +763,22 @@ footer
 /* Extra Large screens & TV (portrait and landscape) ----------- */
 /* Styles */
 @media only screen and (min-device-width : 1201px)
+  .hamburger_wrapper
+    .clone
+      margin-left: -0.043em
+      margin-top: -1.513em !important
+  .scrollDownWrapper
+    margin-top: -5em
+
+@media only screen and (min-device-width : 1201px)
+  .scrollDownWrapper
+    margin-top: -10em
+  #team_inner_wrapper
+    h4
+      margin-top: .9em
+  #aboutUs
+    margin-top: -30em
+    h4
+      margin-top: .8em
+  footer #ins
+    margin-top: -2.6em
