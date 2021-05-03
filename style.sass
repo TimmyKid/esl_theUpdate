@@ -36,7 +36,7 @@ a, a:hover, a:visited, ins
   text-decoration: none
 h4
   font-size: $big
-a:active
+.list-item a:active
   color: white
 
 body
@@ -115,7 +115,7 @@ body
 .cursor2
   @include cursorProps(35px,transparent)
   border: 1.5px solid
-  z-index: 8
+  z-index: 9
   top: 40%
   left: 48.7%
   backdrop-filter: blur(5px)
@@ -184,7 +184,7 @@ main .float-right
   width: 50vw
   height: 100vh
   background-color: $black
-  position: absolute
+  position: fixed
   right: 0
   top: 0
   z-index: 7

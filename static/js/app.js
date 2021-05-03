@@ -1,8 +1,14 @@
 // App.js -- Web~AnimationS --
 $(window).on( "load", function(){
-  // autoPlay sound on load >>
-  audio = document.getElementById("sound");
-  audio.autoplay = true
+  gsap.timeline({paused: false, onStart: playmusic()})
+  function playmusic() {
+    // autoPlay sound on load >>
+    audio = document.getElementById("sound");
+    audio.autoplay = true
+    audio.play()
+  }
+  //smooth-scroll
+  var scroll = new SmoothScroll('a[href*="#"]');
 
   // JQuery Variables >>>>>>
   const cursor = document.querySelector(".cursor");
@@ -43,17 +49,22 @@ $(window).on( "load", function(){
   // ====== Variables Being Used Here =====
   var sB = 0;
   var burger = document.querySelector(".hamburger_wrapper")
+
+  function closeSideBar() {
+    var reversed = sideBarTimeline.reversed();
+    var progress = sideBarTimeline.progress();
+
+    sideBarTimeline.reverse()
+      .duration(reversed ? 30 : 2.3)
+      .progress(progress)
+      document.querySelector(".button").classList.add("winClosed")
+    sB = 0
+    $("body").css("overflow","visible")
+  };
+
   document.querySelector(".button").addEventListener( "click", function i() {
     if (sB == true) {
-      var reversed = sideBarTimeline.reversed();
-      var progress = sideBarTimeline.progress();
-
-      sideBarTimeline.reverse()
-        .duration(reversed ? 30 : 2.3)
-        .progress(progress)
-        document.querySelector(".button").classList.add("winClosed")
-      sB = 0
-      $("body").css("overflow","visible")
+      closeSideBar();
     } else {
       sideBarTimeline.play()
       sB = 1
@@ -62,6 +73,14 @@ $(window).on( "load", function(){
       $("body").css("overflow","hidden")
     };
   });
+
+  // Clicking on sidebar events
+  gsap.utils.toArray("#sideBar .list-item a").forEach((link) => {
+    link.addEventListener("click", function () {
+      var goToLink = gsap.timeline({delay: 2, duration: 3, onStart: closeSideBar(),  })
+        // .to(goToLink, {duration: 1});
+    })
+  })
 
   let burger_shadow = burger.cloneNode(true);
   //== get && set Clone's New unique clone name ==
@@ -146,29 +165,25 @@ $(window).on( "load", function(){
     if (binary) {
       audio.play()
         timeplay
-        //   .set(audio, { volume: 0, playbackRate: 0.5 })
-        //   .to(audio, { volume: 1, playbackRate: 1 })
           .to($("#pause"), { autoAlpha: 0, ease: "none",duration: .01 }, "<")
           .to($("#play"), { autoAlpha: 1, ease: "none",duration: .01 }, "<")
           .to($(".soundSituation"), { autoAlpha: 0, duration: 2, ease: "circ"})
           $(".soundSituation").html("Sound: On");
 
-        // audio[0].play()
-        console.log("on")
+        // console.log("on")
         binary = 0
-      } else {
-        audio.pause()
-        timeplay
-        // .to($("#sound"), { volume: 0, playbackRate: 0.5, onComplete: audio.pause, callbackScope: audio })
-          // .to($(".soundSituation"),{autoAlpha: 1})
-          .to($("#play"), { autoAlpha: 0, ease: "none", duration: .01 }, "<")
-          .to($("#pause"), { autoAlpha: 1, ease: "none",duration: .01 }, "<")
-          .to($(".soundSituation"), { autoAlpha: 0, duration: 2, ease: "circ"})
-          $(".soundSituation").html("Sound: Off");
-
-        console.log("off")
-        binary = 1
-      };
+    } else {
+      audio.pause()
+      timeplay
+      // .to($("#sound"), { volume: 0, playbackRate: 0.5, onComplete: audio.pause, callbackScope: audio })
+        // .to($(".soundSituation"),{autoAlpha: 1})
+        .to($("#play"), { autoAlpha: 0, ease: "none", duration: .01 }, "<")
+        .to($("#pause"), { autoAlpha: 1, ease: "none",duration: .01 }, "<")
+        .to($(".soundSituation"), { autoAlpha: 0, duration: 2, ease: "circ"})
+        $(".soundSituation").html("Sound: Off");
+      // console.log("off")
+      binary = 1
+    };
   });
 
   // >>>> Color Swatch >>>>
@@ -198,29 +213,35 @@ $(window).on( "load", function(){
   // ======= END OF JQUERY =========
 
 
-
   // GSAP -- ANIMATIONS ----
   // Gsap Global Variables >>>>>
   const word = ["Elevete Solutions."]
 
   //Introductory text animations...
-  const timeline = gsap.timeline({defaults: { duration: 3, ease: "circ"}, paused: true})
+  const timeline = gsap.timeline({defaults: { duration: 3, ease: "circ", whileRunning: justStarted()}, paused:false})
   timeline
-    // .from(".vl",{height: "0%", duration: 5})
-    // // == Welcome Text
-    // .from("#preFace > h1", { autoAlpha:0, x: "-15%"})
-    // .from("#preFace .text-center h1", { opacity: 0, x: "25%"}, "<")
-    // // == Blinking cursor and Logo typeOut ==
-    // .to(".blinkr", {autoAlpha: 1, ease: "power2.inOut", repeat: -2, duration: .5})
-    // .fromTo(".introText", {text: ""}, {text: {value: word}, ease: "back.easeInOut"})
-    // // == Utility reveal ==
-    // .from(".scrollDownWrapper", { autoAlpha: 0, duration: 1, ease: "none"}, ">.5")
-    // .from(".navbar", { autoAlpha: 0, duration: 1, ease: "none"}, "<")
-    // // close animation and end timeline
-    // .to(".blinkr", {autoAlpha: 0, duration: .6, ease: "circ.easeOut", onComplete: () => {
-    //   timeline.kill()
-    // } }, "<1")
-  //
+    .from(".vl",{height: "0%", duration: 5})
+    // == Welcome Text
+    .from("#preFace > h1", { autoAlpha:0, x: "-15%"})
+    .from("#preFace .text-center h1", { opacity: 0, x: "25%"}, "<")
+    // == Blinking cursor and Logo typeOut ==
+    .to(".blinkr", {autoAlpha: 1, ease: "power2.inOut", repeat: -2, duration: .5})
+    .fromTo(".introText", {text: ""}, {text: {value: word}, ease: "back.easeInOut"})
+    // == Utility reveal ==
+    .from(".scrollDownWrapper", { autoAlpha: 0, duration: 1, ease: "none"}, ">.5")
+    .from(".navbar", { autoAlpha: 0, duration: 1, ease: "none"}, "<")
+    // close animation and end timeline
+    .to(".blinkr", {autoAlpha: 0, duration: .6, ease: "circ.easeOut", onComplete: () => {
+      timeline.kill()
+      dDone()
+    } }, "<1")
+
+  function justStarted() {
+    gsap.to($("body"), {css: {overflowY: "hidden"}})
+  };
+  function dDone() {
+    gsap.to($("body"), {css: {overflowY: "scroll"}})
+  };
 
   //// Image reveal animations
   gsap.utils.toArray('#excerpt img, .team img').forEach((el, index) => {
@@ -292,18 +313,19 @@ $(window).on( "load", function(){
   let teamTl = gsap.timeline({scrollTrigger: {
     trigger: "#team_inner_wrapper",
     start: "top top",
-    scrub: 1,
+    scrub: false,
     pin: ".team_outer_wrapper",
     toggleActions: "play reset reverse reset",
     end: "center top",
   }, ease: "circ.easeInOut",});
 
+  /*
   function endfunction() {
     let endPoint = document.getElementById("team_inner_wrapper");
     console.log(endPoint.clientHeight);
     console.log(endPoint.offsetHeight);
     console.log(endPoint.offsetWidth);
-  };
+  };*/
 
   //About Section
   let aboutTl = gsap.timeline({  scrollTrigger: {
