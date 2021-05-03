@@ -1,5 +1,10 @@
 // App.js -- Web~AnimationS --
 $(window).on( "load", function(){
+
+  $(window).on('beforeunload', function(){
+    $(window).scrollTop(0);
+  });
+
   gsap.timeline({paused: false, onStart: playmusic()})
   function playmusic() {
     // autoPlay sound on load >>
@@ -37,7 +42,7 @@ $(window).on( "load", function(){
   // Hover over links and images effects
   var whatToHover = [$('a'),$('img'),$('.hamburger_wrapper')]
   whatToHover.forEach(element => {
-    element.mouseover(function mouseWentOverYourHead() { x:"-20%"
+    element.mouseover(function mouseWentOverYourHead() {
       cursor2.classList.add("hover-on-link")
     });
     element.mouseleave(function mouseWentOverYourHead() {
@@ -60,7 +65,7 @@ $(window).on( "load", function(){
       document.querySelector(".button").classList.add("winClosed")
     sB = 0
     $("body").css("overflow","visible")
-  };
+  }
 
   document.querySelector(".button").addEventListener( "click", function i() {
     if (sB == true) {
@@ -71,7 +76,7 @@ $(window).on( "load", function(){
       document.querySelector(".button").classList.remove("winClosed")
       document.querySelector(".clone").classList.remove("winClosed")
       $("body").css("overflow","hidden")
-    };
+    }
   });
 
   // Clicking on sidebar events
@@ -88,7 +93,7 @@ $(window).on( "load", function(){
   burger_shadow.setAttribute('class', theClassName + " clone");
 
   let incision = $(document.querySelector(".button").appendChild(burger_shadow)).css("margin-top","-1.7924vw");
-  const sideBarTimeline = gsap.timeline({ paused: true,})
+  var sideBarTimeline = gsap.timeline({ paused: true,})
     .from( "#overlay", { x: '200%',visibility: 'visible',  duration: .4})
     .to( $(burger_shadow),{keyframes: [{x: "75%", autoAlpha: 1, duration: .3},{rotationX: 180, duration: .3}]},"<")
     // === Bun and Patties partying ===
@@ -141,7 +146,7 @@ $(window).on( "load", function(){
   function callParallax(w) {
     parallaxIt(w,'.void',80);
     parallaxIt(w,'.voidControl',-40);
-  };
+  }
   function parallaxIt(w, target, movement) {
     var $this = $('.voidControl, .void');
     var relX = w.clientX - $this.offset().left;
@@ -216,8 +221,7 @@ $(window).on( "load", function(){
   // GSAP -- ANIMATIONS ----
   // Gsap Global Variables >>>>>
   const word = ["Elevete Solutions."]
-  /*
-  //Introductory text animations...
+  //Introductory text animations....
   const timeline = gsap.timeline({defaults: { duration: 3, ease: "circ", whileRunning: justStarted()}, paused:false})
   timeline
     .from(".vl",{height: "0%", duration: 5})
@@ -234,13 +238,16 @@ $(window).on( "load", function(){
     .to(".blinkr", {autoAlpha: 0, duration: .6, ease: "circ.easeOut", onComplete: () => {
       timeline.kill()
       dDone()
-    } }, "<1") */
+    } }, "<1")
 
   function justStarted() {
     gsap.to($("body"), {css: {overflowY: "hidden"}})
   };
   function dDone() {
     gsap.to($("body"), {css: {overflowY: "scroll"}})
+    gsap.timeline()
+      .to($(".scrollDownIcon"),{keyframes: [{repeat: 5, y:"-80%", yoyo: true, delay: 4}]})
+      .to($("#scrollDown_animators img"),{keyframes: [{repeat: 1, y:"-180%", yoyo: true, duration: .8}]})
   };
 
   //// Image reveal animations
