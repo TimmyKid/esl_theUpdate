@@ -5,13 +5,6 @@ $(window).on( "load", function(){
     $(window).scrollTop(0);
   });
 
-  gsap.timeline({paused: false, onStart: playmusic()})
-  function playmusic() {
-    // autoPlay sound on load >>
-    audio = document.getElementById("sound");
-    audio.autoplay = true
-    audio.play()
-  }
   //smooth-scroll
   var scroll = new SmoothScroll('a[href*="#"]');
 
@@ -158,27 +151,45 @@ $(window).on( "load", function(){
     })
   };
 
-  // >>>> Sound Play >>>>
+  // >>>> Everything Sounds Good >>>>
+  //SoundHowls on Hover and click
+
+  const hoverMenuSound = new Howl({
+    src: ['./static/audio/HoverCall.mp3'],
+    volume: 0.5,
+    sprite : {
+      tap: [300,500]
+    }
+  });
+  const mainSound = new Howl({
+    src: ['./static/audio/They Never Say Goodnight.mp3'],
+    loop: true,
+    volume: 0.4,
+    autoplay: true,
+  });
+
   var binary = 1
+
+  $('#sideBar a').mouseenter( function() {
+    if (binary == true)
+      hoverMenuSound.play('tap');
+  });
   document.getElementById("audioController").addEventListener("click", () => {
-    var audio = document.getElementById("sound");
-
+    // var audio = document.getElementById("sound");
     var timeplay = gsap.timeline();
-
     gsap.to($(".soundSituation"),{autoAlpha: 1, ease: "circ"});
 
     if (binary) {
-      audio.play()
+      mainSound.play()
         timeplay
           .to($("#pause"), { autoAlpha: 0, ease: "none",duration: .01 }, "<")
           .to($("#play"), { autoAlpha: 1, ease: "none",duration: .01 }, "<")
           .to($(".soundSituation"), { autoAlpha: 0, duration: 2, ease: "circ"})
           $(".soundSituation").html("Sound: On");
-
         // console.log("on")
         binary = 0
     } else {
-      audio.pause()
+      mainSound.pause()
       timeplay
       // .to($("#sound"), { volume: 0, playbackRate: 0.5, onComplete: audio.pause, callbackScope: audio })
         // .to($(".soundSituation"),{autoAlpha: 1})
@@ -192,9 +203,9 @@ $(window).on( "load", function(){
   });
 
   // >>>> Color Swatch >>>>
-  let toBlack = document.getElementById("sound").scrollY
+  let toBlack = document.querySelector(".audioCircle").scrollY
   function colorSwatch() {
-    if (this.scrollY > this.innerHeight * 5.2) {
+    if (this.scrollY > this.innerHeight * 5.1) {
       gsap.to($(".vl"),{ duration: .5, borderColor: "#1d1d1d",  ease: "circ.easeInOut"})
       gsap.to($(".audioCircle"),{ duration: .5, borderColor: "#1d1d1d",  ease: "circ.easeOut"})
       gsap.to($(".soundSituation"),{ duration: .5, color: "#1d1d1d",  ease: "circ.easeOut"})
