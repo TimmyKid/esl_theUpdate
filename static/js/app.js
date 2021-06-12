@@ -135,6 +135,7 @@ $(window).on( "load", function(){
   $( "#sideBar" ).mousemove( function (w) {
     callParallax(w);
   });
+
   // Call to action
   function callParallax(w) {
     parallaxIt(w,'.void',80);
@@ -171,7 +172,7 @@ $(window).on( "load", function(){
   var binary = 1
 
   $('#sideBar a').mouseenter( function() {
-    if (binary == true)
+    if (!binary)
       hoverMenuSound.play('tap');
   });
   document.getElementById("audioController").addEventListener("click", () => {
@@ -220,6 +221,7 @@ $(window).on( "load", function(){
       gsap.to($("body"),{ duration: .5, backgroundColor: "#10161F",  ease: "circ.easeInOut"})
       gsap.to($(".text"),{ duration: .5, color: "#dedede",  ease: "circ.easeInOut"})
       gsap.to($(".vl"),{ duration: .5, borderColor: "#dedede",  ease: "circ.easeInOut"})
+      gsap.to($(".scrollTrack"),{ duration: .5, borderColor: "#dedede",  ease: "circ.easeInOut"})
     } else {
       gsap.to($(".text"),{ duration: .5, color: "#1d1d1d",  ease: "circ.easeInOut"})
       gsap.to($("body"),{ duration: .5, backgroundColor: "#dedede",  ease: "circ.easeInOut"})
@@ -233,6 +235,7 @@ $(window).on( "load", function(){
   // Gsap Global Variables >>>>>
   const word = ["Elevete Solutions."]
   //Introductory text animations....
+  /*
   const timeline = gsap.timeline({defaults: { duration: 3, ease: "circ", whileRunning: justStarted()}, paused:false})
   timeline
     .from(".vl",{height: "0%", duration: 5})
@@ -256,10 +259,10 @@ $(window).on( "load", function(){
   };
   function dDone() {
     gsap.to($("body"), {css: {overflowY: "scroll"}})
-    gsap.timeline()
-      .to($(".scrollDownIcon"),{keyframes: [{repeat: 5, y:"-80%", yoyo: true, delay: 4}]})
-      .to($("#scrollDown_animators img"),{keyframes: [{repeat: 1, y:"-180%", yoyo: true, duration: .8}]})
-  };
+    gsap.timeline({repeat: -1})
+      .to($(".scrollDownIcon"),{keyframes: [{repeat: 3, y:"-40%", yoyo: true, delay: 4}]})
+      .to($("#scrollDown_animators img"),{keyframes: [{repeat: 1, y:"-140%", yoyo: true, duration: .8}]})
+  }; */
 
   //// Image reveal animations
   gsap.utils.toArray('#excerpt img, .team img').forEach((el, index) => {
