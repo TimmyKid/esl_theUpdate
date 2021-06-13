@@ -1,12 +1,12 @@
-//Go select your laundry not my content
-// * {
-//   user-drag: none;
-//   user-select: none;
-//   -moz-user-select: none;
-//   -webkit-user-drag: none;
-//   -webkit-user-select: none;
-//   -ms-user-select: none;
-// }
+// Feel free to use my content
+* {
+  user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
 @mixin defaultSpacing() {
   margin: 0;
   padding: 0;

@@ -349,16 +349,16 @@ $(window).on( "load", function(){
   };*/
 
   //About Section
-  let aboutTl = gsap.timeline({  scrollTrigger: {
+  let aboutTl = gsap.timeline({ defaults:{ duration: 8}, scrollTrigger: {
       trigger: "#aboutUs",
       start: "top top",
       toggleActions: "play pause resume pause",
       scrub: true,
       pin: true,
     },})
-    .from($(".text"), { y:"100%", duration: 8,})
-    .to($(".tracker"), { y: "700%", duration: 8,},"<")
-    .to($("h4"), { autoAlpha: 0, duration: 15,},"<");
+    .from($(".text"), { y:"100%"})
+    .to($(".tracker"), { y: "12em"},"<")
+    .to($("h4"), { autoAlpha: 0},"<");
 
   // footer text animation??
   gsap.from($("footer h1"), {
@@ -380,7 +380,7 @@ $(window).on( "load", function(){
     scrollTrigger: {
       trigger: "#ins",
       toggleActions: "play restart restart reset"
-    }, autoAlpha: 0, ease: "circ.easeIn", duration: 1, y: "200%",});
+    }, autoAlpha: 0, ease: "circ.easeIn", duration: .5, y: "120%", webkitClipPath: 'inset(0% 0% 80% 0%)'});
     //End of All Footer Animations ===
 });
 // ==== END OF SESSION, CLASS DISMISSED BY timothyTheyKnow. =======
