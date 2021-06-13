@@ -119,7 +119,7 @@ $(window).on( "load", function(){
       stagger: 0.3,
     },"<-1.7")
     .from( "#sideBar hr", {x: "50%", autoAlpha: 0, duration: .5},"<.4")
-    .from( "#sideBar ul li a ", { y: "20%", duration: .5, ease: "circ.easeInOut", stagger: 0.2, webkitClipPath: 'inset(0% 0% 80% 0%)'},"<-.8")
+    .from( "#sideBar ul li a ", { autoAlpha: 0, y: "20%", duration: .5, ease: "circ.easeInOut", stagger: 0.2},"<-.8")
     .from( "#sideBar ins",{ y: "-50%", autoAlpha: 0},"<.8")
     .from( ".sideBar_foo", { yPercent: "20%", autoAlpha: 0, ease: "power4", duration: 1.5},"<.5")
     .from(".void" ,{  autoAlpha: 0, duration: .5},"<.2")
@@ -379,8 +379,9 @@ $(window).on( "load", function(){
   gsap.from($("#ins"), {
     scrollTrigger: {
       trigger: "#ins",
-      toggleActions: "play restart restart reset"
-    }, ease: "circ.easeIn", duration: .5, y: "100%", webkitClipPath: 'inset(0% 0% 80% 0%)'});
+      toggleActions: "play restart restart reset",
+      start: "-100% bottom"
+    }, ease: "circ.easeIn", duration: .5, y: "120%", webkitClipPath: 'inset(0% 0% 80% 0%)'});
     //End of All Footer Animations ===
 });
 // ==== END OF SESSION, CLASS DISMISSED BY timothyTheyKnow. =======
