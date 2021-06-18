@@ -360,11 +360,13 @@ $(window).on( "load", function(){
     .to($("h4"), { autoAlpha: 0},"<");
 
   // footer text animation??
-  gsap.from($("footer h1"), {
-    scrollTrigger: {
-      trigger: "footer h1",
-      toggleActions: "play none restart reset"
-    }, autoAlpha:0, ease: "circ.easeIn", duration: 2});
+  gsap.utils.toArray("#curveSvg, footer h1, #particle").forEach((item) => {
+    gsap.from(item, {
+      scrollTrigger: {
+        trigger: "footer h1",
+        toggleActions: "play none restart reset"
+      }, autoAlpha:0, paused: true, ease: "circ.easeIn", duration: 2, onComplete: accelerateParticle()});
+  })
   gsap.from($("address"), {
     scrollTrigger: {
       trigger: "address",
@@ -381,8 +383,14 @@ $(window).on( "load", function(){
       toggleActions: "play restart restart reset",
       start: "-100% bottom"
     }, ease: "circ.easeIn", duration: .5, y: "120%", webkitClipPath: 'inset(0% 0% 80% 0%)'});
+  // gsap.utils.toArray("#particle, #curveSvg").forEach((item) => {
+  //   gsap.fromTo(item,{autoAlpha: 0},{})
+  //
+  // })
 
-    //Svg Animations
+  //Svg Animations
+  function accelerateParticle() {
+    
     var originalParticle = document.getElementById("particle")
       //Clone the particle
       clonR = originalParticle.cloneNode(true);
@@ -395,36 +403,37 @@ $(window).on( "load", function(){
       document.getElementById('contact').appendChild(clone3)
 
     //Particle_2
-    gsap.to($('#particle'), { duration: 10, repeat: -1, repeatDelay: 1, yoyo: true,
-      motionPath:{
-        path: "#curveSvg #Path_1",
-        align: "#curveSvg #Path_1",
-        alignOrigin: [0.5, 0.5]}
-    });
-    //Particle_1
-    gsap.to(clonR, { duration: 10, repeat: -1, repeatDelay: 2, yoyo: true,
-      motionPath:{
-        path: "#curveSvg #Path_2",
-        align: "#curveSvg #Path_2",
-        // autoRotate: true,
-        alignOrigin: [0.5, 0.5]}
-    });
-    //Particle_3
-    gsap.to(clone2, { duration: 10, repeat: -1, repeatDelay: 2,yoyo: true,
-      motionPath:{
-        path: "#curveSvg #Path_3",
-        align: "#curveSvg #Path_3",
-        // autoRotate: true,
-        alignOrigin: [0.5, 0.5]}
-    });
-    //Particle_4
-    gsap.to(clone3, { duration: 10, repeat: -1, repeatDelay: 1, yoyo: true,
-      motionPath:{
-        path: "#curveSvg #Path_4",
-        align: "#curveSvg #Path_4",
-        alignOrigin: [0.5, 0.5]}
-    });
-    //End of All Footer Animations ===
+    var particleAccelerator = gsap.timeline({paused: false ,defaults:{
+      duration: 10, repeat: -1, repeatDelay: 1, yoyo: true,
+    }})
+    particleAccelerator
+      .to($('#particle'), { motionPath: {
+          path: "#curveSvg #Path_1",
+          align: "#curveSvg #Path_1",
+          alignOrigin: [0.5, 0.5]}
+      })
+      //Particle_1
+      .to(clonR, { motionPath: {
+          path: "#curveSvg #Path_2",
+          align: "#curveSvg #Path_2",
+          // autoRotate: true,
+          alignOrigin: [0.5, 0.5]}
+      },"<.8")
+      //Particle_3
+      .to(clone2, { motionPath: {
+          path: "#curveSvg #Path_3",
+          align: "#curveSvg #Path_3",
+          // autoRotate: true,
+          alignOrigin: [0.5, 0.5]}
+      },"<.9")
+      //Particle_4
+      .to(clone3, { motionPath: {
+          path: "#curveSvg #Path_4",
+          align: "#curveSvg #Path_4",
+          alignOrigin: [0.5, 0.5]}
+      },"<.4");
+  };
+  //End of All Footer Animations ===
 
 
 });
