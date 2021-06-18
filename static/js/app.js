@@ -1,6 +1,5 @@
 // App.js -- Web~AnimationS --
 $(window).on( "load", function(){
-
   $(window).on('beforeunload', function(){
     $(window).scrollTop(0);
   });
@@ -85,7 +84,7 @@ $(window).on( "load", function(){
   var theClassName = burger_shadow.getAttribute('class');
   burger_shadow.setAttribute('class', theClassName + " clone");
 
-  let incision = $(document.querySelector(".button").appendChild(burger_shadow)).css("margin-top","-1.7924vw");
+  $(document.querySelector(".button").appendChild(burger_shadow)).css("margin-top","-1.7924vw");
   var sideBarTimeline = gsap.timeline({ paused: true,})
     .from( "#overlay", { x: '200%',visibility: 'visible',  duration: .4})
     .to( $(burger_shadow),{keyframes: [{x: "75%", autoAlpha: 1, duration: .3},{rotationX: 180, duration: .3}]},"<")
@@ -382,6 +381,51 @@ $(window).on( "load", function(){
       toggleActions: "play restart restart reset",
       start: "-100% bottom"
     }, ease: "circ.easeIn", duration: .5, y: "120%", webkitClipPath: 'inset(0% 0% 80% 0%)'});
+
+    //Svg Animations
+    var originalParticle = document.getElementById("particle")
+      //Clone the particle
+      clonR = originalParticle.cloneNode(true);
+      document.getElementById('contact').appendChild(clonR)
+      //Paticle3
+      clone2 = originalParticle.cloneNode(true);
+      document.getElementById('contact').appendChild(clone2)
+      //Paticle4
+      clone3 = originalParticle.cloneNode(true);
+      document.getElementById('contact').appendChild(clone3)
+
+    //Particle_2
+    gsap.to($('#particle'), { duration: 10, repeat: -1, repeatDelay: 1, yoyo: true,
+      motionPath:{
+        path: "#curveSvg #Path_1",
+        align: "#curveSvg #Path_1",
+        alignOrigin: [0.5, 0.5]}
+    });
+    //Particle_1
+    gsap.to(clonR, { duration: 10, repeat: -1, repeatDelay: 2, yoyo: true,
+      motionPath:{
+        path: "#curveSvg #Path_2",
+        align: "#curveSvg #Path_2",
+        // autoRotate: true,
+        alignOrigin: [0.5, 0.5]}
+    });
+    //Particle_3
+    gsap.to(clone2, { duration: 10, repeat: -1, repeatDelay: 2,yoyo: true,
+      motionPath:{
+        path: "#curveSvg #Path_3",
+        align: "#curveSvg #Path_3",
+        // autoRotate: true,
+        alignOrigin: [0.5, 0.5]}
+    });
+    //Particle_4
+    gsap.to(clone3, { duration: 10, repeat: -1, repeatDelay: 1, yoyo: true,
+      motionPath:{
+        path: "#curveSvg #Path_4",
+        align: "#curveSvg #Path_4",
+        alignOrigin: [0.5, 0.5]}
+    });
     //End of All Footer Animations ===
+
+
 });
 // ==== END OF SESSION, CLASS DISMISSED BY timothyTheyKnow. =======
