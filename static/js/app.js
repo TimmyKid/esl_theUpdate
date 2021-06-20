@@ -360,12 +360,12 @@ $(window).on( "load", function(){
     .to($("h4"), { autoAlpha: 0},"<");
 
   // footer text animation??
-  gsap.utils.toArray("#curveSvg, footer h1, #particle").forEach((item) => {
+  gsap.utils.toArray("#curveSvg, footer h1").forEach((item) => {
     gsap.from(item, {
       scrollTrigger: {
         trigger: "footer h1",
         toggleActions: "play none restart reset"
-      }, autoAlpha:0, paused: true, ease: "circ.easeIn", duration: 2, onComplete: accelerateParticle()});
+      }, autoAlpha:0, paused: true, ease: "circ.easeIn", duration: 3 });
   })
   gsap.from($("address"), {
     scrollTrigger: {
@@ -389,8 +389,6 @@ $(window).on( "load", function(){
   // })
 
   //Svg Animations
-  function accelerateParticle() {
-    
     var originalParticle = document.getElementById("particle")
       //Clone the particle
       clonR = originalParticle.cloneNode(true);
@@ -403,8 +401,8 @@ $(window).on( "load", function(){
       document.getElementById('contact').appendChild(clone3)
 
     //Particle_2
-    var particleAccelerator = gsap.timeline({paused: false ,defaults:{
-      duration: 10, repeat: -1, repeatDelay: 1, yoyo: true,
+    var particleAccelerator = gsap.timeline({defaults:{
+      duration: 10, repeat: -1, repeatDelay: 1, yoyo: true
     }})
     particleAccelerator
       .to($('#particle'), { motionPath: {
@@ -432,7 +430,6 @@ $(window).on( "load", function(){
           align: "#curveSvg #Path_4",
           alignOrigin: [0.5, 0.5]}
       },"<.4");
-  };
   //End of All Footer Animations ===
 
 
