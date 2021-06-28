@@ -48,12 +48,7 @@ $(window).on( "load", function(){
   var burger = document.querySelector(".hamburger_wrapper")
 
   function closeSideBar() {
-    var reversed = sideBarTimeline.reversed();
-    var progress = sideBarTimeline.progress();
-
-    sideBarTimeline.reverse()
-      .duration(reversed ? 30 : 2.3)
-      .progress(progress)
+    sideBarTimeline.timeScale(2).reverse()
       document.querySelector(".button").classList.add("winClosed")
     sB = 0
     $("body").css("overflow","visible")
@@ -69,7 +64,11 @@ $(window).on( "load", function(){
       document.querySelector(".clone").classList.remove("winClosed")
       $("body").css("overflow","hidden")
     }
+    i.preventDefault();
   });
+    // jQuery("#sideBar").bind('dbclick', function e(){
+    //   i.preventDefault();
+    // })
 
   // Clicking on sidebar events
   gsap.utils.toArray("#sideBar .list-item a").forEach((link) => {
