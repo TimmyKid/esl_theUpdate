@@ -64,11 +64,13 @@ $(window).on( "load", function(){
       document.querySelector(".clone").classList.remove("winClosed")
       $("body").css("overflow","hidden")
     }
-    i.preventDefault();
   });
-    // jQuery("#sideBar").bind('dbclick', function e(){
-    //   i.preventDefault();
+    // jQuery("").bind('click', function e(){
+    //   e.preventDefault();
     // })
+    $('.button').dblclick(function(e){
+      e.preventDefault();
+    })
 
   // Clicking on sidebar events
   gsap.utils.toArray("#sideBar .list-item a").forEach((link) => {
